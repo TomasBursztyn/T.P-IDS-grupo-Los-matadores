@@ -5,8 +5,8 @@ Idea elegida: Sitio web de Hospedajes.
  que quiera ofrecer alojamiento turístico
 
 Integrantes:
-Tomas Nahuel Bursztyn 110965 \n
-Valentin Provost 111537 \n
+Tomas Nahuel Bursztyn 110965
+Valentin Provost 111537 
 Santiago Garcia Tuñon 112520
 Jorge Ricardo Huallpa Arce 105547
 Matias Wang 110717
