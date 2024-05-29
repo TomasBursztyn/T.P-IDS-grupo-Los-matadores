@@ -1,4 +1,5 @@
 https://trello.com/b/K0HIyndU/tp-ids
+
 Idea elegida: Sitio web de Hospedajes. 
  Creación de un sitio web que ofrezca hospedaje, podría tratarse de un hotel, hostería, o casa 
  que quiera ofrecer alojamiento turístico
