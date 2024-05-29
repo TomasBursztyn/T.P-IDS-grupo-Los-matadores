@@ -16,3 +16,6 @@ Integrantes:
 * Julian Lauski 112046
 * Ulises Distefano 111883
 * Axel Carlos Lopez 111713
+
+
+[Hitos.txt](https://github.com/TomasBursztyn/T.P-IDS-grupo-Los-matadores/files/15490617/Hitos.txt)
