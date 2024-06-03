@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("load", function() {
     var btnContacto = document.getElementById("enviar-contacto");
 
     btnContacto.addEventListener("click", function(event) {
