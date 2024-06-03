@@ -1,0 +1,14 @@
+#nombre_reserva,
+#cant_personas,
+#inicio_fecha,
+#fin_fecha,
+#tipo_habitacion,
+#reservar {
+    cursor: pointer;
+}
+
+#imagen-reserva img {
+    margin: 10px 0;
+    height: 500px;
+    margin-right: 50px; /* Ajuste de margen */
+}

@@ -25,6 +25,36 @@ def services():
     return render_template("services.html")
 
 
+
+@app.route('/reservar', methods=["GET","POST"])
+def FormularioReserva():  
+
+    datosReserva:list = [] # puse las reservas en una lista de diccionarios, cada posicion es un diccionario que contiene la reserva
+
+    if request.method == "POST":
+
+        nombre = request.form.get("nombre_reserva")
+        cantidad_personas = request.form.get("cant_personas")
+        fecha_inicio = request.form.get("Inicio_fecha")
+        fecha_fin = request.form.get("Fin_fecha")
+    
+        reserva_id = len(datosReserva) + 1
+
+        reserva = {
+            "id": reserva_id,
+            "usuario": nombre,
+            "cantidad_personas": cantidad_personas,
+            "fecha_inicio": fecha_inicio,
+            "fecha_fin": fecha_fin
+        }
+
+        datosReserva.append(reserva)
+
+
+ 
+    return render_template('reservar.html')
+
+
 @app.errorhandler(404)  
 def page_not_found(e):
     return render_template('404.html'), 404
