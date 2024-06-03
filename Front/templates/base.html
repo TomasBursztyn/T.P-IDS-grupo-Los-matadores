@@ -43,30 +43,30 @@
 
 	<!-- Stylesheets -->
 	<!-- Dropdown Menu -->
-	<link rel="stylesheet" href="static/css/superfish.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/superfish.css', _external=True) }}">
 	<!-- Owl Slider -->
 	<!-- <link rel="stylesheet" href="static/css/owl.carousel.css"> -->
 	<!-- <link rel="stylesheet" href="static/css/owl.theme.default.min.css"> -->
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/bootstrap-datepicker.min.css', _external=True) }}">
 	<!-- CS Select -->
-	<link rel="stylesheet" href="static/css/cs-select.css">
-	<link rel="stylesheet" href="static/css/cs-skin-border.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/cs-select.css', _external=True) }}">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/cs-skin-border.css', _external=True) }}">
 
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="static/css/themify-icons.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/themify-icons.css', _external=True) }}">
 	<!-- Flat Icon -->
-	<link rel="stylesheet" href="static/css/flaticon.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/flaticon.css', _external=True) }}">
 	<!-- Icomoon -->
-	<link rel="stylesheet" href="static/css/icomoon.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/icomoon.css', _external=True) }}">
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="static/css/flexslider.css">
+	<link rel="stylesheet" href="{{url_for('static', filename= '/css/flexslider.css', _external=True) }}">
 	
 	<!-- Style -->
-	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css', _external=True) }}">
 
 	<!-- Modernizr JS -->
-	<script src="static/js/modernizr-2.6.2.min.js"></script>
+	<script src="{{url_for('static', filename='/js/modernizr-2.6.2.min.js', _external=True) }}"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="static/js/respond.min.js"></script>
@@ -81,12 +81,12 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html">Luxe</a></h1>
+					<h1 id="fh5co-logo"><a href="{{ url_for('index') }}">Luxe</a></h1>
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a class="active" href="index.html">Home</a></li>
+							<li><a class="active" href="{{ url_for('index') }}">Home</a></li>
 							<li>
-								<a href="hotel.html" class="fh5co-sub-ddown">Hotel</a>
+								<a href="{{ url_for('hotel') }}" class="fh5co-sub-ddown">Hotel</a>
 								<ul class="fh5co-sub-menu">
 								 	<li><a href="#">Luxe Hotel</a></li>
 								 	<li><a href="#">Deluxe Hotel</a></li>
@@ -104,9 +104,9 @@
 									<li><a href="#">Five Star Hotel</a></li> 
 								</ul>
 							</li>
-							<li><a href="services.html">Services</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="{{ url_for('services') }}">Services</a></li>
+							<li><a href="{{ url_for('blog') }}">Blog</a></li>
+							<li><a href="{{ url_for('contact') }}">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -185,29 +185,29 @@
 	<!-- END fh5co-wrapper -->
 	
 	<!-- Javascripts -->
-	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="{{url_for('static', filename='js/jquery-2.1.4.min.js', _external=True) }}"></script>
 	<!-- Dropdown Menu -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+	<script src="{{ url_for('static', filename='js/hoverIntent.js', _external=True) }}"></script>
+	<script src="{{ url_for('static', filename='js/superfish.js', _external=True) }}"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename= 'js/bootstrap.min.js', _external=True) }}"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="{{ url_for('static', filename= 'js/jquery.waypoints.min.js', _external=True) }}"></script>
 	<!-- Counters -->
-	<script src="js/jquery.countTo.js"></script>
+	<script src="{{ url_for('static', filename='js/jquery.countTo.js', external=True) }}"></script>
 	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="{{ url_for('static', filename='js/jquery.stellar.min.js', external=True) }}"></script>
 	<!-- Owl Slider -->
 	<!-- // <script src="js/owl.carousel.min.js"></script> -->
 	<!-- Date Picker -->
-	<script src="js/bootstrap-datepicker.min.js"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js', _external=True) }}"></script>
 	<!-- CS Select -->
-	<script src="js/classie.js"></script>
-	<script src="js/selectFx.js"></script>
+	<script src="{{ url_for('static', filename='js/classie.js', _external=True) }}"></script>
+	<script src="{{ url_for('static', filename='js/selectFx.js', _external=True) }}"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="{{ url_for('static', filename='js/jquery.flexslider-min.js', _external=True) }}"></script>
 
-	<script src="js/custom.js"></script>
+	<script src="{{ url_for('static', filename='js/custom.js', _external=True) }}"></script>
 
 </body>
 </html>
