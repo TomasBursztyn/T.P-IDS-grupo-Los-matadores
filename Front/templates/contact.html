@@ -36,26 +36,30 @@
 			</div>
 			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Nombre y Apellido">
+					<form action="" methods="POST">
+					
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="contacto_nombre" placeholder="Nombre y Apellido">
+							</div>
 						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Email">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="contacto_email" placeholder="Email">
+							</div>
 						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="form-group">
-							<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Mensaje"></textarea>
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea name="" class="form-control" name="contacto_mensaje" cols="30" rows="7" placeholder="Mensaje"></textarea>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="form-group">
-							<input type="submit" value="Envíar" class="btn btn-primary">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="submit" id="enviar-contacto" value="Envíar" class="btn btn-primary">
+							</div>
 						</div>
-					</div>
+
+					</form>
 				</div>
 			</div>
 		</div>
