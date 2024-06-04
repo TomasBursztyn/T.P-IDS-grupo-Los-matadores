@@ -32,18 +32,15 @@ def services():
 
 @app.route("/reservar", methods=["GET", "POST"])
 def Reserva():
-
-    datosReserva: list = (
-        []
-    )  # puse las reservas en una lista de diccionarios, cada posicion es un diccionario que contiene la reserva
+    # puse las reservas en una lista de diccionarios, cada posicion es un
+    # diccionario que contiene la reserva
+    datosReserva: list = []
 
     if request.method == "POST":
-
         nombre = request.form.get("nombre_reserva")
-        cantidad_personas = request.form.get("cant_personas")
-        fecha_inicio = request.form.get("Inicio_fecha")
-        fecha_fin = request.form.get("Fin_fecha")
-
+        cantidad_personas = request.form.get("cantidad_personas")
+        fecha_inicio = request.form.get("inicio_fecha")
+        fecha_fin = request.form.get("fin_fecha")
         reserva_id = len(datosReserva) + 1
 
         reserva = {
@@ -55,6 +52,7 @@ def Reserva():
         }
 
         datosReserva.append(reserva)
+        # luego habria que aca hacer un llamado a la api enviando datosReserva
 
     return render_template("reservar.html")
 
