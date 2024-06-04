@@ -2,7 +2,9 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +14,7 @@
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
 
-  <!-- 
+	<!-- 
 	//////////////////////////////////////////////////////
 
 	FREE HTML5 TEMPLATE 
@@ -26,12 +28,12 @@
 	//////////////////////////////////////////////////////
 	 -->
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
@@ -61,163 +63,173 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='/css/icomoon.css', _external=True) }}">
 	<!-- Flexslider  -->
 	<link rel="stylesheet" href="{{url_for('static', filename= '/css/flexslider.css', _external=True) }}">
-	
+
 	<!-- Style -->
 	<link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css', _external=True) }}">
 
-	 <!-- style reservar -->
+	<!-- style reservar -->
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/reservar.css') }}">
 
-	 <!-- js reservar-->
-	<script src="{{ url_for('static', filename='js/reservar.js') }}"></script>
+	<!-- js reservar-->
+	<script src="{{ url_for('static', filename='js/propio/reservar.js') }}"></script>
 
 	<!-- js contacto-->
-	<script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/propio/contacto.js') }}"></script>
 
 
 	<!-- Modernizr JS -->
-	<script src="{{url_for('static', filename='/js/modernizr-2.6.2.min.js', _external=True) }}"></script>
+	<script src="{{url_for('static', filename='/js/library/modernizr-2.6.2.min.js', _external=True) }}"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="static/js/respond.min.js"></script>
+	<script src="static/js/library/respond.min.js"></script>
 	<![endif]-->
 
 </head>
+
 <body>
 	<div id="fh5co-wrapper">
-	<div id="fh5co-page">
-	<div id="fh5co-header">
-		<header id="fh5co-header-section">
-			<div class="container">
-				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-					<h1 id="fh5co-logo"><a href="{{ url_for('index') }}">Luxe</a></h1>
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a class="active" href="{{ url_for('index') }}">Home</a></li>
-							<li>
-								<a href="{{ url_for('hotel') }}" class="fh5co-sub-ddown">Hotel</a>
-								<ul class="fh5co-sub-menu">
-								 	<li><a href="#">Luxe Hotel</a></li>
-								 	<li><a href="#">Deluxe Hotel</a></li>
+		<div id="fh5co-page">
+			<div id="fh5co-header">
+				<header id="fh5co-header-section">
+					<div class="container">
+						<div class="nav-header">
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+							<h1 id="fh5co-logo"><a href="{{ url_for('index') }}">Luxe</a></h1>
+							<nav id="fh5co-menu-wrap" role="navigation">
+								<ul class="sf-menu" id="fh5co-primary-menu">
+									<li><a class="active" href="{{ url_for('index') }}">Home</a></li>
 									<li>
-										<a href="#" class="fh5co-sub-ddown">King Hotel</a>
+										<a href="{{ url_for('hotel') }}" class="fh5co-sub-ddown">Hotel</a>
 										<ul class="fh5co-sub-menu">
-											<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+											<li><a href="#">Luxe Hotel</a></li>
+											<li><a href="#">Deluxe Hotel</a></li>
+											<li>
+												<a href="#" class="fh5co-sub-ddown">King Hotel</a>
+												<ul class="fh5co-sub-menu">
+													<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template"
+															target="_blank">Build</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap"
+															target="_blank">Work</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap"
+															target="_blank">Light</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap"
+															target="_blank">Relic</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap"
+															target="_blank">Display</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap"
+															target="_blank">Sprint</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Five Star Hotel</a></li>
 										</ul>
 									</li>
-									<li><a href="#">Five Star Hotel</a></li> 
+									<li><a href="{{ url_for('services') }}">Servicios</a></li>
+									<li><a href="{{ url_for('blog') }}">Blog</a></li>
+									<li><a href="{{ url_for('contact') }}">Contacto</a></li>
 								</ul>
-							</li>
-							<li><a href="{{ url_for('services') }}">Servicios</a></li>
-							<li><a href="{{ url_for('blog') }}">Blog</a></li>
-							<li><a href="{{ url_for('contact') }}">Contacto</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</header>
-		
-	</div>
-	<!-- end:fh5co-header -->
-    {% block body %}
-
-		<!-- ################## AQUI VA LA POSTA ################## -->
-
-    {% endblock %}
-
-	<footer id="footer" class="fh5co-bg-color">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="copyright">
-						<p><small>&copy; 2016 Free HTML5 Template. <br> All Rights Reserved. <br>
-						Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> <br> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+							</nav>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
+				</header>
+
+			</div>
+			<!-- end:fh5co-header -->
+			{% block body %}
+
+			<!-- ################## AQUI VA LA POSTA ################## -->
+
+			{% endblock %}
+
+			<footer id="footer" class="fh5co-bg-color">
+				<div class="container">
 					<div class="row">
 						<div class="col-md-3">
-							<h3>Company</h3>
-							<ul class="link">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Hotels</a></li>
-								<li><a href="#">Customer Care</a></li>
-								<li><a href="#">Contact Us</a></li>
-							</ul>
-						</div>
-						<div class="col-md-3">
-							<h3>Our Facilities</h3>
-							<ul class="link">
-								<li><a href="#">Resturant</a></li>
-								<li><a href="#">Bars</a></li>
-								<li><a href="#">Pick-up</a></li>
-								<li><a href="#">Swimming Pool</a></li>
-								<li><a href="#">Spa</a></li>
-								<li><a href="#">Gym</a></li>
-							</ul>
+							<div class="copyright">
+								<p><small>&copy; 2016 Free HTML5 Template. <br> All Rights Reserved. <br>
+										Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> <br>
+										Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small>
+								</p>
+							</div>
 						</div>
 						<div class="col-md-6">
-							<h3>Subscribe</h3>
-							<p>Sed cursus ut nibh in semper. Mauris varius et magna in fermentum. </p>
-							<form action="#" id="form-subscribe">
-								<div class="form-field">
-									<input type="email" placeholder="Email Address" id="email">
-									<input type="submit" id="submit" value="Send">
+							<div class="row">
+								<div class="col-md-3">
+									<h3>Company</h3>
+									<ul class="link">
+										<li><a href="#">About Us</a></li>
+										<li><a href="#">Hotels</a></li>
+										<li><a href="#">Customer Care</a></li>
+										<li><a href="#">Contact Us</a></li>
+									</ul>
 								</div>
-							</form>
+								<div class="col-md-3">
+									<h3>Our Facilities</h3>
+									<ul class="link">
+										<li><a href="#">Resturant</a></li>
+										<li><a href="#">Bars</a></li>
+										<li><a href="#">Pick-up</a></li>
+										<li><a href="#">Swimming Pool</a></li>
+										<li><a href="#">Spa</a></li>
+										<li><a href="#">Gym</a></li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<h3>Subscribe</h3>
+									<p>Sed cursus ut nibh in semper. Mauris varius et magna in fermentum. </p>
+									<form action="#" id="form-subscribe">
+										<div class="form-field">
+											<input type="email" placeholder="Email Address" id="email">
+											<input type="submit" id="submit" value="Send">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<ul class="social-icons">
+								<li>
+									<a href="#"><i class="icon-twitter-with-circle"></i></a>
+									<a href="#"><i class="icon-facebook-with-circle"></i></a>
+									<a href="#"><i class="icon-instagram-with-circle"></i></a>
+									<a href="#"><i class="icon-linkedin-with-circle"></i></a>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<ul class="social-icons">
-						<li>
-							<a href="#"><i class="icon-twitter-with-circle"></i></a>
-							<a href="#"><i class="icon-facebook-with-circle"></i></a>
-							<a href="#"><i class="icon-instagram-with-circle"></i></a>
-							<a href="#"><i class="icon-linkedin-with-circle"></i></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
+			</footer>
 
-	</div>
-	<!-- END fh5co-page -->
+		</div>
+		<!-- END fh5co-page -->
 
 	</div>
 	<!-- END fh5co-wrapper -->
-	
-	<!-- Javascripts -->
-	<script src="{{url_for('static', filename='js/jquery-2.1.4.min.js', _external=True) }}"></script>
-	<!-- Dropdown Menu -->
-	<script src="{{ url_for('static', filename='js/hoverIntent.js', _external=True) }}"></script>
-	<script src="{{ url_for('static', filename='js/superfish.js', _external=True) }}"></script>
-	<!-- Bootstrap -->
-	<script src="{{ url_for('static', filename= 'js/bootstrap.min.js', _external=True) }}"></script>
-	<!-- Waypoints -->
-	<script src="{{ url_for('static', filename= 'js/jquery.waypoints.min.js', _external=True) }}"></script>
-	<!-- Counters -->
-	<script src="{{ url_for('static', filename='js/jquery.countTo.js', external=True) }}"></script>
-	<!-- Stellar Parallax -->
-	<script src="{{ url_for('static', filename='js/jquery.stellar.min.js', external=True) }}"></script>
-	<!-- Owl Slider -->
-	<!-- // <script src="js/owl.carousel.min.js"></script> -->
-	<!-- Date Picker -->
-	<script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js', _external=True) }}"></script>
-	<!-- CS Select -->
-	<script src="{{ url_for('static', filename='js/classie.js', _external=True) }}"></script>
-	<script src="{{ url_for('static', filename='js/selectFx.js', _external=True) }}"></script>
-	<!-- Flexslider -->
-	<script src="{{ url_for('static', filename='js/jquery.flexslider-min.js', _external=True) }}"></script>
 
-	<script src="{{ url_for('static', filename='js/custom.js', _external=True) }}"></script>
+	<!-- Javascripts -->
+	<script src="{{url_for('static', filename='js/library/jquery-2.1.4.min.js', _external=True) }}"></script>
+	<!-- Dropdown Menu -->
+	<script src="{{ url_for('static', filename='js/library/hoverIntent.js', _external=True) }}"></script>
+	<script src="{{ url_for('static', filename='js/library/superfish.js', _external=True) }}"></script>
+	<!-- Bootstrap -->
+	<script src="{{ url_for('static', filename= 'js/library/bootstrap.min.js', _external=True) }}"></script>
+	<!-- Waypoints -->
+	<script src="{{ url_for('static', filename= 'js/library/jquery.waypoints.min.js', _external=True) }}"></script>
+	<!-- Counters -->
+	<script src="{{ url_for('static', filename='js/library/jquery.countTo.js', external=True) }}"></script>
+	<!-- Stellar Parallax -->
+	<script src="{{ url_for('static', filename='js/library/jquery.stellar.min.js', external=True) }}"></script>
+	<!-- Owl Slider -->
+	<!-- // <script src="js/library/owl.carousel.min.js"></script> -->
+	<!-- Date Picker -->
+	<script src="{{ url_for('static', filename='js/library/bootstrap-datepicker.min.js', _external=True) }}"></script>
+	<!-- CS Select -->
+	<script src="{{ url_for('static', filename='js/library/classie.js', _external=True) }}"></script>
+	<script src="{{ url_for('static', filename='js/library/selectFx.js', _external=True) }}"></script>
+	<!-- Flexslider -->
+	<script src="{{ url_for('static', filename='js/library/jquery.flexslider-min.js', _external=True) }}"></script>
+
+	<script src="{{ url_for('static', filename='js/library/custom.js', _external=True) }}"></script>
 
 </body>
+
 </html>
