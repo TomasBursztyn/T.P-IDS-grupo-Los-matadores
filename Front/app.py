@@ -27,7 +27,7 @@ def services():
 
 
 @app.route('/reservar', methods=["GET","POST"])
-def FormularioReserva():  
+def Reserva():  
 
     datosReserva:list = [] # puse las reservas en una lista de diccionarios, cada posicion es un diccionario que contiene la reserva
 
