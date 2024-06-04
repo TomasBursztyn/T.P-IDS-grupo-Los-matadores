@@ -67,15 +67,21 @@
 	<!-- Style -->
 	<link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css', _external=True) }}">
 
-	<!-- style reservar -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/reservar.css') }}">
+	<!--
+		NO PONER EL JS Y ESTILOS DE CADA PAGINA ACA PORQUE SINO CUANDO
+		POR EJEMPLO CUANDO VOY A /reservar EN LA WEB, SE CARGAN LOS ESTILOS, 
+		LOS JAVASCRIPT DE TODOS LOS DEMAS ARCHIVOS 
+	-->
 
-	<!-- js reservar-->
-	<script src="{{ url_for('static', filename='js/propio/reservar.js') }}"></script>
+	<!-- BLOQUE STYLES -->
+	{% block styles %}
 
-	<!-- js contacto-->
-	<script src="{{ url_for('static', filename='js/propio/contacto.js') }}"></script>
+	{% endblock %}
 
+	<!-- BLOQUE JS -->
+	{% block js %}
+
+	{% endblock %}
 
 	<!-- Modernizr JS -->
 	<script src="{{url_for('static', filename='/js/library/modernizr-2.6.2.min.js', _external=True) }}"></script>

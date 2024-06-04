@@ -1,4 +1,4 @@
-document.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const btnContacto = document.getElementById("btn_enviar_contacto");
 
     // Evento que se ejecuta cuando se clickea el boton con id de "btn_enviar_contacto"

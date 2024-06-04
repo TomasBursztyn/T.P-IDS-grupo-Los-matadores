@@ -1,4 +1,5 @@
-document.addEventListener("load", function () {
+// al final DOMContentLoaded es mejor que load
+document.addEventListener("DOMContentLoaded", function () {
     const btnReservar = document.getElementById("btn_reservar");
 
     // Evento que se ejecuta cuando se clickea el boton con id de "btn_reservar"
