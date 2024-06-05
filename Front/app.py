@@ -15,20 +15,25 @@ def blog():
     return render_template("blog.html")
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
-        nombre = request.form.get ("contacto_nombre")
-        email = request.form.get ("contacto_email")
-        message = request.form.get ("contacto_mensaje")
+        nombre = request.form.get("contacto_nombre")
+        email = request.form.get("contacto_email")
+        mensaje = request.form.get("contacto_mensaje")
 
-#aca agrege un print para comprobar que se ente guardando en las variables la informacion ingresada desde contact
+        datos_contacto: dict = {
+            "contacto_nombre": nombre,
+            "contacto_email": email,
+            "contacto_mensaje": mensaje,
+        }
 
-        print(nombre,email,message)
+        # aca agrege un print para comprobar que se ente guardando en las
+        # variables la informacion ingresada desde contact
+
+        print(datos_contacto)
 
     return render_template("contact.html")
-
-
 
 
 @app.route("/hotel")
@@ -42,17 +47,17 @@ def services():
 
 
 @app.route("/reservar", methods=["GET", "POST"])
-def Reserva():
+def reservar():
     # puse las reservas en una lista de diccionarios, cada posicion es un
     # diccionario que contiene la reserva
-    datosReserva: list = []
+    datos_reserva: list = []
 
     if request.method == "POST":
         nombre = request.form.get("nombre_reserva")
         cantidad_personas = request.form.get("cantidad_personas")
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
-        reserva_id = len(datosReserva) + 1
+        reserva_id = len(datos_reserva) + 1
 
         reserva = {
             "id": reserva_id,
@@ -62,8 +67,8 @@ def Reserva():
             "fecha_fin": fecha_fin,
         }
 
-        datosReserva.append(reserva)
-        # luego habria que aca hacer un llamado a la api enviando datosReserva
+        datos_reserva.append(reserva)
+        # luego habria que aca hacer un llamado a la api enviando datos_reserva
 
     return render_template("reservar.html")
 
