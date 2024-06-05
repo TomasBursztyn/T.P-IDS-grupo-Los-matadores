@@ -17,7 +17,18 @@ def blog():
 
 @app.route("/contact")
 def contact():
+    if request.method == "POST":
+        nombre = request.form.get ("contacto_nombre")
+        email = request.form.get ("contacto_email")
+        message = request.form.get ("contacto_mensaje")
+
+#aca agrege un print para comprobar que se ente guardando en las variables la informacion ingresada desde contact
+
+        print(nombre,email,message)
+
     return render_template("contact.html")
+
+
 
 
 @app.route("/hotel")
