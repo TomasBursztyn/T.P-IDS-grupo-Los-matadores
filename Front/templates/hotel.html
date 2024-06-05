@@ -20,7 +20,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="hotel-content">
-					<div class="hotel-grid" style="background-image: url(http://www.hotelpotrero.sanluis.gov.ar/upload/habitaciones/1.jpg);">
+					<div class="hotel-grid" style="background-image: url({{ url_for('static', filename='images/suite_flotante.jpg') }});">
 						<div class="price"><small>mejor precio</small><span>$100/noche</span></div>
 						<a class="book-now text-center" href="{{ url_for('Reserva') }}"><i class="ti-calendar"></i> reservar</a>
 					</div>
@@ -32,7 +32,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="hotel-content">
-					<div class="hotel-grid"  style="background-image: url(http://www.hotelpotrero.sanluis.gov.ar/upload/habitaciones/3_2.jpg);">
+					<div class="hotel-grid" style="background-image: url({{ url_for('static', filename='images/suite_premium.jpg') }});">
 						<div class="price"><small>mejor precio</small><span>$70/noche</span></div>
 						<a class="book-now text-center" href="{{ url_for('Reserva') }}"><i class="ti-calendar"></i> reservar</a>
 					</div>
@@ -44,7 +44,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="hotel-content">
-					<div class="hotel-grid" style="background-image: url(http://www.hotelpotrero.sanluis.gov.ar/upload/habitaciones/3_4.jpg);">
+					<div class="hotel-grid" style="background-image: url({{ url_for('static', filename='images/habitacion_estandar.jpg') }});">
 						<div class="price"><small>mejor precio</small><span>$40/noche</span></div>
 						<a class="book-now text-center" href="{{ url_for('Reserva') }}"><i class="ti-calendar"></i> reservar</a>
 					</div>
