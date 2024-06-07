@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block body %}
+<div class="fh5co-parallax" data-stellar-background-ratio="0.5" style="background-image: url(static/images/fondo_reservar.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div
+                class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                <div class="fh5co-intro fh5co-table-cell">
+                    <h1 class="text-center">TUS RESERVAS</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fh5co-contact-section">
+    {% if reservas|length == 0 %}
+        <h1>No tenes ninguna reserva</h1>
+    {% else %}
+        {% for reserva in reservas %}
+        <div>
+            <H1>reservas: </H1>
+            <h2>Nombre: {{reserva.nombre_reserva}}</h2>
+            <h2>Cantidad de personas: {{reserva.cantidad_personas}}</h2>
+            <h2>Fecha de ingreso: {{reserva.fecha_ingreso}}</h2>
+            <h2>Fecha de egreso: {{reserva.fecha_egreso}}</h2>
+            <form method="delete" action="{{ url_for('reservas') }}">
+                <button type="submit">Cancelar</button>
+            </form>
+            
+        </div>
+        {% endfor %}
+    {% endif %}
+    
+</div>
+{% endblock %}

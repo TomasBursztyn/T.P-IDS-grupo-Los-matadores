@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import requests
+import json
 
 PORT = 5000
 
@@ -44,6 +46,24 @@ def hotel():
 @app.route("/services")
 def services():
     return render_template("services.html")
+
+@app.route("/reservas", methods=["GET", "DELETE"])
+def reservas():
+    #if request.method == "DELETE":
+    #    dni = request.form.get("dni_reserva")
+    #    datos_persona: dict = {
+    #        "dni_reserva": dni,
+    #    }
+    #res = requests.delete("http://
+    dni = request.form.get("dni_reserva")
+    datos_persona: dict = {
+        "dni_reserva": dni,
+    }
+    #res = requests.get("http://127.0.0.1:5001/mostrar_reservas", json=datos_persona)
+    #reservas = res.json()
+    reservas= [{"id": 1, "usuario": "Juan", "cantidad_personas": 2, "fecha_inicio": "2021-10-10", "fecha_fin": "2021-10-15"},]
+
+    return render_template("reservas.html", reservas=reservas)
 
 
 @app.route("/reservar", methods=["GET", "POST"])
