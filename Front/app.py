@@ -67,8 +67,11 @@ def reservar():
             "fecha_fin": fecha_fin,
         }
 
+        print("ESTO CORRE!")
+
         datos_reserva.append(reserva)
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
+        return render_template("disponibilidad.html")
 
     return render_template("reservar.html")
 
