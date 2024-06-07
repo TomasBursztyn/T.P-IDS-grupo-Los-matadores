@@ -11,6 +11,34 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route("/reservar_habitacion")
+def reservar_habitacion():
+     # puse las reservas en una lista de diccionarios, cada posicion es un
+    # diccionario que contiene la reserva
+    datos_reserva: list = []
+
+    if request.method == "POST":
+        
+        nombre = request.form.get("nombre")
+        #dni = request.form.get("dni")
+        
+        reserva_id = len(datos_reserva) + 1
+
+        reserva = {
+            "id": reserva_id,
+            "usuario": nombre,
+            "cantidad_personas": "4",
+            "fecha_inicio": "10/10/10",
+            "fecha_fin": "11/11/10",
+        }
+
+        datos_reserva.append(reserva)
+        # luego habria que aca hacer un llamado a la api enviando datos_reserva
+        return render_template("disponibilidad.html")
+
+    return render_template("reservar_habitacion.html")
+    #return render_template("reservar_habitacion.html")
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
@@ -68,7 +96,7 @@ def reservar():
     datos_reserva: list = []
 
     if request.method == "POST":
-        nombre = request.form.get("nombre_reserva")
+        #nombre = request.form.get("nombre_reserva")
         cantidad_personas = request.form.get("cantidad_personas")
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
@@ -81,8 +109,6 @@ def reservar():
             "fecha_inicio": fecha_inicio,
             "fecha_fin": fecha_fin,
         }
-
-        print("ESTO CORRE!")
 
         datos_reserva.append(reserva)
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
