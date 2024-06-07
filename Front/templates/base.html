@@ -80,7 +80,7 @@
 
 	<!-- BLOQUE JS -->
 	{% block js %}
-
+	<script src="{{ url_for('static', filename='js/propio/footer.js') }}"></script>
 	{% endblock %}
 
 	<!-- Modernizr JS -->
@@ -187,8 +187,8 @@
 									<p>Para más información sobre Luna de Plata Suite ingrese su mail.</p>
 									<form action="#" id="form-subscribe">
 										<div class="form-field">
-											<input type="email" placeholder="Ingrese mail" id="email">
-											<input type="submit" id="submit" value="Send">
+											<input type="email" placeholder="Ingrese email" id="footer-email-input">
+											<input type="submit" id="footer-email-btn" value="Enviar">
 										</div>
 									</form>
 								</div>
