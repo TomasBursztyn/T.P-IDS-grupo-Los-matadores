@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="fh5co-parallax" data-stellar-background-ratio="0.5" style="background-image: url(static/images/fondo_reservar.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div
+                class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                <div class="fh5co-intro fh5co-table-cell">
+                    <h1 class="text-center">Habitaciones Disponibles</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% if habitaciones|length == 0 %}
+    <h1>No hay habitaciones disponibles</h1>
+    {% else %}
+        {% for habitacion in habitaciones %}
+        <div>
+            <div class="feature-full-1col">
+                <div class="image" style="background-image: url(static/images/flotante.jpg);">
+                    <div class="descrip text-center">
+                        <p><small>Espacio para</small><span>hasta 4 personas</span></p>
+                    </div>
+                </div>
+                <div class="desc">
+                    <h3>{{habitacion.tipo_habitacion}}</h3><br><!--sacar el br y cambiarlo por espaciado en css-->
+                    <p> Cantidad de Personas: {{habitacion.cantidad_personas}}</p>
+                    <p> Fecha de Ingreso: {{habitacion.fecha_ingreso}}</p>
+                    <p> Fecha de Salida: {{habitacion.fecha_egreso}}</p>
+                    <p> Precio por Noche: {{habitacion.precio_noche}}</p>
+
+                    <p><a href="#" class="btn btn-primary btn-luxe-primary">Reservar Ahora <i class="ti-angle-right"></i></a>
+                    </p>
+                </div>
+            </div>           
+            
+        </div>
+        {% endfor %}
+    {% endif %}
+
+
+{% endblock%}
+
+<!--<form method="get" action="{{ url_for('habitaciones/reservar') }}">
+                <button type="submit">Reservar</button>
+            </form>-->

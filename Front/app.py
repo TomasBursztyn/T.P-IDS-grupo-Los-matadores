@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
-import requests
-import json
+#import requests
+#import json
 
 PORT = 5000
 
@@ -10,11 +10,6 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html")
-
-
-@app.route("/blog")
-def blog():
-    return render_template("blog.html")
 
 
 @app.route("/contact", methods=["GET", "POST"])
@@ -95,6 +90,14 @@ def reservar():
 
     return render_template("reservar.html")
 
+@app.route("/disponibilidad")
+def disponibilidad():
+    # habitaciones=[{"tipo_habitacion":"habitacion deluxe",
+    #                "cantidad_personas":4,
+    #                "fecha_ingreso":"09/12",
+    #                "fecha_egreso":"15/12",
+    #                "precio_noche":15000}]
+    return render_template("disponibilidad.html") # habitaciones=habitaciones
 
 @app.errorhandler(404)
 def page_not_found(e):
