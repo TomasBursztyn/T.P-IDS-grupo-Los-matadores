@@ -7,6 +7,47 @@
     cursor: pointer;
 }
 
+.centrar_reservas {
+    margin-left: 8.5vh;
+}
+
+.centrar_dni {
+    margin-bottom: 2vh;
+    margin-top: -12vh;
+}
+
+.centro_column2 {
+    margin-left: -22vh;
+    margin-right: 20vh
+}
+
+.centrar_dni_boton {
+    margin-left: -20.5vh;
+}
+
+.centro_habitaciones {
+    margin-bottom: -50vh;
+    margin-left: 40vh;
+    margin-right: -40vh
+}
+
+.centro_column1 {
+    margin-top: -5vh;
+    margin-left: 6vh;
+    margin-right: -24vh
+}
+
+.centrar_disponibilidad {
+    margin-left: 13.5vh;
+}
+
+
+
+.form-group {
+margin-left: 32vh;
+margin-right: -32vh
+}
+
 #imagen-reserva img {
     margin: 10px 0;
     height: 450px;
