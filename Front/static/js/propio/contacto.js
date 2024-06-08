@@ -1,3 +1,4 @@
+/*
 document.addEventListener("DOMContentLoaded", function () {
     const btnContacto = document.getElementById("btn_enviar_contacto");
 
@@ -11,3 +12,5 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Formulario Enviado Correctamente");
     });
 });
+
+/*

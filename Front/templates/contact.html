@@ -52,7 +52,7 @@
 			</div>
 			<div class="col-md-12">
 				<div class="row">
-					<form action="" methods="POST">
+					<form action="{{ url_for('contact')}}" method="post">
 
 						<div class="col-md-6">
 							<div class="form-group">
@@ -71,7 +71,7 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="contacto_mensaje">Mensaje:</label>
-								<textarea name="" class="form-control" name="contacto_mensaje" cols="30" rows="7"
+								<textarea class="form-control" name="contacto_mensaje" cols="30" rows="7"
 									placeholder="Mensaje" id="contacto_mensaje"></textarea>
 							</div>
 						</div>

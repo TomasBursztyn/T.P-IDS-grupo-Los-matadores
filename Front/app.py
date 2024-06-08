@@ -57,6 +57,8 @@ def contact():
         # variables la informacion ingresada desde contact
 
         print(datos_contacto)
+        return render_template("index.html")
+
 
     return render_template("contact.html")
 
