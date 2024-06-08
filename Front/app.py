@@ -106,7 +106,7 @@ def reservar():
 
         reserva = {
             "id": reserva_id,
-            "usuario": nombre,
+            #"usuario": nombre,
             "cantidad_personas": cantidad_personas,
             "fecha_inicio": fecha_inicio,
             "fecha_fin": fecha_fin,
