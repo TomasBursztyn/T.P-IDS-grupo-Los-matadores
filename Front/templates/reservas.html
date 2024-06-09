@@ -2,6 +2,8 @@
 
 {% block styles %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mostrar_reserva.css') }}">
+
 {% endblock %}
 
 {% block js %}
@@ -24,23 +26,29 @@
 </div>
 
 <div id="fh5co-contact-section">
-    {% if reservas|length == 0 %}
-        <h1>No tenes ninguna reserva</h1>
-    {% else %}
-        {% for reserva in reservas %}
-        <div>
-            <H1>reservas: </H1>
-            <h2>Nombre: {{reserva.nombre_reserva}}</h2>
-            <h2>Cantidad de personas: {{reserva.cantidad_personas}}</h2>
-            <h2>Fecha de ingreso: {{reserva.fecha_ingreso}}</h2>
-            <h2>Fecha de egreso: {{reserva.fecha_egreso}}</h2>
-            <form method="delete" action="{{ url_for('reservas') }}">
-                <button type="submit">Cancelar</button>
-            </form>
-            
-        </div>
-        {% endfor %}
-    {% endif %}
-    
+    <div class="col-md-6">
+        <div class="reserva_info">  
+            {% if reservas|length == 0 %}
+                <h1>No tenes ninguna reserva</h1>
+            {% else %}
+                {% for reserva in reservas %}
+                <div>
+                    <H1>Estado de reservas: </H1>
+                    <h2>Nombre:</h2> 
+                    <p>{{reserva.nombre_reserva}}</p>
+                    <h2>Cantidad de personas:</h2> 
+                    <p>{{reserva.cantidad_personas}}</p>
+                    <h2>Fecha de ingreso:</h2> 
+                    <p>{{reserva.fecha_ingreso}}</p>
+                    <h2>Fecha de egreso:</h2> 
+                    <p>{{reserva.fecha_egreso}}</p>
+                    <form method="delete" action="{{ url_for('reservas') }}">
+                        <a href="{{ url_for('reservar') }}" id="boton_cancelar">Cancelar</a>
+                    </form>
+                </div>    
+                {% endfor %}
+            {% endif %}
+        </div>    
+    </div>
 </div>
 {% endblock %}

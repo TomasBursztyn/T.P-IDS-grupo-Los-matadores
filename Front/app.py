@@ -86,7 +86,8 @@ def reservas():
     }
     #res = requests.get("http://127.0.0.1:5001/mostrar_reservas", json=datos_persona)
     #reservas = res.json()
-    reservas= [{"id": 1, "usuario": "Juan", "cantidad_personas": 2, "fecha_inicio": "2021-10-10", "fecha_fin": "2021-10-15"},]
+    reservas= [{"id": 1, "nombre_reserva": "Juan", "cantidad_personas": 2, "fecha_ingreso": "2021-10-10", "fecha_egreso": "2021-10-15"}]
+
 
     return render_template("reservas.html", reservas=reservas)
 
