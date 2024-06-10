@@ -53,3 +53,12 @@ margin-right: -32vh
     height: 450px;
     margin-right: 100000px;
 }
+
+
+.section-title.text-center{
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 50px;
+    margin-left:100px
+}
+

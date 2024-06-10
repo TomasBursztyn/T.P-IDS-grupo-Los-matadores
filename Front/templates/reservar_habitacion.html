@@ -14,12 +14,13 @@
 
 {% block body %}
 
+
+
 <div class="fh5co-parallax" data-stellar-background-ratio="0.5" style="background-image: url(static/images/fondo_reservar.jpg);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div
-                class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+            <div class="col-md-12 text-center fh5co-table">
                 <div class="fh5co-intro fh5co-table-cell">
                     <h1 class="text-center">RESERVAR HABITACION</h1>
                 </div>
@@ -29,113 +30,81 @@
 </div>
 
 <div id="fh5co-contact-section">
-    <div class="col-md-6">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="section-title text-center">
-                    <h2>Formulario de reserva</h2>
-                </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="section-title text-center">
+                <h2>Formulario de reserva</h2>
             </div>
-        </div>
-        <div class="row">
-            <form method="POST" action="{{ url_for('reservar_habitacion')}}">
-                <div class="col-md-8">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <!-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nombre_reserva">Nombre:</label>
-                                    <input type="text" id="nombre_reserva" class="form-control" name="nombre_reserva"
-                                        placeholder="Ingrese su nombre" required>
-                                </div>
-                            </div> -->
-                            <!-- <div class="col-md-6">
-                            </div> -->
-                            <div class="col-md-6">
-
-                                <!-- FORMULARIO DE RESERVA DE HABITACION -->
-
-
-                                <div class="form-group">
-                                    <label for="nombre">Nombre y apellido:</label>
-                                    <input type="text" id="nombre" class="form-control" name="nombre"
-                                        placeholder="Ingrese su nombre" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="dni">Numero de DNI:</label>
-                                    <input type="number" id="dni" class="form-control" name="dni"
-                                        placeholder="Ingrese su dni" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="dni">Numero de Telefono:</label>
-                                    <input type="number" id="dni" class="form-control" name="dni"
-                                        placeholder="Ingrese su numero" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="email">Correo electronico:</label>
-                                    <input type="text" id="email" class="form-control" name="email"
-                                        placeholder="Ingrese su correo electronico" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="inicio_fecha">Inicio de reserva:</label>
-                                    <input type="date" id="inicio_fecha" class="form-control" name="inicio_fecha"
-                                        value="{{ '' }}"
-                                        readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fin_fecha">Fin de reserva:</label>
-                                    <input type="date" id="fin_fecha" class="form-control" name="fin_fecha"
-                                        value="{{ '' }}"
-                                        readonly>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="cantidad_personas">Cantidad de personas:</label>
-                                    <input type="number" id="cantidad_personas" class="form-control" name="cantidad_personas"
-                                        value="{{ '' }}"
-                                        readonly>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="tipo_habitacion">Tipo de habitacion:</label>
-                                    <input type="text" id="tipo_habitacion" class="form-control" name="tipo_habitacion"
-                                        value="{{ '' }}"
-                                        readonly>
-                                </div>
+            <div class="col-md-8">
+                <form method="POST" action="{{ url_for('reservar_habitacion') }}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="nombre">Nombre y apellido:</label>
+                                <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Ingrese su nombre" required>
                             </div>
-                            <!-- <div class="col-md-6">
-                            </div> -->
-                            <!-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tipo_habitacion">tipo de habitacion:</label>
-                                    <select id="tipo_habitacion" class="form-control" name="tipo_habitacion" required>
-                                        <option value="">Seleccione un tipo de habitación</option>
-                                        <option value="simple">Individual</option>
-                                        <option value="doble">Doble</option>
-                                        <option value="suite">Suite</option>
-                                    </select>
-                                </div>
-                            </div> -->
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="submit" value="Consultar Disponibilidad" id="btn_reservar" class="btn btn-primary">
-                                </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="dni">Numero de DNI:</label>
+                                <input type="number" id="dni" class="form-control" name="dni" placeholder="Ingrese su dni" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="telefono">Numero de Telefono:</label>
+                                <input type="number" id="telefono" class="form-control" name="telefono" placeholder="Ingrese su numero" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email">Correo electronico:</label>
+                                <input type="text" id="email" class="form-control" name="email" placeholder="Ingrese su correo electronico" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="inicio_fecha">Inicio de reserva:</label>
+                                <input type="date" id="inicio_fecha" class="form-control" name="inicio_fecha" value="{{ '' }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="fin_fecha">Fin de reserva:</label>
+                                <input type="date" id="fin_fecha" class="form-control" name="fin_fecha" value="{{ '' }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="cantidad_personas">Cantidad de personas:</label>
+                                <input type="number" id="cantidad_personas" class="form-control" name="cantidad_personas" value="{{ '' }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="tipo_habitacion">Tipo de habitacion:</label>
+                                <input type="text" id="tipo_habitacion" class="form-control" name="tipo_habitacion" value="{{ '' }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <input type="submit" value="Consultar Disponibilidad" id="btn_reservar" class="btn btn-primary">
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
-            <!-- <div class="col-md-4">
-                <div class="text-center" id="imagen-reserva">
-
-                </div>
-            </div> -->
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}
