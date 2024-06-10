@@ -10,6 +10,12 @@
 
 <script src="{{ url_for('static', filename='js/propio/reservar.js') }}"></script>
 
+{% if chequear %}
+<script>
+    alert("Ingrese una fecha valida");
+</script>
+{% endif %}
+
 {% endblock %}
 
 {% block body %}
