@@ -105,6 +105,11 @@ def reservar():
         fecha_fin = request.form.get("fin_fecha")
         reserva_id = len(datos_reserva) + 1
 
+        chequear = False
+        if fecha_inicio > fecha_fin:
+            chequear = True
+            return render_template("reservar.html",chequear=chequear)
+
         reserva = {
             "id": reserva_id,
             #"usuario": nombre,
