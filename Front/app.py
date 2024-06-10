@@ -40,7 +40,7 @@ def reservar_habitacion():
     #return render_template("reservar_habitacion.html")
 
 
-@app.route("/contact", methods=["GET", "POST"])
+@app.route("/contacto", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
         nombre = request.form.get("contacto_nombre")
@@ -60,17 +60,17 @@ def contact():
         return render_template("index.html")
 
 
-    return render_template("contact.html")
+    return render_template("contacto.html")
 
 
-@app.route("/hotel")
+@app.route("/habitaciones")
 def hotel():
-    return render_template("hotel.html")
+    return render_template("habitaciones.html")
 
 
-@app.route("/services")
+@app.route("/servicios")
 def services():
-    return render_template("services.html")
+    return render_template("servicios.html")
 
 @app.route("/reservas", methods=["GET", "DELETE"])
 def reservas():
@@ -89,7 +89,7 @@ def reservas():
     reservas= [{"id": 1, "nombre_reserva": "Juan", "cantidad_personas": 2, "fecha_ingreso": "2021-10-10", "fecha_egreso": "2021-10-15"}]
 
 
-    return render_template("reservas.html", reservas=reservas)
+    return render_template("mostrar_reservas.html", reservas=reservas)
 
 
 @app.route("/reservar", methods=["GET", "POST"])
