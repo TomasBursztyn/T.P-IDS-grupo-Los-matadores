@@ -8032,13 +8032,12 @@ div.cs-select span {
 .wrap {
   text-align: center;
   width: 100%;
-  margin-bottom: 3em;
 }
 
 #availability {
   background: #FF5722;
-  width: 100%;
-  top: 1em;
+  width: 127%;
+  top: 3em;
   z-index: 99;
   position: relative;
   display: inline-block;
@@ -8183,12 +8182,11 @@ div.cs-select span {
   display: inline-block;
 }
 #availability .a-col .input-field label {
-  margin-right: 10px;
+  margin-right: 140px;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #fff;
-  float: left;
   margin-top: 7px;
 }
 #availability .a-col .input-field input[type="text"] {
@@ -9232,6 +9230,63 @@ input[type="text"] {
   height: 100%;
   z-index: 9999;
   background: url(../images/hourglass.svg) center no-repeat #222222;
+}
+
+.wrap {
+  background-color: #ff5722; /* Color de fondo naranja */
+  padding: 48px; /* Espacio alrededor del contenido */
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo del contenedor */
+}
+
+#availability {
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre los elementos */
+  align-items: center;
+  justify-content: center;
+}
+
+.a-col {
+  flex: 1;
+  min-width: 200px; /* Ancho mínimo de cada columna */
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Espacio inferior entre los campos */
+}
+
+.input-field label {
+  margin-bottom: 5px; /* Espacio entre el label y el input */
+  color: white; /* Color del texto */
+}
+
+.input-field input {
+  padding: 10px; /* Espacio interno del input */
+  border: 1px solid #ccc; /* Borde del input */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+.btn-primary {
+  padding: 10px 20px; /* Espacio interno del botón */
+  background-color: #fff; /* Color de fondo del botón */
+  color: #ff5722; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+  align-self: center; /* Centrar el botón */
+}
+
+.btn-primary:hover {
+  background-color: #ffccbc; /* Cambiar color al pasar sobre el botón */
 }
 
 /*# sourceMappingURL=style.css.map */
