@@ -35,21 +35,26 @@
       {% else %}
         {% for reserva in reservas %}
         <div class="col-md-6 col-sm-12">
-            <div class="reserva">
-            <p><span>Nombre:</span> {{reserva.nombre_reserva}}</p>
-            <p>
-                <span>Cantidad de personas:</span> {{reserva.cantidad_personas}}
-            </p>
-            <p><span>Fecha de ingreso:</span> {{reserva.fecha_ingreso}}</p>
-            <p><span>Fecha de egreso:</span> {{reserva.fecha_egreso}}</p>
-            <form method="DELETE" action="{{ url_for('reservas') }}">
-                <input
-                type="submit"
-                name="boton_cancelar"
-                value="Cancelar"
-                id="boton_cancelar"
-                />
-            </form>
+            <div class="reserva row">
+                <div class="col-md-6 col-sm-12">
+                    <p><span>Nombre:</span> {{reserva.nombre_reserva}}</p>
+                    <p>
+                        <span>Cantidad de personas:</span> {{reserva.cantidad_personas}}
+                    </p>
+                    <p><span>Fecha de ingreso:</span> {{reserva.fecha_ingreso}}</p>
+                    <p><span>Fecha de egreso:</span> {{reserva.fecha_egreso}}</p>
+                    </div>
+                <div class="col-md-6 col-sm-12">
+                    <img alt="Imagen vista de habitacion" src="{{ url_for('static', filename='images/fondo_habitaciones.jpg') }}"/>
+                    <form method="DELETE" action="{{ url_for('reservas') }}">
+                        <input
+                        type="submit"
+                        name="boton_cancelar"
+                        value="Cancelar"
+                        id="boton_cancelar"
+                        />
+                    </form>
+                </div>
             </div>
         </div>
         {% endfor %}

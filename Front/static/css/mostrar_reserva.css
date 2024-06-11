@@ -3,7 +3,7 @@
     border: 1.5px solid #dddddd;
     border-radius: 10px;
     margin: 20px 10px;
-    padding: 10px 30px 10px 30px;
+    padding: 15px 0;
 }
 
 .reserva input {
@@ -11,7 +11,7 @@
 }
 
 .reserva p {
-    margin: 0 0 17px 0;
+    margin: 0 0 25px 0;
     font-weight: 400;
 }
 
@@ -20,11 +20,17 @@
     color: #201f1fb3;
 }
 
+.reserva img {
+    width: 100%;
+    height: 100%;
+}
+
 h1 {
     font-size: 24px;
 }
 
 #boton_cancelar {
+    margin-top: 20px;
     background-color: rgb(243, 19, 19);
     color: white;
     border: none;
