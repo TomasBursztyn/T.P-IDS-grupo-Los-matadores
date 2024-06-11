@@ -43,7 +43,7 @@
                     <h2>Fecha de egreso:</h2> 
                     <p>{{reserva.fecha_egreso}}</p>
                     <form method="DELETE" action="{{ url_for('reservas') }}">
-                        <a href="{{ url_for('reservar') }}" id="boton_cancelar">Cancelar</a>
+                        <input type="submit" name="boton_cancelar" value="Cancelar" id="boton_cancelar">
                     </form>
                 </div>
                 {% endfor %}

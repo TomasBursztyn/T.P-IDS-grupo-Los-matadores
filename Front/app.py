@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 # import requests
 # import json
@@ -73,12 +73,14 @@ def services():
 
 @app.route("/reservas", methods=["GET", "DELETE"])
 def reservas():
-    # if request.method == "DELETE":
-    #    dni = request.form.get("dni_reserva")
-    #    datos_persona: dict = {
-    #        "dni_reserva": dni,
-    #    }
-    # res = requests.delete("http://
+    if request.method == "DELETE":
+        dni = request.form.get("dni_reserva")
+        datos_persona: dict = {
+            "dni_reserva": dni,
+        }
+        # res = requests.delete("http://
+        return redirect(url_for("reservar"))
+        
     dni = request.form.get("dni_reserva")
     datos_persona: dict = {
         "dni_reserva": dni,
