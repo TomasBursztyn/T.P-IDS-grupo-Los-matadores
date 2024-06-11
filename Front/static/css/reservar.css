@@ -7,7 +7,9 @@
     cursor: pointer;
 }
 
-.centrar_reservas {
+/*TODOS ESTOS ESTILOS NO HACEN FALTA CUANDO SE SIGUE UTILIZANDO BOOTSTRAP COMO
+TEMPLATE INDICA, SIENDO ASI FLEXIBLE Y RESPONSIVE*/
+/* .centrar_reservas {
     margin-left: 8.5vh;
 }
 
@@ -52,6 +54,6 @@ margin-right: -32vh
     margin: 10px 0;
     height: 450px;
     margin-right: 100000px;
-}
+} */
 
 
