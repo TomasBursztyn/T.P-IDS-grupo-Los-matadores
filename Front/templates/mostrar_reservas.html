@@ -1,54 +1,60 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block styles %}
 
-{% block styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/mostrar_reserva.css') }}"
+/>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/mostrar_reserva.css') }}">
-
-{% endblock %}
-
-{% block js %}
-
-{% endblock %}
-
-{% block body %}
-<div class="fh5co-parallax" data-stellar-background-ratio="0.5" style="background-image: url({{ url_for('static', filename='images/fondo_reservar.jpg') }});">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div
-                class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
-                <div class="fh5co-intro fh5co-table-cell">
-                    <h1 class="text-center" style="text-transform: uppercase;">Tus reservas</h1>
-                </div>
-            </div>
+{% endblock %} {% block js %} {% endblock %} {% block body %}
+<div
+  class="fh5co-parallax"
+  data-stellar-background-ratio="0.5"
+  style="background-image: url({{ url_for('static', filename='images/fondo_reservar.jpg') }});"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table"
+      >
+        <div class="fh5co-intro fh5co-table-cell">
+          <h1 class="text-center" style="text-transform: uppercase">
+            Tus reservas
+          </h1>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div id="fh5co-contact-section">
-    <div class="container-fluid">
-        <div class="row">
-            {% if reservas|length == 0 %}
-                <h1>No tenes ninguna reserva</h1>
-            {% else %}
-                {% for reserva in reservas %}
-                <div class="col-md-12 reserva">
-                    <h1>Estado reserva</h1>
-                    <h2>Nombre:</h2> 
-                    <p>{{reserva.nombre_reserva}}</p>
-                    <h2>Cantidad de personas:</h2> 
-                    <p>{{reserva.cantidad_personas}}</p>
-                    <h2>Fecha de ingreso:</h2> 
-                    <p>{{reserva.fecha_ingreso}}</p>
-                    <h2>Fecha de egreso:</h2> 
-                    <p>{{reserva.fecha_egreso}}</p>
-                    <form method="DELETE" action="{{ url_for('reservas') }}">
-                        <input type="submit" name="boton_cancelar" value="Cancelar" id="boton_cancelar">
-                    </form>
-                </div>
-                {% endfor %}
-            {% endif %}
+  <div class="container-fluid">
+    <div class="row">
+      {% if reservas|length == 0 %}
+        <h1>No tenes ninguna reserva</h1>
+      {% else %}
+        {% for reserva in reservas %}
+        <div class="col-md-6 col-sm-12">
+            <div class="reserva">
+            <p><span>Nombre:</span> {{reserva.nombre_reserva}}</p>
+            <p>
+                <span>Cantidad de personas:</span> {{reserva.cantidad_personas}}
+            </p>
+            <p><span>Fecha de ingreso:</span> {{reserva.fecha_ingreso}}</p>
+            <p><span>Fecha de egreso:</span> {{reserva.fecha_egreso}}</p>
+            <form method="DELETE" action="{{ url_for('reservas') }}">
+                <input
+                type="submit"
+                name="boton_cancelar"
+                value="Cancelar"
+                id="boton_cancelar"
+                />
+            </form>
+            </div>
         </div>
-    </div>    
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}

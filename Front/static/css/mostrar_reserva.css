@@ -1,39 +1,42 @@
 .reserva {
     background-color: #ffffff;
     border: 1.5px solid #dddddd;
-    border-radius: 5px;
-    margin: 20px;
-    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 10px;
+    padding: 10px 30px 10px 30px;
+}
+
+.reserva input {
+    cursor: pointer;
+}
+
+.reserva p {
+    margin: 0 0 17px 0;
+    font-weight: 400;
+}
+
+.reserva p span {
+    font-size: 20px;
+    color: #201f1fb3;
 }
 
 h1 {
     font-size: 24px;
-    margin-bottom: 10px;
-    padding: 4px;
 }
 
-h2 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    padding: 3px;
-}
-
-p {
-    padding-left: 7px;
-}
-
-a {
-    padding: 10px;
-    padding-left: 7px;
-}
-
-#boton_cancelar
-{
-    background-color: red;
+#boton_cancelar {
+    background-color: rgb(243, 19, 19);
     color: white;
     border: none;
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
-    width: 120px;    
+    width: 120px;
+    font-weight: 600;
+    transition: transform 250ms;
+}
+
+#boton_cancelar:hover {
+    background-color: rgba(243, 19, 19, 0.856);
+    transform: scale(1.1);
 }

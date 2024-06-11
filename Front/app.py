@@ -90,21 +90,21 @@ def reservas():
     reservas = [
         {
             "id": 1,
-            "nombre_reserva": "Juan",
+            "nombre_reserva": "Suite Estandar",
             "cantidad_personas": 2,
             "fecha_ingreso": "2021-10-10",
             "fecha_egreso": "2021-10-15",
         },
         {
             "id": 13,
-            "nombre_reserva": "Juan",
+            "nombre_reserva": "Suite Premium",
             "cantidad_personas": 5,
             "fecha_ingreso": "2022-12-11",
             "fecha_egreso": "2022-12-16",
         },
         {
             "id": 3,
-            "nombre_reserva": "Juan",
+            "nombre_reserva": "Suite Full",
             "cantidad_personas": 4,
             "fecha_ingreso": "2023-2-11",
             "fecha_egreso": "2023-2-16",
