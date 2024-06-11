@@ -7,6 +7,10 @@
     cursor: pointer;
 }
 
+#fh5co-contact-section input {
+    cursor: pointer;
+}
+
 /*TODOS ESTOS ESTILOS NO HACEN FALTA CUANDO SE SIGUE UTILIZANDO BOOTSTRAP COMO
 TEMPLATE INDICA, SIENDO ASI FLEXIBLE Y RESPONSIVE*/
 /* .centrar_reservas {

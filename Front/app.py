@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
-#import requests
-#import json
+
+# import requests
+# import json
 
 PORT = 5000
 
@@ -11,17 +12,18 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+
 @app.route("/reservar_habitacion")
 def reservar_habitacion():
-     # puse las reservas en una lista de diccionarios, cada posicion es un
+    # puse las reservas en una lista de diccionarios, cada posicion es un
     # diccionario que contiene la reserva
     datos_reserva: list = []
 
     if request.method == "POST":
-        
+
         nombre = request.form.get("nombre")
-        #dni = request.form.get("dni")
-        
+        # dni = request.form.get("dni")
+
         reserva_id = len(datos_reserva) + 1
 
         reserva = {
@@ -37,7 +39,7 @@ def reservar_habitacion():
         return render_template("disponibilidad.html")
 
     return render_template("reservar_habitacion.html")
-    #return render_template("reservar_habitacion.html")
+    # return render_template("reservar_habitacion.html")
 
 
 @app.route("/contacto", methods=["GET", "POST"])
@@ -53,12 +55,8 @@ def contact():
             "contacto_mensaje": mensaje,
         }
 
-        # aca agrege un print para comprobar que se ente guardando en las
-        # variables la informacion ingresada desde contact
-
-        print(datos_contacto)
+        print(f"en /contacto datos_contacto = {datos_contacto}")
         return render_template("index.html")
-
 
     return render_template("contacto.html")
 
@@ -72,22 +70,44 @@ def hotel():
 def services():
     return render_template("servicios.html")
 
+
 @app.route("/reservas", methods=["GET", "DELETE"])
 def reservas():
-    #if request.method == "DELETE":
+    # if request.method == "DELETE":
     #    dni = request.form.get("dni_reserva")
     #    datos_persona: dict = {
     #        "dni_reserva": dni,
     #    }
-    #res = requests.delete("http://
+    # res = requests.delete("http://
     dni = request.form.get("dni_reserva")
     datos_persona: dict = {
         "dni_reserva": dni,
     }
-    #res = requests.get("http://127.0.0.1:5001/mostrar_reservas", json=datos_persona)
-    #reservas = res.json()
-    reservas= [{"id": 1, "nombre_reserva": "Juan", "cantidad_personas": 2, "fecha_ingreso": "2021-10-10", "fecha_egreso": "2021-10-15"}]
-
+    # res = requests.get("http://127.0.0.1:5001/mostrar_reservas", json=datos_persona)
+    # reservas = res.json()
+    reservas = [
+        {
+            "id": 1,
+            "nombre_reserva": "Juan",
+            "cantidad_personas": 2,
+            "fecha_ingreso": "2021-10-10",
+            "fecha_egreso": "2021-10-15",
+        },
+        {
+            "id": 13,
+            "nombre_reserva": "Juan",
+            "cantidad_personas": 5,
+            "fecha_ingreso": "2022-12-11",
+            "fecha_egreso": "2022-12-16",
+        },
+        {
+            "id": 3,
+            "nombre_reserva": "Juan",
+            "cantidad_personas": 4,
+            "fecha_ingreso": "2023-2-11",
+            "fecha_egreso": "2023-2-16",
+        },
+    ]
 
     return render_template("mostrar_reservas.html", reservas=reservas)
 
@@ -99,7 +119,7 @@ def reservar():
     datos_reserva: list = []
 
     if request.method == "POST":
-        #nombre = request.form.get("nombre_reserva")
+        # nombre = request.form.get("nombre_reserva")
         cantidad_personas = request.form.get("cantidad_personas")
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
@@ -108,11 +128,11 @@ def reservar():
         chequear = False
         if fecha_inicio > fecha_fin:
             chequear = True
-            return render_template("reservar.html",chequear=chequear)
+            return render_template("reservar.html", chequear=chequear)
 
         reserva = {
             "id": reserva_id,
-            #"usuario": nombre,
+            # "usuario": nombre,
             "cantidad_personas": cantidad_personas,
             "fecha_inicio": fecha_inicio,
             "fecha_fin": fecha_fin,
@@ -124,6 +144,7 @@ def reservar():
 
     return render_template("reservar.html")
 
+
 @app.route("/disponibilidad")
 def disponibilidad():
     # habitaciones=[{"tipo_habitacion":"habitacion deluxe",
@@ -131,7 +152,8 @@ def disponibilidad():
     #                "fecha_ingreso":"09/12",
     #                "fecha_egreso":"15/12",
     #                "precio_noche":15000}]
-    return render_template("disponibilidad.html") # habitaciones=habitaciones
+    return render_template("disponibilidad.html")  # habitaciones=habitaciones
+
 
 @app.errorhandler(404)
 def page_not_found(e):
