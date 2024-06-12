@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-
-# import requests
-# import json
+import requests
+import json
 
 PORT = 5000
 
@@ -13,28 +12,43 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/reservar_habitacion")
+@app.route("/reservar_habitacion", methods=["GET", "POST"])
 def reservar_habitacion():
     # puse las reservas en una lista de diccionarios, cada posicion es un
     # diccionario que contiene la reserva
-    datos_reserva: list = []
 
     if request.method == "POST":
 
         nombre = request.form.get("nombre")
-        # dni = request.form.get("dni")
+        dni = request.form.get("dni")
+        email = request.form.get("email")
+        telefono = request.form.get("telefono")
+        fecha_inicio = request.form.get("inicio_fecha")
+        fecha_fin = request.form.get("fin_fecha")
+        tipo_habitacion = request.form.get("tipo_habitacion")
 
-        reserva_id = len(datos_reserva) + 1
-
-        reserva = {
-            "id": reserva_id,
-            "usuario": nombre,
-            "cantidad_personas": "4",
-            "fecha_inicio": "10/10/10",
-            "fecha_fin": "11/11/10",
+        tabla_personas = {
+            "nombre_persona": nombre,
+            "dni_persona": dni,
+            "email_persona": email,
+            "telefono_persona": telefono
         }
 
-        datos_reserva.append(reserva)
+        requests.post("http://localhost:4000/cargar_clientes", json=tabla_personas)
+        info_cliente_json = requests.get(f"http://localhost:4000/clientes_dni/{dni}")
+        info_cliente = info_cliente_json.json()
+        id_cliente = info_cliente["id_persona"]
+
+        tabla_reservas = {
+            "fecha_inicio": fecha_inicio,
+            "fecha_salida": fecha_fin,
+            "tipo_habitacion": tipo_habitacion,
+            "id_personas": id_cliente,
+            "id_habitaciones": 2,
+        }
+
+        requests.post("http://localhost:4000/cargar_reserva", json=tabla_reservas) #poner el puerto de tu api
+
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
         return render_template("disponibilidad.html")
 
@@ -125,7 +139,6 @@ def reservar():
         cantidad_personas = request.form.get("cantidad_personas")
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
-        reserva_id = len(datos_reserva) + 1
 
         chequear = False
         if fecha_inicio > fecha_fin:
@@ -133,14 +146,15 @@ def reservar():
             return render_template("reservar.html", chequear=chequear)
 
         reserva = {
-            "id": reserva_id,
-            # "usuario": nombre,
+            #"id": reserva_id,
+            "usuario": nombre,
             "cantidad_personas": cantidad_personas,
             "fecha_inicio": fecha_inicio,
             "fecha_fin": fecha_fin,
         }
 
         datos_reserva.append(reserva)
+        request.post
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
         return render_template("disponibilidad.html")
 
