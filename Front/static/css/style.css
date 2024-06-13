@@ -7344,7 +7344,7 @@ body {
   line-height: 1.8;
   font-size: 16px;
   background: #fff;
-  color: #848484;
+  color: #ff5722;
   font-weight: 300;
   overflow-x: hidden;
 }
@@ -8122,6 +8122,7 @@ div.cs-select span {
   display: -webkit-flex;
   display: flex;
   justify-content: center;
+  margin-right: 8%;
 }
 #availability .a-col.action a {
   align-items: center;
@@ -9288,5 +9289,11 @@ input[type="text"] {
 .btn-primary:hover {
   background-color: #ffccbc; /* Cambiar color al pasar sobre el botón */
 }
+
+#btn_reservar_index{
+  border-top-width: 22.8px;
+  border-top-style: solid;
+  border-radius: 2px;
+  }
 
 /*# sourceMappingURL=style.css.map */
