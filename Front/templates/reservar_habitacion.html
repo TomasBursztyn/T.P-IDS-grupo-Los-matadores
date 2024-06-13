@@ -89,8 +89,12 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="tipo_habitacion">Tipo de habitacion:</label>
-                                <input type="text" id="tipo_habitacion" class="form-control" name="tipo_habitacion" value="{{ '' }}" required>
+                                <label for="tipo_habitacion">Tipo de habitación:</label>
+                                <select id="tipo_habitacion" class="form-control" name="tipo_habitacion" required>
+                                    <option value="standard">standard</option>
+                                    <option value="suite_flotante">suite flotante</option>
+                                    <option value="suite_premium">suite premium</option>
+                                </select>
                             </div>
                         </div>
 
