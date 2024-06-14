@@ -1,0 +1,23 @@
+.fondo {
+    position: relative;
+    background-size: cover;
+    margin-bottom: 6em;
+}
+
+.fondo-contacto .overlay {
+    background-color: black;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+}
+
+.fondo-contacto .fh5co-intro h1 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}

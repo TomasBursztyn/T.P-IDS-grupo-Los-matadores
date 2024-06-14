@@ -56,23 +56,20 @@ def reservar_habitacion():
     # return render_template("reservar_habitacion.html")
 
 
-@app.route("/contacto", methods=["GET", "POST"])
+@app.route("/contacto", methods=["POST"])
 def contact():
-    if request.method == "POST":
-        nombre = request.form.get("contacto_nombre")
-        email = request.form.get("contacto_email")
-        mensaje = request.form.get("contacto_mensaje")
+    nombre = request.form.get("contacto_nombre")
+    email = request.form.get("contacto_email")
+    mensaje = request.form.get("contacto_mensaje")
 
-        datos_contacto: dict = {
-            "contacto_nombre": nombre,
-            "contacto_email": email,
-            "contacto_mensaje": mensaje,
-        }
+    datos_contacto: dict = {
+        "contacto_nombre": nombre,
+        "contacto_email": email,
+        "contacto_mensaje": mensaje,
+    }
 
-        print(f"en /contacto datos_contacto = {datos_contacto}")
-        return render_template("index.html")
-
-    return render_template("contacto.html")
+    print(f"en /contacto datos_contacto = {datos_contacto}")
+    return render_template("index.html")
 
 
 @app.route("/habitaciones")
