@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 404 - Página no encontrada</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/propio/error.css') }}">
     
 </head>
 <body>
@@ -12,9 +12,6 @@
     <p>Lo sentimos, la página que estás buscando no se pudo encontrar.</p>
     <img src="{{ url_for('static', filename='images/error404.jpg') }}" class="img-responsive" alt="Error 404"> <br>
     <a href="{{ url_for('index') }}" class="btn btn-primary">Volver al Inicio</a>
-    
-    
-    
     <footer>
         <p>&copy; 2024 Luna de Plata Suites</p>
     </footer>
