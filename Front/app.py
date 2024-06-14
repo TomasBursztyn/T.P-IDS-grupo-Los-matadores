@@ -92,7 +92,7 @@ def reservas():
         }
         # res = requests.delete("http://
         return redirect(url_for("reservar"))
-        
+
     dni = request.form.get("dni_reserva")
     datos_persona: dict = {
         "dni_reserva": dni,
@@ -170,12 +170,12 @@ def disponibilidad():
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found_error(e):
     return render_template("404.html"), 404
 
 
 @app.errorhandler(500)
-def server_error(e):
+def internal_server_error(e):
     return render_template("500.html"), 500
 
 
