@@ -33,10 +33,17 @@ def reservar_habitacion():
             "email_persona": email,
             "telefono_persona": telefono
         }
-
-        requests.post("http://localhost:4000/cargar_clientes", json=tabla_personas)
+        
+        #poner el port de tu api
         info_cliente_json = requests.get(f"http://localhost:4000/clientes_dni/{dni}")
+        aux = str(info_cliente_json)
+        
+        if aux == "<Response [404]>":
+            requests.post("http://localhost:4000/cargar_clientes", json=tabla_personas)
+            info_cliente_json = requests.get(f"http://localhost:4000/clientes_dni/{dni}") 
+
         info_cliente = info_cliente_json.json()
+
         id_cliente = info_cliente["id_persona"]
 
         tabla_reservas = {
