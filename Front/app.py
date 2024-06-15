@@ -37,7 +37,7 @@ def reservar_habitacion():
         #poner el port de tu api
         info_cliente_json = requests.get(f"http://localhost:4000/clientes_dni/{dni}")
         aux = str(info_cliente_json)
-        
+
         if aux == "<Response [404]>":
             requests.post("http://localhost:4000/cargar_clientes", json=tabla_personas)
             info_cliente_json = requests.get(f"http://localhost:4000/clientes_dni/{dni}") 
@@ -136,10 +136,8 @@ def reservas():
 def reservar():
     # puse las reservas en una lista de diccionarios, cada posicion es un
     # diccionario que contiene la reserva
-    datos_reserva: list = []
 
     if request.method == "POST":
-        # nombre = request.form.get("nombre_reserva")
         cantidad_personas = request.form.get("cantidad_personas")
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
@@ -149,42 +147,59 @@ def reservar():
             chequear = True
             return render_template("reservar.html", chequear=chequear)
 
-        # reserva = {
-        #     #"id": reserva_id,
-        #     "usuario": nombre,
-        #     "cantidad_personas": cantidad_personas,
-        #     "fecha_inicio": fecha_inicio,
-        #     "fecha_fin": fecha_fin,
-        # }
+        reserva = {
+            "cantidad_personas": cantidad_personas,
+            "fecha_inicio": fecha_inicio,
+            "fecha_fin": fecha_fin,
+        }
 
-        # datos_reserva.append(reserva)
-        # request.post
+        habitaciones_ocupadas_json = requests.get(f"http://localhost:4000/mostrar_reservas/{fecha_inicio}/{fecha_fin}", json=reserva)
+        habitaciones_ocupadas = habitaciones_ocupadas_json.json()
+
+        id_habitaciones_ocupadas = []
+
+        for habitacion in habitaciones_ocupadas:
+            id_habitaciones_ocupadas.append(habitacion["id_habitaciones"])
+        
+        habitaciones_totales_json = requests.get(f"http://localhost:4000/mostrar_habitaciones", json=reserva)
+        habitaciones_totales = habitaciones_totales_json.json()
+
+        habitaciones_disponibles = []
+
+        for habitacion in habitaciones_totales:
+            if habitacion["id_habitacion"] not in id_habitaciones_ocupadas and habitacion["cantidad_personas"] >= int(cantidad_personas):
+                habitaciones_disponibles.append(habitacion)
+
+
+
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
-        return redirect("disponibilidad")
+        return render_template("disponibilidad.html", habitaciones=habitaciones_disponibles, fecha_inicio=fecha_inicio, fecha_fin=fecha_fin)
 
     return render_template("reservar.html")
 
 
 @app.route("/disponibilidad")
 def disponibilidad():
-    habitaciones=[
-        {"tipo_habitacion":"suite deluxe",
-            "cantidad_personas":4,
-            "fecha_ingreso":"09/12",
-            "fecha_egreso":"15/12",
-            "precio_noche":44000},
-        {"tipo_habitacion":"suite standard",
-            "cantidad_personas":5,
-            "fecha_ingreso":"03/05",
-            "fecha_egreso":"05/05",
-            "precio_noche":75000},
-        {"tipo_habitacion":"suite premium",
-            "cantidad_personas":2,
-            "fecha_ingreso":"19/12",
-            "fecha_egreso":"25/12",
-            "precio_noche":15000},
-    ]
-    return render_template("disponibilidad.html", habitaciones=habitaciones)
+    # habitaciones=[
+    #     {"tipo_habitacion":"suite deluxe",
+    #         "cantidad_personas":4,
+    #         "fecha_ingreso":"09/12",
+    #         "fecha_egreso":"15/12",
+    #         "precio_noche":44000},
+    #     {"tipo_habitacion":"suite standard",
+    #         "cantidad_personas":5,
+    #         "fecha_ingreso":"03/05",
+    #         "fecha_egreso":"05/05",
+    #         "precio_noche":75000},
+    #     {"tipo_habitacion":"suite premium",
+    #         "cantidad_personas":2,
+    #         "fecha_ingreso":"19/12",
+    #         "fecha_egreso":"25/12",
+    #         "precio_noche":15000},
+    # ]
+
+
+    return render_template("disponibilidad.html")
 
 
 @app.errorhandler(404)
