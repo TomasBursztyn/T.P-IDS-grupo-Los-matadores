@@ -89,62 +89,26 @@ def services():
     return render_template("servicios.html")
 
 
-@app.route("/reservas", methods=["GET", "DELETE"])
+@app.route("/reservas", methods=["GET","POST", "DELETE"])
 def reservas():
-    if request.method == "DELETE":
-        dni = request.form.get("dni_reserva")
-        datos_persona: dict = {
-            "dni_reserva": dni,
-        }
-        # res = requests.delete("http://
-        return redirect(url_for("reservar"))
+    dni = request.form.get("dni_reserva")
+    # if request.method == "DELETE":
+    #     datos_persona: dict = {
+    #         "dni_reserva": dni,
+    #     }
+    #     # res = requests.delete("http://
+    #     return redirect(url_for("reservar"))
 
-    if request.method == "GET":
-        dni_persona = request.form.get("dni_reserva")
-
-        res = requests.get(f"http://127.0.0.1:4000/reserva_dni/{dni_persona}")
-        reservas = res
-        print(reservas)
-        
-        for reserva in reservas:
-            res2 = requests.get(f"http://127.0.0.1:4000/habitacion/{reserva['id_habitaciones']}")
-            reservas2 = res2.json()
+    res = requests.get(f"http://127.0.0.1:4000/reserva_dni/{dni}")
+    reservas = res.json()
     
+    for reserva in reservas:
+        res2 = requests.get(f"http://127.0.0.1:4000/habitacion/{reserva['id_habitaciones']}")
+        reservas2 = res2.json()
+        reserva["tipo_habitacion"] = reservas2["tipo_habitacion"]
+        reserva["cantidad_personas"] = reservas2["cantidad_personas"]
 
-
-    
-    # for reserva in reservas:
-    #     id_habitacion = reserva["id_habitaciones"]
-    #     id_cliente = reserva["id_personas"]
-    #     habitacion = requests.get(f"http://mostrar_habitacion/{id_habitacion}")
-    
-
-    # reservas = res.json()
-    # reservas = [
-    #     {
-    #         "id": 1,
-    #         "nombre_reserva": "Suite Estandar",
-    #         "cantidad_personas": 2,
-    #         "fecha_ingreso": "2021-10-10",
-    #         "fecha_egreso": "2021-10-15",
-    #     },
-    #     {
-    #         "id": 13,
-    #         "nombre_reserva": "Suite Premium",
-    #         "cantidad_personas": 5,
-    #         "fecha_ingreso": "2022-12-11",
-    #         "fecha_egreso": "2022-12-16",
-    #     },
-    #     {
-    #         "id": 3,
-    #         "nombre_reserva": "Suite Full",
-    #         "cantidad_personas": 4,
-    #         "fecha_ingreso": "2023-2-11",
-    #         "fecha_egreso": "2023-2-16",
-    #     },
-    # ]
-
-    return render_template("mostrar_reservas.html", reservas=reservas, reservas2=reservas2)
+    return render_template("mostrar_reservas.html", reservas=reservas)
 
 
 @app.route("/reservar", methods=["GET", "POST"])
