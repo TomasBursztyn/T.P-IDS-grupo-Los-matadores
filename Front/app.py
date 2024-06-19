@@ -88,25 +88,28 @@ def hotel():
 def services():
     return render_template("servicios.html")
 
+@app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
+def eliminar_reserva(id_reserva, dni):
+    requests.delete(f"http://127.0.0.1:4000/reservas/{id_reserva}")
+    return reservas(dni)
 
-@app.route("/reservas", methods=["GET","POST", "DELETE"])
-def reservas():
-    dni = request.form.get("dni_reserva")
-    # if request.method == "DELETE":
-    #     datos_persona: dict = {
-    #         "dni_reserva": dni,
-    #     }
-    #     # res = requests.delete("http://
-    #     return redirect(url_for("reservar"))
+@app.route("/reservas", methods=["GET", "POST"])
+def reservas(dni=None):
+    if not dni:
+        dni = request.form.get("dni_reserva")
 
     res = requests.get(f"http://127.0.0.1:4000/reserva_dni/{dni}")
     reservas = res.json()
+
+    if reservas == []:
+        return render_template("mostrar_reservas.html", reservas=reservas)
     
     for reserva in reservas:
         res2 = requests.get(f"http://127.0.0.1:4000/habitacion/{reserva['id_habitaciones']}")
         reservas2 = res2.json()
         reserva["tipo_habitacion"] = reservas2["tipo_habitacion"]
         reserva["cantidad_personas"] = reservas2["cantidad_personas"]
+        reserva["dni_persona"] = dni
 
     return render_template("mostrar_reservas.html", reservas=reservas)
 
