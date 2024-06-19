@@ -71,32 +71,28 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="inicio_fecha">Inicio de reserva:</label>
-                                <input type="date" id="inicio_fecha" class="form-control" name="inicio_fecha" value="{{ '' }}" required>
+                                <input type="date" id="inicio_fecha" class="form-control" name="inicio_fecha" value="{{ reserva.fecha_inicio }}" required readonly>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="fin_fecha">Fin de reserva:</label>
-                                <input type="date" id="fin_fecha" class="form-control" name="fin_fecha" value="{{ '' }}" required>
+                                <input type="date" id="fin_fecha" class="form-control" name="fin_fecha" value="{{ reserva.fecha_fin }}" required readonly>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="cantidad_personas">Cantidad de personas:</label>
-                                <input type="number" id="cantidad_personas" class="form-control" name="cantidad_personas" value="{{ '' }}" required>
+                                <input type="number" id="cantidad_personas" class="form-control" name="cantidad_personas" value="{{ reserva.cantidad_personas }}" required readonly>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="tipo_habitacion">Tipo de habitación:</label>
-                                <select id="tipo_habitacion" class="form-control" name="tipo_habitacion" required>
-                                    <option value="standard">Standard</option>
-                                    <option value="suite_flotante">Suite Flotante</option>
-                                    <option value="suite_premium">Suite Premium</option>
-                                </select>
+                                <input id="tipo_habitacion" class="form-control" name="tipo_habitacion" value="{{ reserva.tipo_habitacion }}" required readonly>
                             </div>
                         </div>
 

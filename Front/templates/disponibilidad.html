@@ -60,7 +60,7 @@ Reservar Habitación
 								</div>
 								<!-- <p><a href="#" class="btn btn-primary btn-luxe-primary">Reservar Ahora <i class="ti-angle-right"></i></a>
 												</p> -->
-								<form method="GET" action="{{ url_for('disponibilidad') }}">
+								<form method="GET" action="{{ url_for('disponibilidad', fecha_inicio=fecha_inicio, fecha_fin=fecha_fin, tipo_habitacion=habitacion.tipo_habitacion, cantidad_personas=habitacion.cantidad_personas ) }}">
 									<input type="submit" name="boton_reservar" value="Reservar" id="boton_reservar" />
 								</form>
 							</div>

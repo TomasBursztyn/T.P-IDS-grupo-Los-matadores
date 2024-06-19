@@ -160,28 +160,18 @@ def reservar():
     return render_template("reservar.html")
 
 
-@app.route("/disponibilidad")
-def disponibilidad():
-    # habitaciones=[
-    #     {"tipo_habitacion":"suite deluxe",
-    #         "cantidad_personas":4,
-    #         "fecha_ingreso":"09/12",
-    #         "fecha_egreso":"15/12",
-    #         "precio_noche":44000},
-    #     {"tipo_habitacion":"suite standard",
-    #         "cantidad_personas":5,
-    #         "fecha_ingreso":"03/05",
-    #         "fecha_egreso":"05/05",
-    #         "precio_noche":75000},
-    #     {"tipo_habitacion":"suite premium",
-    #         "cantidad_personas":2,
-    #         "fecha_ingreso":"19/12",
-    #         "fecha_egreso":"25/12",
-    #         "precio_noche":15000},
-    # ]
+@app.route("/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>")
+def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion):
+
+    reserva = {
+        "cantidad_personas": cantidad_personas,
+        "fecha_inicio": fecha_inicio,
+        "fecha_fin": fecha_fin,
+        "tipo_habitacion": tipo_habitacion,
+    }
 
 
-    return render_template("disponibilidad.html")
+    return render_template("reservar_habitacion.html", reserva=reserva)
 
 
 @app.errorhandler(404)
