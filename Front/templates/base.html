@@ -12,22 +12,6 @@
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
-
-	<!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content="" />
 	<meta property="og:image" content="" />
 	<meta property="og:url" content="" />
@@ -66,12 +50,6 @@
 	<!-- Style -->
 	<link rel="stylesheet" href="{{url_for('static', filename= '/css/library/style.css', _external=True) }}">
 
-	<!--
-		NO PONER EL JS Y ESTILOS DE CADA PAGINA ACA PORQUE SINO CUANDO
-		POR EJEMPLO CUANDO VOY A /reservar EN LA WEB, SE CARGAN LOS ESTILOS, 
-		LOS JAVASCRIPT DE TODOS LOS DEMAS ARCHIVOS 
-	-->
-
 	<!-- BLOQUE STYLES -->
 	{% block styles %}
 
@@ -92,10 +70,6 @@
 
 	<!-- Modernizr JS -->
 	<script src="{{url_for('static', filename='/js/library/modernizr-2.6.2.min.js', _external=True) }}"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="static/js/library/respond.min.js"></script>
-	<![endif]-->
 
 </head>
 
@@ -110,37 +84,9 @@
 							<h1 id="fh5co-logo"><a href="{{ url_for('index') }}">Luna de PLata Suites</a></h1>
 							<nav id="fh5co-menu-wrap" role="navigation">
 								<ul class="sf-menu" id="fh5co-primary-menu">
-									<!-- <li><a class="active" href="{{ url_for('index') }}">Home</a></li> Asi estaba anteriormente la linea siguiente, elimine el class para quitar el sombreado que había sobre home. -->
 									<li><a href="{{ url_for('index') }}">Home</a></li>
 									<li>
 										<a href="{{ url_for('hotel') }}" class="fh5co-sub-ddown">Habitaciones</a>
-
-										<!--
-											No Necesario
-										<ul class="fh5co-sub-menu">
-											<li><a href="#">Luxe Hotel</a></li>
-											<li><a href="#">Deluxe Hotel</a></li>
-											 
-												NO ME PARECE NECESARIO, POR SI ACASO NO LO BORRO
-												<li>
-												<a href="#" class="fh5co-sub-ddown">King Hotel</a>
-												<ul class="fh5co-sub-menu">
-													<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template"
-															target="_blank">Build</a></li>
-													<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap"
-															target="_blank">Work</a></li>
-													<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap"
-															target="_blank">Light</a></li>
-													<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap"
-															target="_blank">Relic</a></li>
-													<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap"
-															target="_blank">Display</a></li>
-													<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap"
-															target="_blank">Sprint</a></li>
-												</ul>
-											</li> 
-											<li><a href="#">Five Star Hotel</a></li>
-										</ul>-->
 									</li>
 									<li><a href="{{ url_for('services') }}">Servicios</a></li>
 									<li><a href="{{ url_for('reservar') }}">Reservar</a></li>
@@ -155,7 +101,6 @@
 			<!-- end:fh5co-header -->
 			{% block body %}
 
-			<!-- ################## AQUI VA LA POSTA ################## -->
 
 			{% endblock %}
 
@@ -165,8 +110,7 @@
 						<div class="col-md-3">
 							<div class="copyright">
 								<p><small>COPYRIGHT &copy; 2024 TODOS LOS DERECHOS RESERVADOS <br> T.P. IDS <br>
-										Diseñado por "Los Matadores" <!--<a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> <br>
-										Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small> / comento porque no es necesario-->
+										Diseñado por "Los Matadores" 
 								</p>
 							</div>
 						</div>
@@ -178,20 +122,8 @@
 										<li><a href="{{url_for('index')}}">Home</a></li>
 										<li><a href="{{url_for('hotel')}}">Habitaciones</a></li>
 										<li><a href="{{url_for('reservar')}}">Reservas</a></li>
-										<!-- <li><a href="{{url_for('contact')}}">Contáctanos</a></li> -->
 									</ul>
 								</div>
-								<!--<div class="col-md-3">
-									<h3>Our Facilities</h3>
-									<ul class="link">
-										<li><a href="#">Resturant</a></li>
-										<li><a href="#">Bars</a></li>
-										<li><a href="#">Pick-up</a></li>
-										<li><a href="#">Swimming Pool</a></li>
-										<li><a href="#">Spa</a></li>
-										<li><a href="#">Gym</a></li>
-									</ul>
-								</div> / comento para no borrarlo-->
 								<div class="col-md-6">
 									<h3>Suscripción</h3>
 									<p>Para más información sobre Luna de Plata Suite ingrese su mail.</p>
