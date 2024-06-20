@@ -21,3 +21,18 @@
     font-weight: 400;
     margin-bottom: 10px;
 }
+
+.titulo-habitaciones {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    float: left;
+    width: 100%;
+    z-index: 99;
+  }
+
+.titulo-habitaciones h2 {
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
