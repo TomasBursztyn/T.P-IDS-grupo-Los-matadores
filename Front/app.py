@@ -59,7 +59,7 @@ def reservar_habitacion():
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
         return reservas(dni)
 
-    return render_template("reservar_habitacion.html")
+    return render_template("reservar.html")
     # return render_template("reservar_habitacion.html")
 
 

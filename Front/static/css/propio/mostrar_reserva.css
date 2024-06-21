@@ -54,3 +54,8 @@ h1 {
     background-color: rgba(243, 19, 19, 0.856);
     transform: scale(1.1);
 }
+
+#no_reserva{
+    text-align: center;
+    margin-left: 730px;
+}
