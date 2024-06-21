@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import requests
 import json
 
-FRONTEND_PORT = 5001
+FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
 BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}/"
 
