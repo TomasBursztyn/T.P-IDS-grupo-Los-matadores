@@ -4,6 +4,10 @@
     margin-bottom: 6em;
 }
 
+.borde-naranja {
+    border-bottom: 1px solid #ff5722;
+}
+
 .fondo-contacto .overlay {
     background-color: black;
     opacity: 0.2;
