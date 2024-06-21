@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from datetime import date
 import requests
 import json
 
@@ -126,8 +127,8 @@ def reservar():
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
 
-        chequear = False
-        if fecha_inicio > fecha_fin:
+        fecha_actual = str(date.today())
+        if (fecha_inicio < fecha_actual) or (fecha_fin < fecha_actual) or (fecha_fin < fecha_inicio):
             chequear = True
             return render_template("reservar.html", chequear=chequear)
 
