@@ -2,7 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 import requests
 import json
 
-PORT = 5001
+FRONTEND_PORT = 5001
+BACKEND_PORT = 5000
+BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}/"
 
 app = Flask(__name__)
 
@@ -35,12 +37,12 @@ def reservar_habitacion():
         }
         
         #poner el port de tu api
-        info_cliente_json = requests.get(f"http://localhost:4000/clientes_dni/{dni}")
+        info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
         aux = str(info_cliente_json)
 
         if aux == "<Response [404]>":
-            requests.post("http://localhost:4000/cargar_clientes", json=tabla_personas)
-            info_cliente_json = requests.get(f"http://localhost:4000/clientes_dni/{dni}") 
+            requests.post(f"{BACKEND_URL}/cargar_clientes", json=tabla_personas)
+            info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}") 
 
         info_cliente = info_cliente_json.json()
 
@@ -54,7 +56,7 @@ def reservar_habitacion():
             "id_habitaciones": 2,
         }
 
-        requests.post("http://localhost:4000/cargar_reserva", json=tabla_reservas) #poner el puerto de tu api
+        requests.post(f"{BACKEND_URL}/cargar_reserva", json=tabla_reservas) #poner el puerto de tu api
 
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
         return reservas(dni)
@@ -90,7 +92,7 @@ def services():
 
 @app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
 def eliminar_reserva(id_reserva, dni):
-    requests.delete(f"http://127.0.0.1:4000/reservas/{id_reserva}")
+    requests.delete(f"{BACKEND_URL}/reservas/{id_reserva}")
     return reservas(dni)
 
 @app.route("/reservas", methods=["GET", "POST"])
@@ -98,14 +100,14 @@ def reservas(dni=None):
     if not dni:
         dni = request.form.get("dni_reserva")
 
-    res = requests.get(f"http://127.0.0.1:4000/reserva_dni/{dni}")
+    res = requests.get(f"{BACKEND_URL}/reserva_dni/{dni}")
     reservas = res.json()
 
     if reservas == []:
         return render_template("mostrar_reservas.html", reservas=reservas)
     
     for reserva in reservas:
-        res2 = requests.get(f"http://127.0.0.1:4000/habitacion/{reserva['id_habitaciones']}")
+        res2 = requests.get(f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}")
         reservas2 = res2.json()
         reserva["tipo_habitacion"] = reservas2["tipo_habitacion"]
         reserva["cantidad_personas"] = reservas2["cantidad_personas"]
@@ -135,7 +137,7 @@ def reservar():
             "fecha_fin": fecha_fin,
         }
 
-        habitaciones_ocupadas_json = requests.get(f"http://localhost:4000/mostrar_reservas/{fecha_inicio}/{fecha_fin}", json=reserva)
+        habitaciones_ocupadas_json = requests.get(f"{BACKEND_URL}/mostrar_reservas/{fecha_inicio}/{fecha_fin}", json=reserva)
         habitaciones_ocupadas = habitaciones_ocupadas_json.json()
 
         id_habitaciones_ocupadas = []
@@ -143,7 +145,7 @@ def reservar():
         for habitacion in habitaciones_ocupadas:
             id_habitaciones_ocupadas.append(habitacion["id_habitaciones"])
         
-        habitaciones_totales_json = requests.get(f"http://localhost:4000/mostrar_habitaciones", json=reserva)
+        habitaciones_totales_json = requests.get(f"{BACKEND_URL}/mostrar_habitaciones", json=reserva)
         habitaciones_totales = habitaciones_totales_json.json()
 
         habitaciones_disponibles = []
@@ -185,4 +187,4 @@ def internal_server_error(e):
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=PORT, debug=True)
+    app.run(host="127.0.0.1", port=FRONTEND_PORT, debug=True)
