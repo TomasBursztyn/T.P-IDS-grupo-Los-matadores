@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import requests
 import json
 
-PORT = 5000
+PORT = 5001
 
 app = Flask(__name__)
 
@@ -57,7 +57,7 @@ def reservar_habitacion():
         requests.post("http://localhost:4000/cargar_reserva", json=tabla_reservas) #poner el puerto de tu api
 
         # luego habria que aca hacer un llamado a la api enviando datos_reserva
-        return render_template("disponibilidad.html")
+        return reservas(dni)
 
     return render_template("reservar_habitacion.html")
     # return render_template("reservar_habitacion.html")
@@ -171,7 +171,7 @@ def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion):
     }
 
 
-    return render_template("reservar_habitacion.html", reserva=reserva)
+    return render_template("reservar_habitacion.html", reserva=reserva) 
 
 
 @app.errorhandler(404)
