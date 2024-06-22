@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html"), 200
 
 
 @app.route("/reservar_habitacion", methods=["GET", "POST"])
@@ -55,33 +55,22 @@ def reservar_habitacion():
 
         return reservas(dni)
 
-    return render_template("reservar.html")
+    return render_template("reservar.html"), 200
 
 
 @app.route("/contacto", methods=["GET", "POST"])
 def contact():
-    nombre = request.form.get("contacto_nombre")
-    email = request.form.get("contacto_email")
-    mensaje = request.form.get("contacto_mensaje")
-
-    datos_contacto: dict = {
-        "contacto_nombre": nombre,
-        "contacto_email": email,
-        "contacto_mensaje": mensaje,
-    }
-
-    print(f"en /contacto datos_contacto = {datos_contacto}")
-    return render_template("contact.html")
+    return render_template("contact.html"), 200
 
 
 @app.route("/habitaciones")
 def hotel():
-    return render_template("habitaciones.html")
+    return render_template("habitaciones.html"), 200
 
 
 @app.route("/servicios")
 def services():
-    return render_template("servicios.html")
+    return render_template("servicios.html"), 200
 
 
 @app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
@@ -96,20 +85,18 @@ def reservas(dni=None):
     if not dni:
         dni = request.form.get("dni_reserva")
 
-    res = requests.get(f"{BACKEND_URL}/reserva_dni/{dni}")
-    reservas = res.json()
-
-    if reservas == []:
-        return render_template("mostrar_reservas.html", reservas=reservas)
+    response = requests.get(f"{BACKEND_URL}/reserva_dni/{dni}")
+    reservas = response.json()
 
     for reserva in reservas:
-        res2 = requests.get(f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}")
-        reservas2 = res2.json()
-        reserva["tipo_habitacion"] = reservas2["tipo_habitacion"]
-        reserva["cantidad_personas"] = reservas2["cantidad_personas"]
+        response = requests.get(f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}")
+        reserva_info = response.json()
+        
+        reserva["tipo_habitacion"] = reserva_info["tipo_habitacion"]
+        reserva["cantidad_personas"] = reserva_info["cantidad_personas"]
         reserva["dni_persona"] = dni
 
-    return render_template("mostrar_reservas.html", reservas=reservas)
+    return render_template("mostrar_reservas.html", reservas=reservas), 200
 
 
 @app.route("/reservar", methods=["GET", "POST"])
@@ -129,7 +116,7 @@ def reservar():
             or (fecha_fin < fecha_inicio)
         ):
             chequear = True
-            return render_template("reservar.html", chequear=chequear)
+            return render_template("reservar.html", chequear=chequear), 200
 
         reserva = {
             "cantidad_personas": cantidad_personas,
@@ -169,9 +156,9 @@ def reservar():
             habitaciones=habitaciones_disponibles,
             fecha_inicio=fecha_inicio,
             fecha_fin=fecha_fin,
-        )
+        ), 200
 
-    return render_template("reservar.html")
+    return render_template("reservar.html"), 200
 
 
 @app.route(
@@ -185,7 +172,7 @@ def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion):
         "tipo_habitacion": tipo_habitacion,
     }
 
-    return render_template("reservar_habitacion.html", reserva=reserva)
+    return render_template("reservar_habitacion.html", reserva=reserva), 200
 
 
 @app.errorhandler(404)
