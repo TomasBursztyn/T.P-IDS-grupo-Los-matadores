@@ -37,41 +37,39 @@ Reservar Habitación
 <div id="fh5co-contact-section">
 	<div class="container-fluid">
 		<div class="row">
-			{% if habitaciones|length == 0 %}
-				<h1>No hay habitaciones disponibles</h1>
+		{% if habitaciones|length == 0 %}
+    			<h1>No hay habitaciones disponibles</h1>
 			{% else %}
 				{% for habitacion in habitaciones %}
-	        <div class="col-md-12 col-sm-12">
+					<div class="col-md-12 col-sm-12">
 						<div class="habitacion row">
 							<div class="habitacion-cols col-md-6 col-sm-12">
-								<!-- hay que agregar esto de abajo de alguna manera -->
-								<!-- <div class="image" style="background-image: url({{ url_for('static', filename='/images/flotante.jpg') }});">
-									<div class="descrip text-center">
-										<p><small>Espacio para</small><span>hasta {{habitacion.cantidad_personas}} personas</span></p>
-									</div>
-								</div> -->
 								<div>
-									<p><span>Tipo de habitacion:</span> {{habitacion.tipo_habitacion}}</p>
-									<p>
-										<span>Cantidad de personas:</span> {{habitacion.cantidad_personas}}
-									</p>
-									<p><span>Fecha de ingreso:</span> {{fecha_inicio}}</p>
-									<p><span>Fecha de egreso:</span> {{fecha_fin}}</p>
+									<p><span>Tipo de habitación:</span> {{ habitacion.tipo_habitacion }}</p>
+									<p><span>Cantidad de personas:</span> {{ habitacion.cantidad_personas }}</p>
+									<p><span>Fecha de ingreso:</span> {{ fecha_inicio }}</p>
+									<p><span>Fecha de egreso:</span> {{ fecha_fin }}</p>
 								</div>
-								<!-- <p><a href="#" class="btn btn-primary btn-luxe-primary">Reservar Ahora <i class="ti-angle-right"></i></a>
-												</p> -->
 								<form method="GET" action="{{ url_for('disponibilidad', fecha_inicio=fecha_inicio, fecha_fin=fecha_fin, tipo_habitacion=habitacion.tipo_habitacion, cantidad_personas=habitacion.cantidad_personas ) }}">
 									<input type="submit" name="boton_reservar" value="Reservar" id="boton_reservar" />
 								</form>
 							</div>
-								<div class="col-md-6 col-sm-12">
-									<img alt="Imagen vista de habitacion"
-										src="{{ url_for('static', filename='images/fondo_habitaciones.jpg') }}" />
-								</div>
+							<div class="col-md-6 col-sm-12">
+								{% if habitacion.cantidad_personas == 2 %}
+									<img alt="Imagen vista de habitación" src="{{ url_for('static', filename='images/fondo_habitaciones.jpg') }}" />
+								{% elif habitacion.cantidad_personas == 4 %}
+									<img alt="Imagen vista de habitación" src="{{ url_for('static', filename='images/habitacion_estandar.jpg') }}" />
+								{% elif habitacion.cantidad_personas == 6 %}
+									<img alt="Imagen vista de habitación" src="{{ url_for('static', filename='images/suite_premium.jpg') }}" />
+								{% else %}
+									<p>No hay imagen disponible para esta cantidad de personas.</p>
+								{% endif %}
+							</div>
 						</div>
 					</div>
 				{% endfor %}
 			{% endif %}
+
 		</div>
 	</div>
 </div>
