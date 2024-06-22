@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def index():
-    return render_template("index.html"), 200
+def home():
+    return render_template("home.html"), 200
 
 
 @app.route("/reservar_habitacion", methods=["GET", "POST"])
