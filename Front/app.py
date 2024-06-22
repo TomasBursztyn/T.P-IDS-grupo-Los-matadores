@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from datetime import date
 import requests
-import json
 
 FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
@@ -17,11 +16,7 @@ def index():
 
 @app.route("/reservar_habitacion", methods=["GET", "POST"])
 def reservar_habitacion():
-    # puse las reservas en una lista de diccionarios, cada posicion es un
-    # diccionario que contiene la reserva
-
     if request.method == "POST":
-
         nombre = request.form.get("nombre")
         dni = request.form.get("dni")
         email = request.form.get("email")
@@ -34,16 +29,15 @@ def reservar_habitacion():
             "nombre_persona": nombre,
             "dni_persona": dni,
             "email_persona": email,
-            "telefono_persona": telefono
+            "telefono_persona": telefono,
         }
-        
-        #poner el port de tu api
+
         info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
         aux = str(info_cliente_json)
 
         if aux == "<Response [404]>":
             requests.post(f"{BACKEND_URL}/cargar_clientes", json=tabla_personas)
-            info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}") 
+            info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
 
         info_cliente = info_cliente_json.json()
 
@@ -57,23 +51,21 @@ def reservar_habitacion():
             "id_habitaciones": 2,
         }
 
-        requests.post(f"{BACKEND_URL}/cargar_reserva", json=tabla_reservas) #poner el puerto de tu api
+        requests.post(f"{BACKEND_URL}/cargar_reserva", json=tabla_reservas)
 
-        # luego habria que aca hacer un llamado a la api enviando datos_reserva
         return reservas(dni)
 
     return render_template("reservar.html")
-    # return render_template("reservar_habitacion.html")
 
 
-@app.route("/contacto", methods=["GET","POST"])
+@app.route("/contacto", methods=["GET", "POST"])
 def contact():
     nombre = request.form.get("contacto_nombre")
     email = request.form.get("contacto_email")
     mensaje = request.form.get("contacto_mensaje")
 
     datos_contacto: dict = {
-       "contacto_nombre": nombre,
+        "contacto_nombre": nombre,
         "contacto_email": email,
         "contacto_mensaje": mensaje,
     }
@@ -91,10 +83,13 @@ def hotel():
 def services():
     return render_template("servicios.html")
 
+
 @app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
 def eliminar_reserva(id_reserva, dni):
     requests.delete(f"{BACKEND_URL}/reservas/{id_reserva}")
+
     return reservas(dni)
+
 
 @app.route("/reservas", methods=["GET", "POST"])
 def reservas(dni=None):
@@ -106,7 +101,7 @@ def reservas(dni=None):
 
     if reservas == []:
         return render_template("mostrar_reservas.html", reservas=reservas)
-    
+
     for reserva in reservas:
         res2 = requests.get(f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}")
         reservas2 = res2.json()
@@ -119,16 +114,20 @@ def reservas(dni=None):
 
 @app.route("/reservar", methods=["GET", "POST"])
 def reservar():
-    # puse las reservas en una lista de diccionarios, cada posicion es un
-    # diccionario que contiene la reserva
-
     if request.method == "POST":
         cantidad_personas = request.form.get("cantidad_personas")
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
-
+        # conseguimos la fecha actual utilizando la libreria date
         fecha_actual = str(date.today())
-        if (fecha_inicio < fecha_actual) or (fecha_fin < fecha_actual) or (fecha_fin < fecha_inicio):
+
+        # las fechas de inicio y fin son invalidas si se cumple alguna de las
+        # siguientes condiciones
+        if (
+            (fecha_inicio < fecha_actual)
+            or (fecha_fin < fecha_actual)
+            or (fecha_fin < fecha_inicio)
+        ):
             chequear = True
             return render_template("reservar.html", chequear=chequear)
 
@@ -138,34 +137,47 @@ def reservar():
             "fecha_fin": fecha_fin,
         }
 
-        habitaciones_ocupadas_json = requests.get(f"{BACKEND_URL}/mostrar_reservas/{fecha_inicio}/{fecha_fin}", json=reserva)
+        habitaciones_ocupadas_json = requests.get(
+            f"{BACKEND_URL}/mostrar_reservas/{fecha_inicio}/{fecha_fin}", json=reserva
+        )
         habitaciones_ocupadas = habitaciones_ocupadas_json.json()
 
         id_habitaciones_ocupadas = []
 
         for habitacion in habitaciones_ocupadas:
             id_habitaciones_ocupadas.append(habitacion["id_habitaciones"])
-        
-        habitaciones_totales_json = requests.get(f"{BACKEND_URL}/mostrar_habitaciones", json=reserva)
+
+        habitaciones_totales_json = requests.get(
+            f"{BACKEND_URL}/mostrar_habitaciones", json=reserva
+        )
         habitaciones_totales = habitaciones_totales_json.json()
 
         habitaciones_disponibles = []
 
         for habitacion in habitaciones_totales:
-            if habitacion["id_habitacion"] not in id_habitaciones_ocupadas and habitacion["cantidad_personas"] >= int(cantidad_personas):
+            if habitacion[
+                "id_habitacion"
+            ] not in id_habitaciones_ocupadas and habitacion[
+                "cantidad_personas"
+            ] >= int(
+                cantidad_personas
+            ):
                 habitaciones_disponibles.append(habitacion)
 
-
-
-        # luego habria que aca hacer un llamado a la api enviando datos_reserva
-        return render_template("disponibilidad.html", habitaciones=habitaciones_disponibles, fecha_inicio=fecha_inicio, fecha_fin=fecha_fin)
+        return render_template(
+            "disponibilidad.html",
+            habitaciones=habitaciones_disponibles,
+            fecha_inicio=fecha_inicio,
+            fecha_fin=fecha_fin,
+        )
 
     return render_template("reservar.html")
 
 
-@app.route("/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>")
+@app.route(
+    "/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>"
+)
 def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion):
-
     reserva = {
         "cantidad_personas": cantidad_personas,
         "fecha_inicio": fecha_inicio,
@@ -173,8 +185,7 @@ def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion):
         "tipo_habitacion": tipo_habitacion,
     }
 
-
-    return render_template("reservar_habitacion.html", reserva=reserva) 
+    return render_template("reservar_habitacion.html", reserva=reserva)
 
 
 @app.errorhandler(404)
