@@ -11,7 +11,7 @@
 
 {% block body %}
 
-<div class="fh5co-parallax" style="background-image: url(static/images/fondo_contacto.jpg);"
+<div class="fh5co-parallax" style="background-image: url('{{ url_for('static', filename='images/fondo_contacto.jpg') }}');">
 	data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">
