@@ -4,7 +4,7 @@ import requests
 
 FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
-BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}/"
+BACKEND_URL = f"LOS1MATADORESAPI.pythonanywhere.com/"
 
 app = Flask(__name__)
 
