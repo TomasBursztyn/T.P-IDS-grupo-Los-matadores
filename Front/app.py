@@ -25,7 +25,7 @@ def reservar_habitacion():
         fecha_fin = request.form.get("fin_fecha")
         tipo_habitacion = request.form.get("tipo_habitacion")
 
-        tabla_personas = {
+        datos_persona = {
             "nombre_persona": nombre,
             "dni_persona": dni,
             "email_persona": email,
@@ -33,16 +33,15 @@ def reservar_habitacion():
         }
 
         info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
-        aux = str(info_cliente_json)
 
-        if aux == "<Response [404]>":
-            requests.post(f"{BACKEND_URL}/cargar_clientes", json=tabla_personas)
+        # Si no esta cargado el cliente (info_cliente_json es un objeto con HTTP
+        # code de 404) en el sistema lo cargamos
+        if str(info_cliente_json) == "<Response [404]>":
+            requests.post(f"{BACKEND_URL}/cargar_clientes", json=datos_persona)
             info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
 
         info_cliente = info_cliente_json.json()
-
         id_cliente = info_cliente["id_persona"]
-
         tabla_reservas = {
             "fecha_inicio": fecha_inicio,
             "fecha_salida": fecha_fin,
