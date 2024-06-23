@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from datetime import date
+from datetime import date, datetime
 import requests
 
 FRONTEND_PORT = 5000
@@ -80,6 +80,12 @@ def eliminar_reserva(id_reserva, dni):
     return reservas(dni)
 
 
+# Funcion auxiliar
+# Formatea fecha de formato 'Mon, 24 Jun 2024 00:00:00 GMT' a '2024-06-24'
+def formatear_fecha(fecha):
+    return datetime.strptime(fecha, '%a, %d %b %Y %H:%M:%S %Z').strftime('%Y-%m-%d')
+
+
 @app.route("/reservas", methods=["GET", "POST"])
 def reservas(dni=None):
     if not dni:
@@ -94,6 +100,8 @@ def reservas(dni=None):
         
         reserva["tipo_habitacion"] = reserva_info["tipo_habitacion"]
         reserva["cantidad_personas"] = reserva_info["cantidad_personas"]
+        reserva["fecha_inicio"] = formatear_fecha(reserva["fecha_inicio"])
+        reserva["fecha_salida"] = formatear_fecha(reserva["fecha_salida"])
         reserva["dni_persona"] = dni
 
     return render_template("mostrar_reservas.html", reservas=reservas), 200

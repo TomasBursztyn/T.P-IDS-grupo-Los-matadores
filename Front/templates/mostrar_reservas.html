@@ -59,7 +59,7 @@
                 <p><span>Fecha de egreso:</span> {{reserva.fecha_salida}}</p>
                 <p><span>Total a pagar:</span> {{reserva.total_a_pagar}}</p>
               </div>
-              <form method="post" action="{{ url_for('eliminar_reserva', id_reserva = reserva.id_reserva, dni= reserva.dni_persona) }}">
+              <form method="POST" action="{{ url_for('eliminar_reserva', id_reserva = reserva.id_reserva, dni = reserva.dni_persona) }}">
                   <input
                   type="submit"
                   name="boton_cancelar"
