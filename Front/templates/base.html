@@ -56,10 +56,9 @@
 	{% endblock %}
 
 	<!-- BLOQUE JS -->
+	<script src="{{ url_for('static', filename='/js/propio/footer.js') }}"></script>
 	{% block js %}
 
-	<script src="{{ url_for('static', filename='/js/propio/footer.js') }}"></script>
-	
 	{% endblock %}
 
 	<!-- BLOQUE TITLE DE LA PAGINA -->
@@ -132,7 +131,7 @@
 									<p>Para más información sobre Luna de Plata Suite ingrese su mail.</p>
 									<form action="#" id="form-subscribe">
 										<div class="form-field">
-											<input type="email" placeholder="Ingrese email" id="footer-email-input">
+											<input type="email" placeholder="Ingrese email" id="footer-email-input" required>
 											<input type="submit" id="footer-email-btn" value="Enviar">
 										</div>
 									</form>

@@ -1,8 +1,7 @@
-document.addEventListener("DOMContentLoaded", function ()
-{
-    const btnEnviarEmail = document.getElementById("footer-email-btn");
+document.addEventListener("DOMContentLoaded", function () {
+    const formularioSubscripcion = document.getElementById("form-subscribe");
 
-    btnEnviarEmail.addEventListener("click", function (event) {
+    formularioSubscripcion.addEventListener("submit", function (event) {
         // Prevenir el envío del formulario
         event.preventDefault();
 
