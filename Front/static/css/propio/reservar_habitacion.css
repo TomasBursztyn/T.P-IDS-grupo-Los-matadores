@@ -1,63 +1,17 @@
-#nombre_reserva,
-#cant_personas,
-#inicio_fecha,
-#fin_fecha,
-#tipo_habitacion,
-#reservar {
+input {
     cursor: pointer;
 }
 
-.centrar_reservas {
-    margin-left: 8.5vh;
+/* saca las flechitas del input type="number" de la derecha */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
 }
 
-.centrar_dni {
-    margin-bottom: 2vh;
-    margin-top: -12vh;
-}
-
-.centro_column2 {
-    margin-left: -22vh;
-    margin-right: 20vh
-}
-
-.centrar_dni_boton {
-    margin-left: -20.5vh;
-}
-
-.centro_habitaciones {
-    margin-bottom: -50vh;
-    margin-left: 40vh;
-    margin-right: -40vh
-}
-
-.centro_column1 {
-    margin-top: -5vh;
-    margin-left: 6vh;
-    margin-right: -24vh
-}
-
-.centrar_disponibilidad {
-    margin-left: 13.5vh;
-}
-
-
-
-.form-group {
-margin-left: 32vh;
-margin-right: -32vh
-}
-
-#imagen-reserva img {
-    margin: 10px 0;
-    height: 450px;
-    margin-right: 100000px;
-}
-
-
-.section-title.text-center{
-    margin: 0 auto;
-    display: block;
-    margin-bottom: 50px;
-    margin-left:100px
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield !important;
 }

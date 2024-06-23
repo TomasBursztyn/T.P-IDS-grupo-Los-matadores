@@ -6,7 +6,7 @@
 
 {% block styles %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/propio/reservar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/propio/reservar_habitacion.css') }}">
 
 {% endblock %}
 
@@ -50,14 +50,14 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="dni">Numero de DNI:</label>
-                                <input type="text" id="dni" class="form-control" name="dni" placeholder="Ingrese su DNI" required inputmode="numeric">
+                                <input type="number" id="dni" class="form-control" name="dni" placeholder="Ingrese su DNI" min="1" max="99999999" required>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="telefono">Numero de Telefono:</label>
-                                <input type="tel" id="telefono" class="form-control" name="telefono" placeholder="Ingrese su numero" required>
+                                <input type="tel" id="telefono" class="form-control" name="telefono" placeholder="Ingrese su numero" pattern=".{10}" required>
                             </div>
                         </div>
 
