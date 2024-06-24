@@ -4,7 +4,7 @@ import requests
 
 FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
-BACKEND_URL = f"LOS1MATADORESAPI.pythonanywhere.com/"
+BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}"
 
 app = Flask(__name__)
 
@@ -24,6 +24,8 @@ def reservar_habitacion():
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
         tipo_habitacion = request.form.get("tipo_habitacion")
+        id_habitacion = request.form.get("id_habitacion")
+
 
         datos_persona = {
             "nombre_persona": nombre,
@@ -47,7 +49,7 @@ def reservar_habitacion():
             "fecha_salida": fecha_fin,
             "tipo_habitacion": tipo_habitacion,
             "id_personas": id_cliente,
-            "id_habitaciones": 2,
+            "id_habitaciones": id_habitacion,
         }
 
         requests.post(f"{BACKEND_URL}/cargar_reserva", json=tabla_reservas)
@@ -169,14 +171,15 @@ def reservar():
 
 
 @app.route(
-    "/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>"
+    "/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>/<id_habitacion>"
 )
-def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion):
+def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion, id_habitacion):
     reserva = {
         "cantidad_personas": cantidad_personas,
         "fecha_inicio": fecha_inicio,
         "fecha_fin": fecha_fin,
         "tipo_habitacion": tipo_habitacion,
+        "id_habitacion": id_habitacion,
     }
 
     return render_template("reservar_habitacion.html", reserva=reserva), 200
