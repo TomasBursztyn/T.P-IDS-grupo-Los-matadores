@@ -31,19 +31,22 @@ def reservar_habitacion():
             "nombre_persona": nombre,
             "dni_persona": dni,
             "email_persona": email,
-            "telefono_persona": telefono,
+            "telefono_persona": telefono
         }
 
         info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
-
+        
         # Si no esta cargado el cliente (info_cliente_json es un objeto con HTTP
         # code de 404) en el sistema lo cargamos
+
         if str(info_cliente_json) == "<Response [404]>":
             requests.post(f"{BACKEND_URL}/cargar_clientes", json=datos_persona)
             info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
+            
 
         info_cliente = info_cliente_json.json()
         id_cliente = info_cliente["id_persona"]
+        
         tabla_reservas = {
             "fecha_inicio": fecha_inicio,
             "fecha_salida": fecha_fin,
@@ -127,38 +130,10 @@ def reservar():
             chequear = True
             return render_template("reservar.html", chequear=chequear), 200
 
-        reserva = {
-            "cantidad_personas": cantidad_personas,
-            "fecha_inicio": fecha_inicio,
-            "fecha_fin": fecha_fin,
-        }
-
-        habitaciones_ocupadas_json = requests.get(
-            f"{BACKEND_URL}/mostrar_reservas/{fecha_inicio}/{fecha_fin}", json=reserva
+        habitaciones_disponibles_json = requests.get(
+            f"{BACKEND_URL}/mostrar_habitaciones_disponibles/{fecha_inicio}/{fecha_fin}/{cantidad_personas}"
         )
-        habitaciones_ocupadas = habitaciones_ocupadas_json.json()
-
-        id_habitaciones_ocupadas = []
-
-        for habitacion in habitaciones_ocupadas:
-            id_habitaciones_ocupadas.append(habitacion["id_habitaciones"])
-
-        habitaciones_totales_json = requests.get(
-            f"{BACKEND_URL}/mostrar_habitaciones", json=reserva
-        )
-        habitaciones_totales = habitaciones_totales_json.json()
-
-        habitaciones_disponibles = []
-
-        for habitacion in habitaciones_totales:
-            if habitacion[
-                "id_habitacion"
-            ] not in id_habitaciones_ocupadas and habitacion[
-                "cantidad_personas"
-            ] >= int(
-                cantidad_personas
-            ):
-                habitaciones_disponibles.append(habitacion)
+        habitaciones_disponibles = habitaciones_disponibles_json.json()
 
         return render_template(
             "disponibilidad.html",
