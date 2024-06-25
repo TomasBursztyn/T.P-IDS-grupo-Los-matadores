@@ -4,7 +4,8 @@ import requests
 
 FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
-BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}"
+# BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}"
+BACKEND_URL = "https://los1matadoresapi.pythonanywhere.com/"
 
 app = Flask(__name__)
 
@@ -26,7 +27,6 @@ def reservar_habitacion():
         tipo_habitacion = request.form.get("tipo_habitacion")
         id_habitacion = request.form.get("id_habitacion")
 
-
         datos_persona = {
             "nombre_persona": nombre,
             "dni_persona": dni,
@@ -42,7 +42,6 @@ def reservar_habitacion():
         if str(info_cliente_json) == "<Response [404]>":
             requests.post(f"{BACKEND_URL}/cargar_clientes", json=datos_persona)
             info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
-            
 
         info_cliente = info_cliente_json.json()
         id_cliente = info_cliente["id_persona"]
@@ -96,6 +95,8 @@ def reservas(dni=None):
         dni = request.form.get("dni_reserva")
 
     response = requests.get(f"{BACKEND_URL}/reserva_dni/{dni}")
+    if str(response) == "<Response [500]>":
+        return render_template("mostrar_reservas.html", reservas=[]), 200
     reservas = response.json()
 
     for reserva in reservas:
