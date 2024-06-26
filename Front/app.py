@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from datetime import date, datetime
 import requests
 
 FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
-# BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}"
 BACKEND_URL = "https://los1matadoresapi.pythonanywhere.com/"
 
 app = Flask(__name__)
@@ -34,16 +33,18 @@ def reservar_habitacion():
             "telefono_persona": telefono
         }
 
-        info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
+        response = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
+
+        # Si hay un error con la base de datos mostramos las reservas con su dni
+        if response.status_code == 500:
+            return reservas(dni)
         
-        # Si no esta cargado el cliente (info_cliente_json es un objeto con HTTP
+        # Si no esta cargado el cliente (response es un objeto con HTTP
         # code de 404) en el sistema lo cargamos
-
-        if str(info_cliente_json) == "<Response [404]>":
+        if response.status_code == 404:
             requests.post(f"{BACKEND_URL}/cargar_clientes", json=datos_persona)
-            info_cliente_json = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
-
-        info_cliente = info_cliente_json.json()
+            response = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
+        info_cliente = response.json()
         id_cliente = info_cliente["id_persona"]
         
         tabla_reservas = {
@@ -95,9 +96,11 @@ def reservas(dni=None):
         dni = request.form.get("dni_reserva")
 
     response = requests.get(f"{BACKEND_URL}/reserva_dni/{dni}")
-    if str(response) == "<Response [500]>":
-        return render_template("mostrar_reservas.html", reservas=[]), 200
-    reservas = response.json()
+    # Si hay un error con la base de datos utilizamos como reservas una lista vacia
+    if response.status_code == 500:
+        reservas = []
+    else:
+        reservas = response.json()
 
     for reserva in reservas:
         response = requests.get(f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}")
@@ -131,10 +134,15 @@ def reservar():
             chequear = True
             return render_template("reservar.html", chequear=chequear), 200
 
-        habitaciones_disponibles_json = requests.get(
+        response = requests.get(
             f"{BACKEND_URL}/mostrar_habitaciones_disponibles/{fecha_inicio}/{fecha_fin}/{cantidad_personas}"
         )
-        habitaciones_disponibles = habitaciones_disponibles_json.json()
+        # Si hay un error con la base de datos utilizamos como habitaciones
+        # disponibles una lista vacia
+        if response.status_code == 500:
+            habitaciones_disponibles = []
+        else:
+            habitaciones_disponibles = response.json()
 
         return render_template(
             "disponibilidad.html",

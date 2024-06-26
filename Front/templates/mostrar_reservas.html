@@ -43,7 +43,7 @@
   <div class="container-fluid">
     <div class="row">
       {% if reservas|length == 0 %}
-        <h1><span id="no_reserva"> No hay ninguna reserva con ese DNI</span></h1>
+        <h1 class="text-center">No hay ninguna reserva con ese DNI</h1>
       {% else %}
         {% for reserva in reservas %}
         <div class="col-md-12 col-sm-12">

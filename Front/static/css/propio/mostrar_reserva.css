@@ -54,10 +54,3 @@ h1 {
     background-color: rgba(243, 19, 19, 0.856);
     transform: scale(1.1);
 }
-
-#no_reserva{
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin: 0; 
-}
