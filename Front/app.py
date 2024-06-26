@@ -5,6 +5,7 @@ import requests
 FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
 BACKEND_URL = "https://los1matadoresapi.pythonanywhere.com/"
+QUERY = ""
 
 app = Flask(__name__)
 
@@ -33,7 +34,8 @@ def reservar_habitacion():
             "telefono_persona": telefono
         }
 
-        response = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
+        QUERY = f"{BACKEND_URL}/clientes_dni/{dni}"
+        response = requests.get(QUERY)
 
         # Si hay un error con la base de datos mostramos las reservas con su dni
         if response.status_code == 500:
@@ -42,8 +44,12 @@ def reservar_habitacion():
         # Si no esta cargado el cliente (response es un objeto con HTTP
         # code de 404) en el sistema lo cargamos
         if response.status_code == 404:
-            requests.post(f"{BACKEND_URL}/cargar_clientes", json=datos_persona)
-            response = requests.get(f"{BACKEND_URL}/clientes_dni/{dni}")
+            QUERY = f"{BACKEND_URL}/cargar_clientes"
+            requests.post(QUERY, json=datos_persona)
+
+            QUERY = f"{BACKEND_URL}/clientes_dni/{dni}"
+            response = requests.get(QUERY)
+
         info_cliente = response.json()
         id_cliente = info_cliente["id_persona"]
         
@@ -55,7 +61,8 @@ def reservar_habitacion():
             "id_habitaciones": id_habitacion,
         }
 
-        requests.post(f"{BACKEND_URL}/cargar_reserva", json=tabla_reservas)
+        QUERY = f"{BACKEND_URL}/cargar_reserva"
+        requests.post(QUERY, json=tabla_reservas)
 
         return reservas(dni)
 
@@ -79,7 +86,8 @@ def services():
 
 @app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
 def eliminar_reserva(id_reserva, dni):
-    requests.delete(f"{BACKEND_URL}/reservas/{id_reserva}")
+    QUERY = f"{BACKEND_URL}/reservas/{id_reserva}"
+    requests.delete(QUERY)
 
     return reservas(dni)
 
@@ -95,7 +103,8 @@ def reservas(dni=None):
     if not dni:
         dni = request.form.get("dni_reserva")
 
-    response = requests.get(f"{BACKEND_URL}/reserva_dni/{dni}")
+    QUERY = f"{BACKEND_URL}/reserva_dni/{dni}"
+    response = requests.get(QUERY)
     # Si hay un error con la base de datos utilizamos como reservas una lista vacia
     if response.status_code == 500:
         reservas = []
@@ -103,7 +112,8 @@ def reservas(dni=None):
         reservas = response.json()
 
     for reserva in reservas:
-        response = requests.get(f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}")
+        QUERY = f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}"
+        response = requests.get(QUERY)
         reserva_info = response.json()
         
         reserva["tipo_habitacion"] = reserva_info["tipo_habitacion"]
@@ -134,9 +144,8 @@ def reservar():
             chequear = True
             return render_template("reservar.html", chequear=chequear), 200
 
-        response = requests.get(
-            f"{BACKEND_URL}/mostrar_habitaciones_disponibles/{fecha_inicio}/{fecha_fin}/{cantidad_personas}"
-        )
+        QUERY = f"{BACKEND_URL}/mostrar_habitaciones_disponibles/{fecha_inicio}/{fecha_fin}/{cantidad_personas}"
+        response = requests.get(QUERY)
         # Si hay un error con la base de datos utilizamos como habitaciones
         # disponibles una lista vacia
         if response.status_code == 500:
