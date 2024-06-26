@@ -1,15 +1,14 @@
-# T.P-IDS_Los_Matadores-Front
 
-* [FrontEnd Deploy](https://los1matadoresfront.pythonanywhere.com/)
+# T.P-IDS_Los_Matadores-Frontend
+
 * [BackEnd Deploy](https://los1matadoresapi.pythonanywhere.com/)
-* [Documentacion](https://docs.google.com/document/d/1U1F5TvG47Qx70mf7NlDCLrNS0qrC3ejrLq9gUcLnlqk/edit#heading=h.nj23sjpj5u97)
+* [FrontEnd Deploy](https://los1matadoresfront.pythonanywhere.com/)
+* [Documentacion](https://drive.google.com/file/d/1-EBHzEelHRzIKVtmZrLVnO0IL9yqgxFQ/view?usp=sharing)
 * [Trello](https://trello.com/b/K0HIyndU/tp-ids)
 * [Hitos.txt](https://github.com/TomasBursztyn/T.P-IDS-grupo-Los-matadores/files/15490617/Hitos.txt)
 
-## Idea elegida: Sitio web de Hospedajes.
 
-Creación de un sitio web que ofrezca hospedaje, podría tratarse de un hotel, hostería, o casa 
-que quiera ofrecer alojamiento turístico
+Repositorio del FrontEnd del Trabajo Practico de la materia Introducción al Desarrollo de Software del grupo Los Matadores
 
 ## Integrantes:
 * Tomas Nahuel Bursztyn 110965
