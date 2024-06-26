@@ -1,11 +1,16 @@
-https://trello.com/b/K0HIyndU/tp-ids
+# T.P-IDS_Los_Matadores-Frontend
 
-Idea elegida: Sitio web de Hospedajes.
+* [BackEnd Deploy](https://los1matadoresapi.pythonanywhere.com/)
+* [FrontEnd Deploy](https://los1matadoresfront.pythonanywhere.com/)
+* [Documentacion](https://drive.google.com/file/d/1-EBHzEelHRzIKVtmZrLVnO0IL9yqgxFQ/view?usp=sharing)
+* [Trello](https://trello.com/b/K0HIyndU/tp-ids)
+* [Hitos.txt](https://github.com/TomasBursztyn/T.P-IDS-grupo-Los-matadores/files/15490617/Hitos.txt)
 
-Creación de un sitio web que ofrezca hospedaje, podría tratarse de un hotel, hostería, o casa 
-que quiera ofrecer alojamiento turístico
+Repositorio del BackEnd del Trabajo Practico de la materia Introducción al Desarrollo de Software del grupo Los Matadores
 
-Integrantes:
+Aca se crea la base de datos, y la aplicacion del BackEnd que corre en Flask con todos sus endpoints interactuando con la base de datos.
+
+## Integrantes:
 * Tomas Nahuel Bursztyn 110965
 * Valentin Provost 111537
 * Santiago Garcia Tuñon 112520
@@ -18,4 +23,3 @@ Integrantes:
 * Axel Carlos Lopez 111713
 
 
-[Hitos.txt](https://github.com/TomasBursztyn/T.P-IDS-grupo-Los-matadores/files/15490617/Hitos.txt)
