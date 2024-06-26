@@ -1,0 +1,424 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Luna de Plata Suites
+{% endblock %}
+
+{% block styles %}
+
+<link 
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/propio/home.css') }}"
+/>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{{ url_for('static', filename='js/propio/contacto.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+<!-- end:fh5co-header -->
+<aside id="fh5co-hero" class="js-fullheight">
+	<div class="flexslider js-fullheight">
+		<ul class="slides borde-naranja">
+			<li style="background-image: url('{{ url_for('static', filename='images/fondo.jpg') }}');">
+				<div class="overlay-gradient"></div>
+				<div class="container">
+					<div class="col-md-12 col-md-offset-0 text-center slider-text">
+						<div class="slider-text-inner js-fullheight">
+							<div class="desc">
+								<p><span>Luna de Plata Suites</span></p>
+								<h2>El mejor lugar para disfrutar la vida</h2>
+								<p>
+									<a href="{{ url_for('reservar')}}" class="btn btn-primary btn-lg">Reserva Ahora</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li style="background-image: url('{{ url_for('static', filename='images/fondo_2.jpeg') }}');">
+				<div class="overlay-gradient"></div>
+				<div class="container">
+					<div class="col-md-12 col-md-offset-0 text-center slider-text">
+						<div class="slider-text-inner js-fullheight">
+							<div class="desc">
+								<p><span>Luna de Plata Suites</span></p>
+								<h2>Reserva una habitación para tus vacaciones familiares</h2>
+								<p>
+									<a href="{{ url_for('reservar')}}" class="btn btn-primary btn-lg">Reserva Ahora</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li style="background-image: url('{{ url_for('static', filename='images/fondo_3.jpg') }}');">
+				<div class="overlay-gradient"></div>
+				<div class="container">
+					<div class="col-md-12 col-md-offset-0 text-center slider-text">
+						<div class="slider-text-inner js-fullheight">
+							<div class="desc">
+								<p><span>Luna de Plata Suites</span></p>
+								<h2>Haga que sus vacaciones sean cómodas</h2>
+								<p>
+									<a href="{{ url_for('reservar')}}" class="btn btn-primary btn-lg">Reserva Ahora</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+</aside>
+
+<div id="featured-hotel" class="fh5co-bg-color borde-naranja">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="titulo-habitaciones text-center">
+					<h2>Nuestras Habitaciones</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="feature-full-1col">
+				<div class="image" style="background-image: url('{{ url_for('static', filename='images/flotante.jpg') }}');">
+					<div class="descrip text-center">
+						<p><small>Espacio para</small><span>hasta 2 personas</span></p>
+					</div>
+				</div>
+				<div class="desc">
+					<h3>Suite Flotante</h3>
+					<p>Descubre nuestras nuevas habitaciones, ubicadas sobre el lago y completamente vidriadas. Experimenta la sensación de estar inmerso en la naturaleza mientras disfrutas de la tranquilidad y la serenidad que ofrecen estas modernas instalaciones. </p>
+					<p><a href="{{ url_for('reservar')}}" class="btn btn-primary btn-luxe-primary">Reservar Ahora <i class="ti-angle-right"></i></a>
+					</p>
+				</div>
+			</div>
+
+			<div class="feature-full-2col">
+				<div class="f-hotel">
+					<div class="image" style="background-image: url('{{ url_for('static', filename='images/premium.jpg') }}');">
+						<div class="descrip text-center">
+							<p><small>Espacio para</small><span>hasta 6 personas</span></p>
+						</div>
+					</div>
+					<div class="desc">
+						<h3>Suite Premium</h3>
+						<p>Disfruta de la opulencia de nuestras habitaciones de lujo en el complejo junto al lago, un destino excepcional para aquellos que buscan una experiencia de confort y elegancia. Perfecto para familias o grupos de amigos que desean sumergirse en el lujo y la sofisticación durante su estancia. </p>
+						<p><a href="{{ url_for('reservar')}}" class="btn btn-primary btn-luxe-primary">Reservar Ahora <i
+									class="ti-angle-right"></i></a></p>
+					</div>
+				</div>
+				<div class="f-hotel">
+					<div class="image" style="background-image: url('/static/images/standard.jpg');">
+						<div class="descrip text-center">
+							<p><small>Espacio para</small><span>hasta 4 personas</span></p>
+						</div>
+					</div>
+					<div class="desc">
+						<h3>Estandar</h3>
+						<p>Las habitaciones estándar son refugios acogedores que brindan las comodidades básicas para una estadía placentera. Son la opción perfecta tanto para viajeros individuales como para parejas que buscan una experiencia cómoda y asequible durante su visita. </p>
+						<p><a href="{{ url_for('reservar')}}" class="btn btn-primary btn-luxe-primary">Reservar Ahora <i
+									class="ti-angle-right"></i></a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="hotel-facilities" class="borde-naranja">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title text-center">
+					<h2><span id="titulo-servicios">Servicios del Hotel</span></h2>
+				</div>
+			</div>
+		</div>
+
+		<div id="tabs">
+			<nav class="tabs-nav">
+				<a href="#" class="active" data-tab="tab1">
+					<i class="flaticon-restaurant icon"></i>
+					<span>Restaurante</span>
+				</a>
+				<a href="#" data-tab="tab2">
+					<i class="flaticon-cup icon"></i>
+					<span>Bar</span>
+				</a>
+				<a href="#" data-tab="tab3">
+
+					<i class="flaticon-car icon"></i>
+					<span>Pick-up</span>
+				</a>
+				<a href="#" data-tab="tab4">
+
+					<i class="flaticon-swimming icon"></i>
+					<span>Piscina</span>
+				</a>
+				<a href="#" data-tab="tab5">
+
+					<i class="flaticon-massage icon"></i>
+					<span>Spa</span>
+				</a>
+				<a href="#" data-tab="tab6">
+
+					<i class="flaticon-bicycle icon"></i>
+					<span>Gimnasio</span>
+				</a>
+			</nav>
+			<div class="tab-content-container">
+				<div class="tab-content active show" data-tab-content="tab1">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="{{ url_for('static', filename='images/Restaurante.jpg') }}"
+									class="img-responsive" alt="Image">
+							</div>
+							<div class="col-md-6">
+								<span class="super-heading-sm"></span>
+								<h3 class="heading">Restaurante</h3>
+								<p>Descubre una experiencia culinaria excepcional en el restaurante de Luna de Plata Suites. Con un ambiente elegante y acogedor, nuestro restaurante es el lugar perfecto para deleitar tu paladar y disfrutar de una comida memorable.</p>
+								<p>Ofrecemos una amplia variedad de platos exquisitos, preparados con ingredientes frescos y de la más alta calidad por nuestros talentosos chefs. Desde cocina internacional hasta especialidades locales, nuestro menú está diseñado para satisfacer todos los gustos y preferencias.</p>
+								<p>Nuestro restaurante cuenta con cómodas áreas de asientos, un servicio impecable y una atmósfera que invita a la relajación y el disfrute. Es el sitio ideal tanto para cenas románticas como para reuniones familiares o de negocios.</p>
+								<p>Visítanos y déjate sorprender por una experiencia gastronómica inigualable en el Restaurante de Luna de Plata Suites. Ya sea que vengas a disfrutar de un almuerzo tranquilo o una cena elegante, te esperamos con los brazos abiertos y una mesa preparada especialmente para ti.</p>
+								<p class="service-hour">
+									<span>Horas de Servicio</span>
+									<strong>7:30 AM - 8:00 PM</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content" data-tab-content="tab2">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="{{ url_for('static', filename='images/bar.jpg') }}"
+									class="img-responsive" alt="Image">
+							</div>
+							<div class="col-md-6">
+								<span class="super-heading-sm"></span>
+								<h3 class="heading">Bar</h3>
+								<p>En Luna de Plata Suites, te invitamos a disfrutar de una noche inolvidable en nuestro exclusivo bar. Con un ambiente elegante y acogedor, nuestro bar es el lugar perfecto para relajarte y socializar.</p>
+								<p>Ofrecemos una amplia selección de cócteles creativos, vinos de calidad y cervezas artesanales, preparados por nuestros expertos bartenders. Ya sea que prefieras un clásico Martini o un innovador cóctel de autor, encontrarás la bebida perfecta para cada ocasión.</p>
+								<p>Nuestro bar cuenta con cómodas áreas de asientos, música a tu elección y una atmósfera que invita a la conversación y el disfrute. Es el sitio ideal tanto para encuentros íntimos como para reuniones con amigos o colegas.</p>
+								<p>Haz tu reservación hoy y vive una experiencia inolvidable en el bar de Luna de Plata Suites. Aquí, cada noche es especial y cada visita, un placer.</p>
+								<p class="service-hour">
+									<span>Horas de Servicio</span>
+									<strong>7:30 AM - 8:00 PM</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content" data-tab-content="tab3">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="{{ url_for('static', filename='images/pick_up.jpg') }}"
+									class="img-responsive" alt="Image">
+							</div>
+							<div class="col-md-6">
+								<span class="super-heading-sm"></span>
+								<h3 class="heading">Pick Up</h3>
+								<p>En Luna de Plata Suites, nos preocupamos por tu comodidad desde el momento en que llegas a la ciudad. Ofrecemos un servicio de pick-up exclusivo y personalizado para nuestros huéspedes. Nuestro equipo de conductores profesionales te recibirá en el aeropuerto o estación de tren con un cartel identificativo y te trasladará directamente al hotel en nuestros vehículos de lujo.</p>
+								<p>Disfruta de un viaje seguro y confortable mientras te relajas en nuestras modernas camionetas pick-up, equipadas con aire acondicionado, Wi-Fi gratuito y refrescos. Nos aseguramos de que tu llegada sea una experiencia sin estrés, permitiéndote comenzar tus vacaciones o viaje de negocios de la mejor manera posible.</p>
+								<p>Reserva nuestro servicio de pick-up al momento de hacer tu reserva de habitación y deja que Luna de Plata Suites se encargue del resto. ¡Estamos aquí para hacer de tu estancia una experiencia inolvidable!</p>
+								<p class="service-hour">
+									<span>Horas de Servicio</span>
+									<strong>7:30 AM - 8:00 PM</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content" data-tab-content="tab4">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="{{ url_for('static', filename='images/piscina.jpg') }}"
+									class="img-responsive" alt="Image">
+							</div>
+							<div class="col-md-6">
+								<span class="super-heading-sm"></span>
+								<h3 class="heading">Piscina</h3>
+								<p>Disfruta de un oasis de relajación en la piscina de Luna de Plata Suites. Rodeada de cómodas tumbonas y sombrillas, nuestra elegante piscina es perfecta para escapar del estrés diario y disfrutar del sol.</p>
+								<p>Relájate con refrescantes bebidas y aperitivos servidos directamente en tu área de descanso, o disfruta de un refrescante chapuzón en nuestras aguas cristalinas. Nuestro atento personal y servicio de toallas están siempre disponibles para asegurar que tu visita sea perfecta.</p>
+								<p>Ven y descubre el refugio ideal para relajarte y revitalizarte en la piscina de Luna de Plata Suites. ¡Te esperamos!</p>
+								<p class="service-hour">
+									<span>Horas de Servicio</span>
+									<strong>7:30 AM - 8:00 PM</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content" data-tab-content="tab5">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="{{ url_for('static', filename='images/spa.jpg') }}"
+									class="img-responsive" alt="Image">
+							</div>
+							<div class="col-md-6">
+								<span class="super-heading-sm"></span>
+								<h3 class="heading">Spa</h3>
+								<p>Sumérgete en un oasis de relajación y rejuvenecimiento en el spa de Luna de Plata Suites. Nuestro equipo de terapeutas expertos te guiará a través de tratamientos diseñados para renovar tus sentidos y revitalizar tu cuerpo.</p>
+								<p>Disfruta de masajes relajantes, tratamientos faciales y rituales de bienestar en un ambiente tranquilo y acogedor. Cada visita al spa de Luna de Plata Suites es una oportunidad para desconectar del estrés diario y conectar contigo mismo.</p>
+								<p>Descubre el verdadero significado de la relajación en el spa de Luna de Plata Suites, donde te esperamos para que experimentes un mundo de calma y bienestar.</p>
+								<p class="service-hour">
+									<span>Horas de Servicio</span>
+									<strong>7:30 AM - 8:00 PM</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content" data-tab-content="tab6">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="{{ url_for('static', filename='images/hotel.jpg') }}"
+									class="img-responsive" alt="Image">
+							</div>
+							<div class="col-md-6">
+								<span class="super-heading-sm"></span>
+								<h3 class="heading">Gimnasio</h3>
+								<p>Logra tus objetivos de fitness en el gimnasio de Luna de Plata Suites. Equipado con lo último en equipos de entrenamiento, nuestro gimnasio te ofrece una experiencia de ejercicio completa en un ambiente moderno y acogedor.</p>
+								<p>Desde máquinas de cardio hasta pesas libres, encontrarás todo lo que necesitas para tu rutina de entrenamiento. Además, nuestro equipo de entrenadores personales está disponible para brindarte asesoramiento y motivación.</p>
+								<p>En el gimnasio de Luna de Plata Suites, estamos comprometidos a ayudarte a alcanzar tus metas de bienestar. ¡Únete a nosotros y comienza tu viaje hacia un estilo de vida más saludable hoy mismo!</p>
+								<p class="service-hour">
+									<span>Horas de Servicio</span>
+									<strong>7:30 AM - 8:00 PM</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="testimonial" class="borde-naranja">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title text-center">
+					<h2><span id="titulo-reseña">Reseñas</span></h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="testimony">
+					<blockquote>
+						&ldquo;Increíble experiencia en Luna de Plata Suites. Personal amable, habitación impecable y vista impresionante. Volveré seguro.&rdquo;
+					</blockquote>
+					<p class="author"><cite>María López</cite></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="testimony">
+					<blockquote>
+						&ldquo;Luna de Plata Suites cumplió todas mis expectativas. Habitación cómoda, desayuno delicioso y personal servicial. Lo recomendaría.&rdquo;
+					</blockquote>
+					<p class="author"><cite>Juan Martínez</cite></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="testimony">
+					<blockquote>
+						&ldquo;Estancia maravillosa en Luna de Plata Suites. Ubicación perfecta, habitación elegante y spa divino. Volveré en mi próximo viaje.&rdquo;
+					</blockquote>
+					<p class="author"><cite>Ana García</cite></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="fondo-contacto borde-naranja">
+	<div>
+		<div
+		class="borde-naranja fondo col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table"
+		style="background-image: url({{ url_for('static', filename='images/fondo_contacto.jpg') }});"
+		>
+			<div class="fh5co-intro fh5co-table-cell"
+			>
+			<h1 class="text-center">Contáctanos</h1>
+			</div>
+		<div class="overlay"></div>
+		</div>
+	</div>
+	
+	<div id="fh5co-contact-section">
+		<div class="row">
+			<div class="col-md-6">
+				<div id="map" class="fh5co-map">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3337.1930519959883!2d-66.23843602354299!3d-33.23524548652469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDE0JzA2LjkiUyA2NsKwMTQnMDkuMSJX!5e0!3m2!1ses-419!2sar!4v1717448192337!5m2!1ses-419!2sar"
+						width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="col-md-12">
+					<h3>Nuestra Ubicación</h3>
+					<p>Ubicado en la localidad que lleva su nombre a la vera del lago Potrero de los Funes, y a 1.000 m
+						sobre el nivel del mar, con un microclima ideal.
+					</p>
+					<ul class="contact-info">
+						<li><i class="ti-map"></i>Ruta 18 km 16 | Potrero de los Funes | San Luis | CP (5701)</li>
+						<li><i class="ti-mobile"></i>Tel\Fax: +54 9 (266) 4530500</li>
+						<li><i class="ti-envelope"></i>reservas@lunadeplatasuites.sanluis.gov.ar</li>
+					</ul>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<form action="{{ url_for('contacto')}}" method="POST">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="contacto_nombre">Nombre y Apellido:</label>
+									<input type="text" class="form-control" name="contacto_nombre"
+										placeholder="Nombre y Apellido" id="contacto_nombre">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="contacto_email">Email:</label>
+									<input type="text" class="form-control" name="contacto_email" placeholder="Email"
+										id="contacto_email">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="contacto_mensaje">Mensaje:</label>
+									<textarea class="form-control" name="contacto_mensaje" cols="30" rows="7" placeholder="Mensaje" id="contacto_mensaje" style="resize: none;"></textarea>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="submit" id="btn_enviar_contacto" value="Envíar" class="btn btn-primary">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

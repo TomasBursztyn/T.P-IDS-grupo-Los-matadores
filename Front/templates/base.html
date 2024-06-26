@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="{{url_for('static', filename='/fonts/favicon.ico', _external=True) }}">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
+
+	<!-- Stylesheets -->
+	<!-- Dropdown Menu -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/superfish.css', _external=True) }}">
+	<!-- Owl Slider -->
+	<!-- <link rel="stylesheet" href="static/css/library/owl.carousel.css"> -->
+	<!-- <link rel="stylesheet" href="static/css/library/owl.theme.default.min.css"> -->
+	<!-- Date Picker -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/bootstrap-datepicker.min.css', _external=True) }}">
+	<!-- CS Select -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/cs-select.css', _external=True) }}">
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/cs-skin-border.css', _external=True) }}">
+
+	<!-- Themify Icons -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/themify-icons.css', _external=True) }}">
+	<!-- Flat Icon -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/flaticon.css', _external=True) }}">
+	<!-- Icomoon -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/icomoon.css', _external=True) }}">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/flexslider.css', _external=True) }}">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/library/style.css', _external=True) }}">
+
+	<!-- BLOQUE STYLES -->
+	<link rel="stylesheet" href="{{url_for('static', filename='/css/propio/base.css', _external=True) }}">
+	{% block styles %}
+
+	{% endblock %}
+
+	<!-- BLOQUE JS -->
+	<script src="{{ url_for('static', filename='/js/propio/footer.js') }}"></script>
+	{% block js %}
+
+	{% endblock %}
+
+	<!-- BLOQUE TITLE DE LA PAGINA -->
+	<title>
+	{% block title %}
+		
+	{% endblock %}
+	</title>
+
+
+	<!-- Modernizr JS -->
+	<script src="{{url_for('static', filename='/js/library/modernizr-2.6.2.min.js', _external=True) }}"></script>
+
+</head>
+
+<body>
+	<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+			<div id="fh5co-header">
+				<header id="fh5co-header-section">
+					<div class="container">
+						<div class="nav-header">
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+							<h1 id="fh5co-logo"><a href="{{ url_for('home') }}">Luna de PLata Suites</a></h1>
+							<nav id="fh5co-menu-wrap" role="navigation">
+								<ul class="sf-menu" id="fh5co-primary-menu">
+									<li><a href="{{ url_for('home') }}">Home</a></li>
+									<li>
+										<a href="{{ url_for('habitaciones') }}" class="fh5co-sub-ddown">Habitaciones</a>
+									</li>
+									<li><a href="{{ url_for('servicios') }}">Servicios</a></li>
+									<li><a href="{{ url_for('reservar') }}">Reservar</a></li>
+									<li><a href="{{ url_for('contacto') }}">Contáctanos</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</header>
+
+			</div>
+			<!-- end:fh5co-header -->
+			{% block body %}
+
+
+			{% endblock %}
+
+			<footer id="footer" class="fh5co-bg-color">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="copyright">
+								<p><small>COPYRIGHT &copy; 2024 TODOS LOS DERECHOS RESERVADOS <br> T.P. INTRODUCCIÓN AL DESARROLLO DE SOFTWARE <br>
+										Diseñado por "Los Matadores" 
+								</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-3">
+									<h3>Vistas</h3>
+									<ul class="link">
+										<li><a href="{{url_for('home')}}">Home</a></li>
+										<li><a href="{{url_for('habitaciones')}}">Habitaciones</a></li>
+										<li><a href="{{url_for('reservar')}}">Reservas</a></li>
+										<li><a href="{{url_for('contacto')}}">Contacto</a></li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<h3>Suscripción</h3>
+									<p>Para más información sobre Luna de Plata Suite ingrese su mail.</p>
+									<form action="#" id="form-subscribe">
+										<div class="form-field">
+											<input type="email" placeholder="Ingrese email" id="footer-email-input" required>
+											<input type="submit" id="footer-email-btn" value="Enviar">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<ul class="social-icons">
+								<li>
+									<a ><i class="icon-twitter-with-circle"></i></a>
+									<a ><i class="icon-facebook-with-circle"></i></a>
+									<a ><i class="icon-instagram-with-circle"></i></a>
+									<a ><i class="icon-linkedin-with-circle"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+		<!-- END fh5co-page -->
+
+	</div>
+	<!-- END fh5co-wrapper -->
+
+	<!-- Javascripts -->
+	<script src="{{url_for('static', filename='js/library/jquery-2.1.4.min.js', _external=True) }}"></script>
+	<!-- Dropdown Menu -->
+	<script src="{{ url_for('static', filename='js/library/hoverIntent.js', _external=True) }}"></script>
+	<script src="{{ url_for('static', filename='js/library/superfish.js', _external=True) }}"></script>
+	<!-- Bootstrap -->
+	<script src="{{ url_for('static', filename= 'js/library/bootstrap.min.js', _external=True) }}"></script>
+	<!-- Waypoints -->
+	<script src="{{ url_for('static', filename= 'js/library/jquery.waypoints.min.js', _external=True) }}"></script>
+	<!-- Counters -->
+	<script src="{{ url_for('static', filename='js/library/jquery.countTo.js', external=True) }}"></script>
+	<!-- Stellar Parallax -->
+	<script src="{{ url_for('static', filename='js/library/jquery.stellar.min.js', external=True) }}"></script>
+	<!-- Owl Slider -->
+	<!-- // <script src="js/library/owl.carousel.min.js"></script> -->
+	<!-- Date Picker -->
+	<script src="{{ url_for('static', filename='js/library/bootstrap-datepicker.min.js', _external=True) }}"></script>
+	<!-- CS Select -->
+	<script src="{{ url_for('static', filename='js/library/classie.js', _external=True) }}"></script>
+	<script src="{{ url_for('static', filename='js/library/selectFx.js', _external=True) }}"></script>
+	<!-- Flexslider -->
+	<script src="{{ url_for('static', filename='js/library/jquery.flexslider-min.js', _external=True) }}"></script>
+
+	<script src="{{ url_for('static', filename='js/library/custom.js', _external=True) }}"></script>
+
+</body>
+
+</html>

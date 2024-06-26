@@ -1,0 +1,66 @@
+.fondo {
+    position: relative;
+    background-size: cover;
+    margin-bottom: 6em;
+}
+
+.borde-naranja {
+    border-bottom: 1px solid #ff5722;
+}
+
+.fondo-contacto .overlay {
+    background-color: black;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+}
+
+.fondo-contacto .fh5co-intro h1 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.titulo-habitaciones {
+    margin-top: 12rem;
+    margin-bottom: 3rem;
+    float: left;
+    width: 100%;
+    z-index: 99;
+}
+
+.titulo-habitaciones h2 {
+    font-size: 35px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+#titulo-servicios {
+    margin-bottom: -3em;
+    float: left;
+    width: 100%;
+    z-index: 99;
+    font-size: 35px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+
+#titulo-reseña {
+    margin-top: -1em;
+    margin-bottom: -3em;
+    float: left;
+    width: 100%;
+    z-index: 99;
+    font-size: 35px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+}

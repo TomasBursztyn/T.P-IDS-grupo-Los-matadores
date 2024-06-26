@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Reservar
+{% endblock %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/propio/reservar.css') }}">
+
+{% endblock %}
+
+{% block js %}
+
+<!-- esto es para que en el archivo js/propio/reservar.js este disponible la
+variable chequear -->
+<script type="text/javascript">
+    const chequear = "{{ chequear }}";
+</script>
+
+<script src="{{ url_for('static', filename='js/propio/reservar.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="fh5co-parallax" data-stellar-background-ratio="0.5" style="background-image: url({{ url_for('static', filename='images/fondo_reservar.jpg') }});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div
+                class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                <div class="fh5co-intro fh5co-table-cell">
+                    <h1 class="text-center" style="text-transform: uppercase">Reservar</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fh5co-contact-section">
+    <div class="col-md-6">
+        <div class="row section-title text-center centro_habitaciones">
+            <h2>Consultar Habitaciones</h2>
+        </div>
+        <div class="row">
+            <form method="POST" action="{{ url_for('reservar') }}">
+                <div class="col-md-12 centro_column1">
+                    <div class="form-group">
+                        <label for="cantidad_personas">Cantidad de personas:</label>
+                        <input type="number" min="1" max="6" id="cantidad_personas" class="form-control" name="cantidad_personas" placeholder="Ingrese la cantidad de personas" required inputmode="numeric">
+                    </div>
+                    <div class="form-group">
+                        <label for="inicio_fecha">Inicio de reserva:</label>
+                        <input type="date" id="inicio_fecha" class="form-control" name="inicio_fecha"
+                            placeholder="Ingrese una fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fin_fecha">Fin de reserva:</label>
+                        <input type="date" id="fin_fecha" class="form-control" name="fin_fecha"
+                            placeholder="ingrese una fecha" required>
+                    </div>
+                    <div class="form-group centrar_disponibilidad text-center">
+                        <input type="submit" value="Consultar Disponibilidad" id="btn_disponibilidad" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="row section-title text-center centrar_reservas">
+            <h2>Mis Reservas</h2>
+        </div>
+        <div class="row">
+            <form method="POST" action="{{ url_for('reservas') }}">
+                <div class="col-md-12 centro_column2">
+                    <div class="form-group centrar_dni">
+                        <label for="dni_reserva">DNI</label>
+                        <input type="number" id="dni_reserva" class="form-control" name="dni_reserva" placeholder="Ingrese su DNI" required min="1" max="99999999">
+                    </div>
+                    <div class="form-group centrar_dni_boton text-center">
+                        <input type="submit" value="Consultar Reservas" id="btn_reservas" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

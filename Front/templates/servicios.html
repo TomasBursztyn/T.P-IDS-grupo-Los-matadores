@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Servicios
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="fh5co-parallax" style="background-image: url({{ url_for('static', filename='images/fondo_services.jpg')}});" ; data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+				<div class="fh5co-intro fh5co-table-cell">
+					<h1 class="text-center">Nuestros Servicios</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+
+<div id="fh5co-services-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="services">
+					<span><i class="ti-location-pin"></i></span>
+					<div class="desc">
+						<h3>Ubicación Accesible</h3>
+						<p>Fácil acceso sin salir del gran Circuito de Potrero de los Funes, con estacionamiento incluido y a tan sólo 15 minutos de la Ciudad de San Luis</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="services">
+					<span><i class="ti-user"></i></span>
+					<div class="desc">
+						<h3>Personal y Asistencia</h3>
+						<p>Nuestro equipo está aquí para hacer que tu estadía sea perfecta. Personal disponible las 24hs para cualquier emergencia. ¡Tu comodidad es nuestra prioridad número uno!</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="services">
+					<span><i class="ti-calendar"></i></span>
+					<div class="desc">
+						<h3>Reservas</h3>
+						<p>Reserve su estancia en Luna de Plata Suites con facilidad y comodidad. Nuestro servicio de reservas le garantiza una experiencia sin complicaciones, asegurando que su visita sea perfecta desde el primer momento.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="services">
+					<span><i class="ti-star"></i></span>
+					<div class="desc">
+						<h3>Restaurant y Bar</h3>
+						<p>Descubra el placer gastronómico en nuestro Restaurante y Bar. Saboree platos internacionales y cócteles únicos en un ambiente elegante. ¡Una experiencia culinaria excepcional le espera!</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="services">
+					<span><i class="ti-game"></i></span>
+					<div class="desc">
+						<h3>Actividades</h3>
+						<p>Ofrecemos entretenimiento para toda la famlia. ¡Incluimos salas de juegos, cine, casino y hasta mini golf! También te invitamos a probar nuestro nuevo servicio de kayaks y bicicletas acuaticas.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="services">
+					<span><i class="ti-face-smile"></i></span>
+					<div class="desc">
+						<h3>Fitness y Spa</h3>
+						<p>Enmarcado en un espacio privilegiado, ideal para distenderse y eliminar tensiones. Incluye gimnasio, pileta cubierta, sauna, jacuzzi y mucho más.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

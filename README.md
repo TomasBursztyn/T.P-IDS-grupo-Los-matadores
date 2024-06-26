@@ -1,3 +1,4 @@
+
 # T.P-IDS_Los_Matadores-Frontend
 
 * [BackEnd Deploy](https://los1matadoresapi.pythonanywhere.com/)
@@ -6,9 +7,8 @@
 * [Trello](https://trello.com/b/K0HIyndU/tp-ids)
 * [Hitos.txt](https://github.com/TomasBursztyn/T.P-IDS-grupo-Los-matadores/files/15490617/Hitos.txt)
 
-Repositorio del BackEnd del Trabajo Practico de la materia Introducción al Desarrollo de Software del grupo Los Matadores
 
-Aca se crea la base de datos, y la aplicacion del BackEnd que corre en Flask con todos sus endpoints interactuando con la base de datos.
+Repositorio del FrontEnd del Trabajo Practico de la materia Introducción al Desarrollo de Software del grupo Los Matadores
 
 ## Integrantes:
 * Tomas Nahuel Bursztyn 110965
@@ -21,5 +21,3 @@ Aca se crea la base de datos, y la aplicacion del BackEnd que corre en Flask con
 * Julian Lauski 112046
 * Ulises Distefano 111883
 * Axel Carlos Lopez 111713
-
-

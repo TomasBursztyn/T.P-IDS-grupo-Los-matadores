@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Tus Reservas
+{% endblock %}
+
+{% block styles %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/propio/disponibilidad.css') }}"
+/>
+
+{% endblock %} 
+
+{% block js %} 
+
+{% endblock %} 
+
+{% block body %}
+<div
+  class="fh5co-parallax"
+  data-stellar-background-ratio="0.5"
+  style="background-image: url({{ url_for('static', filename='images/fondo_reservar.jpg') }});"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table"
+      >
+        <div class="fh5co-intro fh5co-table-cell">
+          <h1 class="text-center" style="text-transform: uppercase">
+            Tus reservas
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="featured-hotel" class="fh5co-bg-color borde-naranja">
+	<div class="container">
+		<div class="row">
+      {% if reservas|length == 0 %}
+        <h1 class="text-center">No hay ninguna reserva con ese DNI</h1>
+      {% else %}
+        {% for reserva in reservas %}
+        <div class="feature-full-1col">
+          <div class="image imagen-{{reserva.cantidad_personas}}">
+            <div class="descrip text-center">
+              <div>
+                <p><small>Espacio para</small><span>hasta {{reserva.cantidad_personas}} personas</span></p>
+              </div>
+              <div class="divisor">
+                <p><small>mejor precio</small><span>
+                  {% if reserva.tipo_habitacion == "Suite Flotante" %}
+                  $100
+                  {% elif reserva.tipo_habitacion == "Standard" %}
+                  $40
+                  {% else %}
+                  $70
+                  {% endif %}/noche</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="desc">
+            <h3>{{reserva.tipo_habitacion}}</h3>
+            <p>
+              {% if reserva.tipo_habitacion == "Suite Flotante" %}
+              Una habitación flotante con cama doble, baño privado y terraza con vistas al agua. Ideal para una estancia tranquila y confortable.
+              {% elif reserva.tipo_habitacion == "Standard" %}
+              Una habitación estándar con cama doble, baño privado y balcón. Ideal para una estancia cómoda y relajante.
+              {% else %}
+              Una habitación premium con cama doble, baño privado, sala de estar y balcón con vistas panorámicas. Ideal para una estancia lujosa y cómoda.
+              {% endif %}
+            </p>
+            <p class="service-hour">
+              <span>Desde</span>
+              <strong>{{reserva.fecha_inicio}}</strong>
+            </p>
+            <p class="service-hour">
+              <span>Hasta</span>
+              <strong>{{reserva.fecha_salida}}</strong>
+            </p>
+            <form method="POST" action="{{ url_for('eliminar_reserva', id_reserva = reserva.id_reserva, dni = reserva.dni_persona) }}">
+              <input type="submit" name="boton_cancelar" value="Cancelar Ahora" class="btn btn-primary btn-luxe-primary" />
+          </form>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

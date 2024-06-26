@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Habitaciones
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="fh5co-parallax" style="background-image: url('{{ url_for('static', filename='images/fondo_habitaciones.jpg') }}');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+				<div class="fh5co-intro fh5co-table-cell">
+					<h1 class="text-center">Nuestras Habitaciones</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="fh5co-hotel-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="hotel-content">
+					<div class="hotel-grid" style="background-image: url({{ url_for('static', filename='images/suite_flotante.jpg') }});">
+						<div class="price"><small>mejor precio</small><span>$100/noche</span></div>
+						<a class="book-now text-center" href="{{ url_for('reservar_habitacion') }}"><i class="ti-calendar"></i> reservar</a>
+					</div>
+					<div class="desc">
+						<h3><a href="#">SUITE FLOTANTE</a></h3>
+						<p>Nuevas habitaciones construidas sobre el lago, totalmente vidriadas y con una vista 360°. </p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="hotel-content">
+					<div class="hotel-grid" style="background-image: url({{ url_for('static', filename='images/suite_premium.jpg') }});">
+						<div class="price"><small>mejor precio</small><span>$70/noche</span></div>
+						<a class="book-now text-center" href="{{ url_for('reservar_habitacion') }}"><i class="ti-calendar"></i> reservar</a>
+					</div>
+					<div class="desc">
+						<h3><a href="#">SUITE PREMIUM</a></h3>
+						<p>Habitaciones de lujo ubicados en el complejo junto al lago. Excelente lugar para familias o grupos de amigos que buscan una experiencia de lujo y confort.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="hotel-content">
+					<div class="hotel-grid" style="background-image: url({{ url_for('static', filename='images/habitacion_estandar.jpg') }});">
+						<div class="price"><small>mejor precio</small><span>$40/noche</span></div>
+						<a class="book-now text-center" href="{{ url_for('reservar_habitacion') }}"><i class="ti-calendar"></i> reservar</a>
+					</div>
+					<div class="desc">
+						<h3><a href="#">ESTANDAR</a></h3>
+						<p>Las habitaciones estadar son dormitorios que ofrecen comodidades básicas para una estancia agradable. Ideales para viajeros solitarios o parejas que buscan una opción económica y cómoda.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+{% endblock %}

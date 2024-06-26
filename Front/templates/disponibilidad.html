@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+Reservar Habitación
+{% endblock %}
+
+{% block styles %}
+
+<link
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/propio/disponibilidad.css') }}"
+/>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="fh5co-parallax" data-stellar-background-ratio="0.5"
+	style="background-image: url({{ url_for('static', filename='/images/fondo_reservar.jpg') }});">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+				<div class="fh5co-intro fh5co-table-cell">
+					<h1 class="text-center">Habitaciones Disponibles</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="featured-hotel" class="fh5co-bg-color borde-naranja">
+	<div class="container">
+		<div class="row">
+			{% if habitaciones|length == 0 %}
+				<h1 class="text-center">No hay habitaciones disponibles</h1>
+			{% else %}
+				{% for habitacion in habitaciones %}
+					<div class="feature-full-1col">
+						<div class="image imagen-{{habitacion.cantidad_personas}}">
+							<div class="descrip text-center">
+								<div>
+									<p><small>Espacio para</small><span>hasta {{habitacion.cantidad_personas}} personas</span></p>
+								</div>
+								<div class="divisor">
+									<p><small>mejor precio</small><span>
+										{% if habitacion.tipo_habitacion == "Suite Flotante" %}
+										$100
+										{% elif habitacion.tipo_habitacion == "Standard" %}
+										$40
+										{% else %}
+										$70
+										{% endif %}/noche</span></p>
+								</div>
+							</div>
+						</div>
+						<div class="desc">
+							<h3>{{habitacion.tipo_habitacion}}</h3>
+							<p>
+								{% if habitacion.tipo_habitacion == "Suite Flotante" %}
+								Una habitación flotante con cama doble, baño privado y terraza con vistas al agua. Ideal para una estancia tranquila y confortable.
+								{% elif habitacion.tipo_habitacion == "Standard" %}
+								Una habitación estándar con cama doble, baño privado y balcón. Ideal para una estancia cómoda y relajante.
+								{% else %}
+								Una habitación premium con cama doble, baño privado, sala de estar y balcón con vistas panorámicas. Ideal para una estancia lujosa y cómoda.
+								{% endif %}
+							</p>
+							</p>
+							<p class="service-hour">
+								<span>Desde</span>
+								<strong>{{fecha_inicio}}</strong>
+							</p>
+							<p class="service-hour">
+								<span>Hasta</span>
+								<strong>{{fecha_fin}}</strong>
+							</p>
+							<form method="GET" action="{{ url_for('disponibilidad', fecha_inicio=fecha_inicio, fecha_fin=fecha_fin, tipo_habitacion=habitacion.tipo_habitacion, cantidad_personas=habitacion.cantidad_personas,id_habitacion=habitacion.id_habitacion ) }}">
+								<input type="submit" name="boton_reservar" value="Reservar Ahora" class="btn btn-primary btn-luxe-primary" />
+							</form>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+
+{% endblock%}

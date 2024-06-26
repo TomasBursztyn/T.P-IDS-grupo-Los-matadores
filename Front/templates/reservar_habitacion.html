@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Reservar Habitación
+{% endblock %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/propio/reservar.css') }}">
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{{ url_for('static', filename='js/propio/reservar.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="fh5co-parallax" data-stellar-background-ratio="0.5" style="background-image: url({{ url_for('static', filename='images/fondo_reservar.jpg')}});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center fh5co-table">
+                <div class="fh5co-intro fh5co-table-cell">
+                    <h1 class="text-center">RESERVAR HABITACION</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fh5co-contact-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="section-title text-center">
+                <h2>Formulario de reserva</h2>
+            </div>
+            <div class="col-md-12">
+                <form method="POST" action="{{ url_for('reservar_habitacion') }}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="nombre">Nombre y apellido:</label>
+                                <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Ingrese su nombre" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="dni">Numero de DNI:</label>
+                                <input type="number" id="dni" class="form-control" name="dni" placeholder="Ingrese su DNI" min="1" max="99999999" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="telefono">Numero de Telefono:</label>
+                                <input type="tel" id="telefono" class="form-control" name="telefono" placeholder="Ingrese su numero" pattern=".{10}" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email">Correo electronico:</label>
+                                <input type="email" id="email" class="form-control" name="email" placeholder="Ingrese su correo electronico" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="inicio_fecha">Inicio de reserva:</label>
+                                <input type="date" id="inicio_fecha" class="form-control" name="inicio_fecha" value="{{ reserva.fecha_inicio }}" required readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="fin_fecha">Fin de reserva:</label>
+                                <input type="date" id="fin_fecha" class="form-control" name="fin_fecha" value="{{ reserva.fecha_fin }}" required readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="cantidad_personas">Cantidad de personas:</label>
+                                <input type="number" id="cantidad_personas" class="form-control" name="cantidad_personas" value="{{ reserva.cantidad_personas }}" required readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="tipo_habitacion">Tipo de habitación:</label>
+                                <input id="tipo_habitacion" class="form-control" name="tipo_habitacion" value="{{ reserva.tipo_habitacion }}" required readonly>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="id_habitacion" name="id_habitacion" value="{{ reserva.id_habitacion }}">
+
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <input type="submit" value="Reservar habitacion" id="btn_reservar_habitacion" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
