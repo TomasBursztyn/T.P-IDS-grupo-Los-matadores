@@ -1,6 +1,7 @@
-# instrucciones para correr el front (un boceto inicial)
+# instrucciones para correr el front
+# se espera que esto sea abierto en una terminal en la misma carpeta que install.sh
 
-FRONT_FOLDER=./Front
+FOLDER=./Front
 FRONTEND_PORT=5000
 
 # o algo por el estilo si el usuario no tiene pip instalado
@@ -10,7 +11,7 @@ sudo apt install python3-pip
 pip install pipenv --user
 
 # se mueve a la carpeta front
-cd $FRONT_FOLDER
+cd $FOLDER
 
 # instalo las dependencias del proyecto administrado por pipenv
 pipenv install
@@ -19,6 +20,7 @@ pipenv install
 pipenv shell
 
 # esto hay que pegarlo manualmente porque "pipenv shell" crea una sub shell
-# corro el front con el --debug activado para actualizar los cambios
-# ojo esto solo para desarrollo (no meter en produccion con --debug activado)
+# con el --debug activado para actualizar los cambios
+# con el -p ponemos el port manualmente
+# esto es para correr el backend en desarrollo
 pipenv run flask run --debug -p $FRONTEND_PORT
