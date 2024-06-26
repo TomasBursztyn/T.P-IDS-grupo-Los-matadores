@@ -82,7 +82,7 @@ def reservar_habitacion():
         QUERY = f"{BACKEND_URL}/cargar_reserva"
         requests.post(QUERY, json=tabla_reservas)
 
-        return reservas(dni)
+        return redirect(url_for("dni", dni=dni))
 
     return render_template("reservar.html"), 200
 
@@ -100,6 +100,9 @@ def eliminar_reserva(id_reserva, dni):
 def formatear_fecha(fecha):
     return datetime.strptime(fecha, "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d")
 
+@app.route("/dni/<dni>")
+def dni(dni):
+    return reservas(dni)
 
 @app.route("/reservas", methods=["GET", "POST"])
 def reservas(dni=None):
