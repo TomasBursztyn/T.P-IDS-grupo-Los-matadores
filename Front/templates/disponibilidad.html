@@ -44,7 +44,19 @@ Reservar Habitación
 					<div class="feature-full-1col">
 						<div class="image imagen-{{habitacion.cantidad_personas}}">
 							<div class="descrip text-center">
-								<p><small>Espacio para</small><span>hasta {{habitacion.cantidad_personas}} personas</span></p>
+								<div>
+									<p><small>Espacio para</small><span>hasta {{habitacion.cantidad_personas}} personas</span></p>
+								</div>
+								<div class="divisor">
+									<p><small>mejor precio</small><span>
+										{% if habitacion.tipo_habitacion == "Suite Flotante" %}
+										$100
+										{% elif habitacion.tipo_habitacion == "Standard" %}
+										$40
+										{% else %}
+										$70
+										{% endif %}/noche</span></p>
+								</div>
 							</div>
 						</div>
 						<div class="desc">
@@ -54,7 +66,7 @@ Reservar Habitación
 								Una habitación flotante con cama doble, baño privado y terraza con vistas al agua. Ideal para una estancia tranquila y confortable.
 								{% elif habitacion.tipo_habitacion == "Standard" %}
 								Una habitación estándar con cama doble, baño privado y balcón. Ideal para una estancia cómoda y relajante.
-								{% elif habitacion.tipo_habitacion == "Suite Premium" %}
+								{% else %}
 								Una habitación premium con cama doble, baño privado, sala de estar y balcón con vistas panorámicas. Ideal para una estancia lujosa y cómoda.
 								{% endif %}
 							</p>

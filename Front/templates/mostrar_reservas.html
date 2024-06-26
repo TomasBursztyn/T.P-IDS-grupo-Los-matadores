@@ -49,12 +49,31 @@
         <div class="feature-full-1col">
           <div class="image imagen-{{reserva.cantidad_personas}}">
             <div class="descrip text-center">
-              <p><small>Espacio para</small><span>hasta {{reserva.cantidad_personas}} personas</span></p>
+              <div>
+                <p><small>Espacio para</small><span>hasta {{reserva.cantidad_personas}} personas</span></p>
+              </div>
+              <div class="divisor">
+                <p><small>mejor precio</small><span>
+                  {% if reserva.tipo_habitacion == "Suite Flotante" %}
+                  $100
+                  {% elif reserva.tipo_habitacion == "Standard" %}
+                  $40
+                  {% else %}
+                  $70
+                  {% endif %}/noche</span></p>
+              </div>
             </div>
           </div>
           <div class="desc">
             <h3>{{reserva.tipo_habitacion}}</h3>
-            <p>Una habitación flotante con cama doble, baño privado y terraza con vistas al agua. Ideal para una estancia tranquila y confortable.</p>
+            <p>
+              {% if reserva.tipo_habitacion == "Suite Flotante" %}
+              Una habitación flotante con cama doble, baño privado y terraza con vistas al agua. Ideal para una estancia tranquila y confortable.
+              {% elif reserva.tipo_habitacion == "Standard" %}
+              Una habitación estándar con cama doble, baño privado y balcón. Ideal para una estancia cómoda y relajante.
+              {% else %}
+              Una habitación premium con cama doble, baño privado, sala de estar y balcón con vistas panorámicas. Ideal para una estancia lujosa y cómoda.
+              {% endif %}
             </p>
             <p class="service-hour">
               <span>Desde</span>
@@ -69,33 +88,6 @@
           </form>
           </div>
         </div>
-        <!-- <div class="col-md-12 col-sm-12">
-          <div class="reserva row">
-            <div class="reserva-cols col-md-6 col-sm-12">
-              <div>
-                <p><span>Id de la reserva:</span> {{reserva.id_reserva}}</p>
-                <p><span>Tipo de habitacion:</span> {{reserva.tipo_habitacion}}</p>
-                <p>
-                    <span>Cantidad de personas:</span> {{reserva.cantidad_personas}}
-                </p>
-                <p><span>Fecha de ingreso:</span> {{reserva.fecha_inicio}}</p>
-                <p><span>Fecha de egreso:</span> {{reserva.fecha_salida}}</p>
-                <p><span>Total a pagar:</span> {{reserva.total_a_pagar}}</p>
-              </div>
-              <form method="POST" action="{{ url_for('eliminar_reserva', id_reserva = reserva.id_reserva, dni = reserva.dni_persona) }}">
-                  <input
-                  type="submit"
-                  name="boton_cancelar"
-                  value="Cancelar"
-                  id="boton_cancelar"
-                  />
-              </form>
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <img alt="Imagen vista de habitacion" src="{{ url_for('static', filename='images/fondo_habitaciones.jpg') }}"/>
-            </div>
-          </div>
-        </div> -->
         {% endfor %}
       {% endif %}
     </div>

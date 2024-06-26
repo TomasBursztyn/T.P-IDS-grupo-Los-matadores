@@ -27,11 +27,11 @@
 }
 
 .titulo-habitaciones {
-    margin-top: 3em;
-    margin-bottom: 3em;
+    margin-top: 12rem;
+    margin-bottom: 3rem;
     float: left;
     width: 100%;
-z-index: 99;
+    z-index: 99;
 }
 
 .titulo-habitaciones h2 {

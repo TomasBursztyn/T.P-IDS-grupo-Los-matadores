@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from datetime import date, datetime
 import requests
 
@@ -117,7 +117,14 @@ def reservas(dni=None):
     for reserva in reservas:
         QUERY = f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}"
         response = requests.get(QUERY)
-        reserva_info = response.json()
+        # Si hay un error con la base de datos utilizamos como una habitacion vacia
+        if response.status_code == 500:
+            reserva_info = {
+                "tipo_habitacion": "",
+                "cantidad_personas": 0
+            } 
+        else:
+            reserva_info = response.json()
 
         reserva["tipo_habitacion"] = reserva_info["tipo_habitacion"].title()
         reserva["cantidad_personas"] = reserva_info["cantidad_personas"]

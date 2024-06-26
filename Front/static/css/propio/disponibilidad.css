@@ -44,6 +44,11 @@
     height: 100%;
 }
 
+.divisor {
+    border-top: 1px solid #e6e6e6;
+    padding-top: 5px;
+}
+
 h1 {
     font-size: 24px;
 }
@@ -56,7 +61,6 @@ h1 {
     min-height: 100%;
     padding: 4.5rem 0 4.5rem 5rem;
 }
-
 
 .imagen-2, .image {
     background-image: url("../../images/fondo_habitaciones.jpg");
