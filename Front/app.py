@@ -4,7 +4,10 @@ import requests
 
 FRONTEND_PORT = 5000
 BACKEND_PORT = 4000
+# Este seria el BACKEND_URL de producción
 BACKEND_URL = "https://los1matadoresapi.pythonanywhere.com/"
+# Este seria el BACKEND_URL de desarrollo
+# BACKEND_URL = f"http://127.0.0.1:{BACKEND_PORT}/"
 QUERY = ""
 
 app = Flask(__name__)
