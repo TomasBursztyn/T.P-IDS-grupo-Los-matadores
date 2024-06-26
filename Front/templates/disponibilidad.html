@@ -34,37 +34,42 @@ Reservar Habitación
 	</div>
 </div>
 
-<div id="fh5co-contact-section">
-	<div class="container-fluid">
+<div id="featured-hotel" class="fh5co-bg-color borde-naranja">
+	<div class="container">
 		<div class="row">
-		{% if habitaciones|length == 0 %}
-    			<h1 class="text-center">No hay habitaciones disponibles</h1>
+			{% if habitaciones|length == 0 %}
+				<h1 class="text-center">No hay habitaciones disponibles</h1>
 			{% else %}
 				{% for habitacion in habitaciones %}
-					<div class="col-md-12 col-sm-12">
-						<div class="habitacion row">
-							<div class="habitacion-cols col-md-6 col-sm-12">
-								<div>
-									<p><span>Tipo de habitación:</span> {{ habitacion.tipo_habitacion }}</p>
-									<p><span>Cantidad de personas:</span> {{ habitacion.cantidad_personas }}</p>
-									<p><span>Fecha de ingreso:</span> {{ fecha_inicio }}</p>
-									<p><span>Fecha de egreso:</span> {{ fecha_fin }}</p>
-								</div>
-								<form method="GET" action="{{ url_for('disponibilidad', fecha_inicio=fecha_inicio, fecha_fin=fecha_fin, tipo_habitacion=habitacion.tipo_habitacion, cantidad_personas=habitacion.cantidad_personas,id_habitacion=habitacion.id_habitacion ) }}">
-									<input type="submit" name="boton_reservar" value="Reservar" id="boton_reservar" />
-								</form>
+					<div class="feature-full-1col">
+						<div class="image imagen-{{habitacion.cantidad_personas}}">
+							<div class="descrip text-center">
+								<p><small>Espacio para</small><span>hasta {{habitacion.cantidad_personas}} personas</span></p>
 							</div>
-							<div class="col-md-6 col-sm-12">
-								{% if habitacion.cantidad_personas == 2 %}
-									<img alt="Imagen vista de habitación" src="{{ url_for('static', filename='images/fondo_habitaciones.jpg') }}" />
-								{% elif habitacion.cantidad_personas == 4 %}
-									<img alt="Imagen vista de habitación" src="{{ url_for('static', filename='images/habitacion_estandar.jpg') }}" />
-								{% elif habitacion.cantidad_personas == 6 %}
-									<img alt="Imagen vista de habitación" src="{{ url_for('static', filename='images/suite_premium.jpg') }}" />
-								{% else %}
-									<p>No hay imagen disponible para esta cantidad de personas.</p>
+						</div>
+						<div class="desc">
+							<h3>{{habitacion.tipo_habitacion}}</h3>
+							<p>
+								{% if habitacion.tipo_habitacion == "Suite Flotante" %}
+								Una habitación flotante con cama doble, baño privado y terraza con vistas al agua. Ideal para una estancia tranquila y confortable.
+								{% elif habitacion.tipo_habitacion == "Standard" %}
+								Una habitación estándar con cama doble, baño privado y balcón. Ideal para una estancia cómoda y relajante.
+								{% elif habitacion.tipo_habitacion == "Suite Premium" %}
+								Una habitación premium con cama doble, baño privado, sala de estar y balcón con vistas panorámicas. Ideal para una estancia lujosa y cómoda.
 								{% endif %}
-							</div>
+							</p>
+							</p>
+							<p class="service-hour">
+								<span>Desde</span>
+								<strong>{{fecha_inicio}}</strong>
+							</p>
+							<p class="service-hour">
+								<span>Hasta</span>
+								<strong>{{fecha_fin}}</strong>
+							</p>
+							<form method="GET" action="{{ url_for('disponibilidad', fecha_inicio=fecha_inicio, fecha_fin=fecha_fin, tipo_habitacion=habitacion.tipo_habitacion, cantidad_personas=habitacion.cantidad_personas,id_habitacion=habitacion.id_habitacion ) }}">
+								<input type="submit" name="boton_reservar" value="Reservar Ahora" class="btn btn-primary btn-luxe-primary" />
+							</form>
 						</div>
 					</div>
 				{% endfor %}

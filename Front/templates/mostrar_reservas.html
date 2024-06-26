@@ -8,7 +8,7 @@
 
 <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='css/propio/mostrar_reserva.css') }}"
+  href="{{ url_for('static', filename='css/propio/disponibilidad.css') }}"
 />
 
 {% endblock %} 
@@ -39,14 +39,37 @@
   </div>
 </div>
 
-<div id="fh5co-contact-section">
-  <div class="container-fluid">
-    <div class="row">
+<div id="featured-hotel" class="fh5co-bg-color borde-naranja">
+	<div class="container">
+		<div class="row">
       {% if reservas|length == 0 %}
         <h1 class="text-center">No hay ninguna reserva con ese DNI</h1>
       {% else %}
         {% for reserva in reservas %}
-        <div class="col-md-12 col-sm-12">
+        <div class="feature-full-1col">
+          <div class="image imagen-{{reserva.cantidad_personas}}">
+            <div class="descrip text-center">
+              <p><small>Espacio para</small><span>hasta {{reserva.cantidad_personas}} personas</span></p>
+            </div>
+          </div>
+          <div class="desc">
+            <h3>{{reserva.tipo_habitacion}}</h3>
+            <p>Una habitación flotante con cama doble, baño privado y terraza con vistas al agua. Ideal para una estancia tranquila y confortable.</p>
+            </p>
+            <p class="service-hour">
+              <span>Desde</span>
+              <strong>{{reserva.fecha_inicio}}</strong>
+            </p>
+            <p class="service-hour">
+              <span>Hasta</span>
+              <strong>{{reserva.fecha_salida}}</strong>
+            </p>
+            <form method="POST" action="{{ url_for('eliminar_reserva', id_reserva = reserva.id_reserva, dni = reserva.dni_persona) }}">
+              <input type="submit" name="boton_cancelar" value="Cancelar Ahora" class="btn btn-primary btn-luxe-primary" />
+          </form>
+          </div>
+        </div>
+        <!-- <div class="col-md-12 col-sm-12">
           <div class="reserva row">
             <div class="reserva-cols col-md-6 col-sm-12">
               <div>
@@ -72,7 +95,7 @@
                 <img alt="Imagen vista de habitacion" src="{{ url_for('static', filename='images/fondo_habitaciones.jpg') }}"/>
             </div>
           </div>
-        </div>
+        </div> -->
         {% endfor %}
       {% endif %}
     </div>

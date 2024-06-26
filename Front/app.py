@@ -119,7 +119,7 @@ def reservas(dni=None):
         response = requests.get(QUERY)
         reserva_info = response.json()
 
-        reserva["tipo_habitacion"] = reserva_info["tipo_habitacion"]
+        reserva["tipo_habitacion"] = reserva_info["tipo_habitacion"].title()
         reserva["cantidad_personas"] = reserva_info["cantidad_personas"]
         reserva["fecha_inicio"] = formatear_fecha(reserva["fecha_inicio"])
         reserva["fecha_salida"] = formatear_fecha(reserva["fecha_salida"])

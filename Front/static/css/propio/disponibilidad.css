@@ -1,9 +1,10 @@
+#fh5co-contact-section {
+    background-color: #e6e6e6;
+}
+
 .habitacion {
     background-color: #ffffff;
-    border: 1.5px solid #dddddd;
-    border-radius: 10px;
-    margin: 20px 10px;
-    padding: 15px 0;
+    margin: 20px 52px;
     display: flex;
 }
 
@@ -11,14 +12,31 @@
     cursor: pointer;
 }
 
+.service-hour {
+    padding-top: 0;
+}
+
+.service-hour > span {
+    display: inline-block;
+}
+
+.service-hour > strong {
+    padding-top: 5px;
+}
+
 .habitacion p {
-    margin: 0 0 2em 0;
+    margin-bottom: 5rem;
     font-weight: 400;
 }
 
 .habitacion p span {
     font-size: 20px;
     color: #201f1fb3;
+}
+
+.img-column {
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .habitacion img {
@@ -36,21 +54,18 @@ h1 {
     justify-content: space-between;
     flex-wrap: wrap;
     min-height: 100%;
+    padding: 4.5rem 0 4.5rem 5rem;
 }
 
-#boton_reservar {
-    background-color: rgb(19, 243, 38);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    cursor: pointer;
-    width: 120px;
-    font-weight: 600;
-    transition: transform 250ms;
+
+.imagen-2, .image {
+    background-image: url("../../images/fondo_habitaciones.jpg");
 }
 
-#boton_reservar:hover {
-    background-color: rgba(90, 243, 19, 0.856);
-    transform: scale(1.1);
+.imagen-4 {
+    background-image: url("../../images/habitacion_estandar.jpg")
+}
+
+.imagen-6 {
+    background-image: url("../../images/suite_premium.jpg")
 }

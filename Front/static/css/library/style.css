@@ -8512,10 +8512,10 @@ div.cs-select span {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-#tabs .service-hour {
+.service-hour {
   padding-top: 20px;
 }
-#tabs .service-hour > span {
+.service-hour > span {
   font-weight: 400;
   margin: 0;
   padding: 0;
@@ -8525,7 +8525,7 @@ div.cs-select span {
   letter-spacing: 2px;
   display: block;
 }
-#tabs .service-hour > strong {
+.service-hour > strong {
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
