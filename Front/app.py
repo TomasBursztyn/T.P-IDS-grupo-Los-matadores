@@ -15,6 +15,21 @@ def home():
     return render_template("home.html"), 200
 
 
+@app.route("/contacto", methods=["GET", "POST"])
+def contacto():
+    return render_template("contacto.html"), 200
+
+
+@app.route("/habitaciones")
+def habitaciones():
+    return render_template("habitaciones.html"), 200
+
+
+@app.route("/servicios")
+def servicios():
+    return render_template("servicios.html"), 200
+
+
 @app.route("/reservar_habitacion", methods=["GET", "POST"])
 def reservar_habitacion():
     if request.method == "POST":
@@ -31,7 +46,7 @@ def reservar_habitacion():
             "nombre_persona": nombre,
             "dni_persona": dni,
             "email_persona": email,
-            "telefono_persona": telefono
+            "telefono_persona": telefono,
         }
 
         QUERY = f"{BACKEND_URL}/clientes_dni/{dni}"
@@ -40,7 +55,7 @@ def reservar_habitacion():
         # Si hay un error con la base de datos mostramos las reservas con su dni
         if response.status_code == 500:
             return reservas(dni)
-        
+
         # Si no esta cargado el cliente (response es un objeto con HTTP
         # code de 404) en el sistema lo cargamos
         if response.status_code == 404:
@@ -52,7 +67,7 @@ def reservar_habitacion():
 
         info_cliente = response.json()
         id_cliente = info_cliente["id_persona"]
-        
+
         tabla_reservas = {
             "fecha_inicio": fecha_inicio,
             "fecha_salida": fecha_fin,
@@ -69,21 +84,6 @@ def reservar_habitacion():
     return render_template("reservar.html"), 200
 
 
-@app.route("/contacto", methods=["GET", "POST"])
-def contact():
-    return render_template("contact.html"), 200
-
-
-@app.route("/habitaciones")
-def hotel():
-    return render_template("habitaciones.html"), 200
-
-
-@app.route("/servicios")
-def services():
-    return render_template("servicios.html"), 200
-
-
 @app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
 def eliminar_reserva(id_reserva, dni):
     QUERY = f"{BACKEND_URL}/reservas/{id_reserva}"
@@ -95,7 +95,7 @@ def eliminar_reserva(id_reserva, dni):
 # Funcion auxiliar
 # Formatea fecha de formato 'Mon, 24 Jun 2024 00:00:00 GMT' a '2024-06-24'
 def formatear_fecha(fecha):
-    return datetime.strptime(fecha, '%a, %d %b %Y %H:%M:%S %Z').strftime('%Y-%m-%d')
+    return datetime.strptime(fecha, "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d")
 
 
 @app.route("/reservas", methods=["GET", "POST"])
@@ -115,7 +115,7 @@ def reservas(dni=None):
         QUERY = f"{BACKEND_URL}/habitacion/{reserva['id_habitaciones']}"
         response = requests.get(QUERY)
         reserva_info = response.json()
-        
+
         reserva["tipo_habitacion"] = reserva_info["tipo_habitacion"]
         reserva["cantidad_personas"] = reserva_info["cantidad_personas"]
         reserva["fecha_inicio"] = formatear_fecha(reserva["fecha_inicio"])
@@ -153,12 +153,15 @@ def reservar():
         else:
             habitaciones_disponibles = response.json()
 
-        return render_template(
-            "disponibilidad.html",
-            habitaciones=habitaciones_disponibles,
-            fecha_inicio=fecha_inicio,
-            fecha_fin=fecha_fin,
-        ), 200
+        return (
+            render_template(
+                "disponibilidad.html",
+                habitaciones=habitaciones_disponibles,
+                fecha_inicio=fecha_inicio,
+                fecha_fin=fecha_fin,
+            ),
+            200,
+        )
 
     return render_template("reservar.html"), 200
 
@@ -166,7 +169,9 @@ def reservar():
 @app.route(
     "/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>/<id_habitacion>"
 )
-def disponibilidad(fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion, id_habitacion):
+def disponibilidad(
+    fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion, id_habitacion
+):
     reserva = {
         "cantidad_personas": cantidad_personas,
         "fecha_inicio": fecha_inicio,
