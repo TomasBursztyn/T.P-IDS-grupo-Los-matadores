@@ -33,6 +33,64 @@ def servicios():
     return render_template("servicios.html"), 200
 
 
+@app.route("/reservar", methods=["GET", "POST"])
+def reservar():
+    if request.method == "GET":
+        return render_template("reservar.html"), 200
+
+    cantidad_personas = request.form.get("cantidad_personas")
+    fecha_inicio = request.form.get("inicio_fecha")
+    fecha_fin = request.form.get("fin_fecha")
+    # Conseguimos la fecha actual utilizando la libreria date
+    fecha_actual = str(date.today())
+
+    # Las fechas de inicio y fin son invalidas si se cumple alguna de las
+    # siguientes condiciones
+    if (
+        (fecha_inicio < fecha_actual)
+        or (fecha_fin < fecha_actual)
+        or (fecha_fin < fecha_inicio)
+    ):
+        chequear = True
+        return render_template("reservar.html", chequear=chequear), 200
+
+    QUERY = f"{BACKEND_URL}/mostrar_habitaciones_disponibles/{fecha_inicio}/{fecha_fin}/{cantidad_personas}"
+    response = requests.get(QUERY)
+    # Si hay un error con la base de datos utilizamos como habitaciones
+    # disponibles una lista vacia
+    if response.status_code == 500:
+        habitaciones_disponibles = []
+    else:
+        habitaciones_disponibles = response.json()
+
+    return (
+        render_template(
+            "disponibilidad.html",
+            habitaciones=habitaciones_disponibles,
+            fecha_inicio=fecha_inicio,
+            fecha_fin=fecha_fin,
+        ),
+        200,
+    )
+
+
+@app.route(
+    "/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>/<id_habitacion>"
+)
+def disponibilidad(
+    fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion, id_habitacion
+):
+    reserva = {
+        "cantidad_personas": cantidad_personas,
+        "fecha_inicio": fecha_inicio,
+        "fecha_fin": fecha_fin,
+        "tipo_habitacion": tipo_habitacion,
+        "id_habitacion": id_habitacion,
+    }
+
+    return render_template("reservar_habitacion.html", reserva=reserva), 200
+
+
 @app.route("/reservar_habitacion", methods=["GET", "POST"])
 def reservar_habitacion():
     if request.method == "GET":
@@ -97,21 +155,6 @@ def reservar_habitacion():
     return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
 
-@app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
-def eliminar_reserva(id_reserva, dni):
-    QUERY = f"{BACKEND_URL}/reservas/{id_reserva}"
-    requests.delete(QUERY)
-
-    # El codigo 301 es para que se redireccione automaticamente
-    return redirect(url_for("reservas_por_dni", dni=dni)), 301
-
-
-# Funcion auxiliar
-# Formatea fecha de formato 'Mon, 24 Jun 2024 00:00:00 GMT' a '2024-06-24'
-def formatear_fecha(fecha):
-    return datetime.strptime(fecha, "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d")
-
-
 @app.route("/reservas_por_dni/<dni>")
 def reservas_por_dni(dni):
     QUERY = f"{BACKEND_URL}/reserva_dni/{dni}"
@@ -148,62 +191,19 @@ def reservas():
     return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
 
-@app.route("/reservar", methods=["GET", "POST"])
-def reservar():
-    if request.method == "GET":
-        return render_template("reservar.html"), 200
+@app.route("/reservas/<id_reserva>/<dni>", methods=["POST"])
+def eliminar_reserva(id_reserva, dni):
+    QUERY = f"{BACKEND_URL}/reservas/{id_reserva}"
+    requests.delete(QUERY)
 
-    cantidad_personas = request.form.get("cantidad_personas")
-    fecha_inicio = request.form.get("inicio_fecha")
-    fecha_fin = request.form.get("fin_fecha")
-    # Conseguimos la fecha actual utilizando la libreria date
-    fecha_actual = str(date.today())
-
-    # Las fechas de inicio y fin son invalidas si se cumple alguna de las
-    # siguientes condiciones
-    if (
-        (fecha_inicio < fecha_actual)
-        or (fecha_fin < fecha_actual)
-        or (fecha_fin < fecha_inicio)
-    ):
-        chequear = True
-        return render_template("reservar.html", chequear=chequear), 200
-
-    QUERY = f"{BACKEND_URL}/mostrar_habitaciones_disponibles/{fecha_inicio}/{fecha_fin}/{cantidad_personas}"
-    response = requests.get(QUERY)
-    # Si hay un error con la base de datos utilizamos como habitaciones
-    # disponibles una lista vacia
-    if response.status_code == 500:
-        habitaciones_disponibles = []
-    else:
-        habitaciones_disponibles = response.json()
-
-    return (
-        render_template(
-            "disponibilidad.html",
-            habitaciones=habitaciones_disponibles,
-            fecha_inicio=fecha_inicio,
-            fecha_fin=fecha_fin,
-        ),
-        200,
-    )
+    # El codigo 301 es para que se redireccione automaticamente
+    return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
 
-@app.route(
-    "/disponibilidad/<fecha_inicio>/<fecha_fin>/<cantidad_personas>/<tipo_habitacion>/<id_habitacion>"
-)
-def disponibilidad(
-    fecha_inicio, fecha_fin, cantidad_personas, tipo_habitacion, id_habitacion
-):
-    reserva = {
-        "cantidad_personas": cantidad_personas,
-        "fecha_inicio": fecha_inicio,
-        "fecha_fin": fecha_fin,
-        "tipo_habitacion": tipo_habitacion,
-        "id_habitacion": id_habitacion,
-    }
-
-    return render_template("reservar_habitacion.html", reserva=reserva), 200
+# Funcion auxiliar
+# Formatea fecha de formato 'Mon, 24 Jun 2024 00:00:00 GMT' a '2024-06-24'
+def formatear_fecha(fecha):
+    return datetime.strptime(fecha, "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d")
 
 
 @app.errorhandler(404)
