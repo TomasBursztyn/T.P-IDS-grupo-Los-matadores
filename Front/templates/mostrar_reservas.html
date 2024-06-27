@@ -53,14 +53,13 @@
                 <p><small>Espacio para</small><span>hasta {{reserva.cantidad_personas}} personas</span></p>
               </div>
               <div class="divisor">
-                <p><small>mejor precio</small><span>
+                <p><small>mejor precio</small>
+                  <span>
                   {% if reserva.tipo_habitacion == "Suite Flotante" %}
-                  $100
-                  {% elif reserva.tipo_habitacion == "Standard" %}
-                  $40
-                  {% else %}
-                  $70
-                  {% endif %}/noche</span>
+                  $100{% elif reserva.tipo_habitacion == "Standard" %}
+                  $40{% else %}
+                  $70{% endif %}/noche
+                  </span>
                 </p>
               </div>
             </div>

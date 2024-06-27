@@ -1,3 +1,7 @@
 .fh5co-parallax .overlay {
     background-color: rgba(0, 0, 0, 0.6);
 }
+
+#fh5co-menu-wrap .sf-menu li a {
+    color: rgba(255, 255, 255, 0.5);
+}
