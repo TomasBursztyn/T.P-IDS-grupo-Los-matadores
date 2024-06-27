@@ -1,5 +1,5 @@
 {% block title %}
-	Error 404
+	Error 405
 {% endblock %}
 
 {% block styles %}
@@ -7,10 +7,10 @@
 {% endblock %}
 
 <div>
-    <h1>Error 404 - Página no encontrada</h1>
-    <p>Lo sentimos, ha ocurrido un error interno en el servidor.</p>
+    <h1>Error 405 - Método no permitido</h1>
+    <p>Lo sentimos, el método no está permitido para la URL solicitada.</p>
     <p>Por favor, inténtalo de nuevo más tarde.</p>
-    <img src="{{ url_for('static', filename='images/error404.jpg') }}" class="img-responsive" alt="Error 404"> <br>
+    <img src="{{ url_for('static', filename='images/error404.jpg') }}" class="img-responsive" alt="Error 405"> <br>
     <a href="{{ url_for('home') }}" class="btn btn-primary">Volver al Inicio</a>
     <footer>
         <p>&copy; 2024 Luna de Plata Suites</p>

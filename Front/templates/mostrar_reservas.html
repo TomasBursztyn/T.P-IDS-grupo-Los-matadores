@@ -60,7 +60,8 @@
                   $40
                   {% else %}
                   $70
-                  {% endif %}/noche</span></p>
+                  {% endif %}/noche</span>
+                </p>
               </div>
             </div>
           </div>
@@ -85,7 +86,7 @@
             </p>
             <form method="POST" action="{{ url_for('eliminar_reserva', id_reserva = reserva.id_reserva, dni = reserva.dni_persona) }}">
               <input type="submit" name="boton_cancelar" value="Cancelar Ahora" class="btn btn-primary btn-luxe-primary" />
-          </form>
+            </form>
           </div>
         </div>
         {% endfor %}
