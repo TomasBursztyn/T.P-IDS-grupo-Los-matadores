@@ -82,7 +82,7 @@ def reservar_habitacion():
         QUERY = f"{BACKEND_URL}/cargar_reserva"
         requests.post(QUERY, json=tabla_reservas)
 
-        return redirect(url_for("dni", dni=dni))
+        return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
     return render_template("reservar.html"), 200
 
@@ -92,7 +92,7 @@ def eliminar_reserva(id_reserva, dni):
     QUERY = f"{BACKEND_URL}/reservas/{id_reserva}"
     requests.delete(QUERY)
 
-    return reservas(dni)
+    return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
 
 # Funcion auxiliar
@@ -100,15 +100,9 @@ def eliminar_reserva(id_reserva, dni):
 def formatear_fecha(fecha):
     return datetime.strptime(fecha, "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d")
 
-@app.route("/dni/<dni>")
-def dni(dni):
-    return reservas(dni)
 
-@app.route("/reservas", methods=["GET", "POST"])
-def reservas(dni=None):
-    if not dni:
-        dni = request.form.get("dni_reserva")
-
+@app.route("/reservas_por_dni/<dni>", methods=["GET"])
+def reservas_por_dni(dni):
     QUERY = f"{BACKEND_URL}/reserva_dni/{dni}"
     response = requests.get(QUERY)
     # Si hay un error con la base de datos utilizamos como reservas una lista vacia
@@ -122,10 +116,7 @@ def reservas(dni=None):
         response = requests.get(QUERY)
         # Si hay un error con la base de datos utilizamos como una habitacion vacia
         if response.status_code == 500:
-            reserva_info = {
-                "tipo_habitacion": "",
-                "cantidad_personas": 0
-            } 
+            reserva_info = {"tipo_habitacion": "", "cantidad_personas": 0}
         else:
             reserva_info = response.json()
 
@@ -138,16 +129,23 @@ def reservas(dni=None):
     return render_template("mostrar_reservas.html", reservas=reservas), 200
 
 
+@app.route("/reservas", methods=["POST"])
+def reservas():
+    dni = request.form.get("dni_reserva")
+
+    return redirect(url_for("reservas_por_dni", dni=dni)), 301
+
+
 @app.route("/reservar", methods=["GET", "POST"])
 def reservar():
     if request.method == "POST":
         cantidad_personas = request.form.get("cantidad_personas")
         fecha_inicio = request.form.get("inicio_fecha")
         fecha_fin = request.form.get("fin_fecha")
-        # conseguimos la fecha actual utilizando la libreria date
+        # Conseguimos la fecha actual utilizando la libreria date
         fecha_actual = str(date.today())
 
-        # las fechas de inicio y fin son invalidas si se cumple alguna de las
+        # Las fechas de inicio y fin son invalidas si se cumple alguna de las
         # siguientes condiciones
         if (
             (fecha_inicio < fecha_actual)
@@ -205,5 +203,6 @@ def page_not_found_error(e):
 def internal_server_error(e):
     return render_template("500.html"), 500
 
+
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=FRONTEND_PORT, debug=True)
+    app.run(host="127.0.0.1", port=FRONTEND_PORT)
