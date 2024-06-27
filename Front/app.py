@@ -47,6 +47,15 @@ def reservar_habitacion():
     tipo_habitacion = request.form.get("tipo_habitacion")
     id_habitacion = request.form.get("id_habitacion")
 
+    QUERY = f"{BACKEND_URL}/reserva_validacion/{id_habitacion}/{fecha_inicio}/{fecha_fin}"
+    response = requests.get(QUERY)
+    if response.status_code == 200:
+
+        reserva_val = response.json()
+    
+        if str(reserva_val["id_habitaciones"]) == str(id_habitacion):
+            return redirect(url_for("reservas_por_dni", dni=dni)), 301
+
     datos_persona = {
         "nombre_persona": nombre,
         "dni_persona": dni,
@@ -59,7 +68,7 @@ def reservar_habitacion():
 
     # Si hay un error con la base de datos mostramos las reservas con su dni
     if response.status_code == 500:
-        return reservas(dni)
+        return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
     # Si no esta cargado el cliente (response es un objeto con HTTP
     # code de 404) en el sistema lo cargamos
