@@ -2,6 +2,10 @@ input {
     cursor: pointer;
 }
 
+h2 {
+  font-weight: 400 !important;
+}
+
 /* saca las flechitas del input type="number" de la derecha */
 
 /* Chrome, Safari, Edge, Opera */

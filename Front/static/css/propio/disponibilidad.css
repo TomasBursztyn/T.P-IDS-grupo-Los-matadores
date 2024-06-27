@@ -45,8 +45,13 @@
 }
 
 .divisor {
-    border-top: 1px solid #e6e6e6;
-    padding-top: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.feature-full-1col .image .descrip small {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 h1 {
