@@ -84,6 +84,7 @@ def reservar_habitacion():
     QUERY = f"{BACKEND_URL}/cargar_reserva"
     requests.post(QUERY, json=tabla_reservas)
 
+    # El codigo 301 es para que se redireccione automaticamente
     return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
 
@@ -92,6 +93,7 @@ def eliminar_reserva(id_reserva, dni):
     QUERY = f"{BACKEND_URL}/reservas/{id_reserva}"
     requests.delete(QUERY)
 
+    # El codigo 301 es para que se redireccione automaticamente
     return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
 
@@ -133,6 +135,7 @@ def reservas_por_dni(dni):
 def reservas():
     dni = request.form.get("dni_reserva")
 
+    # El codigo 301 es para que se redireccione automaticamente
     return redirect(url_for("reservas_por_dni", dni=dni)), 301
 
 
